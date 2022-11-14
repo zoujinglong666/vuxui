@@ -6,7 +6,7 @@
 
 <script>
 export default {
-  name: "vuxDivider",
+  name: "VuxDivider",
   props: {
     contentPosition: {
       type: String,
