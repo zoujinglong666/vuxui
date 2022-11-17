@@ -1,12 +1,10 @@
 <template>
   <div :class="caleClass" @click="closeMaskHandle">
-    <div :class="[round?'round':'']" :style="{height:heightByStyle,width:widthStyle}" class="drawer-content">
-      <slot name="icon">
-
-        <span class="close-icon"
+    <div :class="[round?'round':'',curOpen?'prevent-touch-move':'']" :style="{height:heightByStyle,width:widthStyle}"
+         class="drawer-content">
+        <span v-if="closable" class="close-icon"
               @click="handleClose"
         ><i class="iconfont icon-close"></i></span>
-      </slot>
       <slot>
       </slot>
     </div>
@@ -32,7 +30,6 @@ export default {
     },
     closable: {
       type: Boolean,
-      default: true,
     },
     height: {
       type: [String, Number],
@@ -77,7 +74,7 @@ export default {
         if (parseInt(this.height) <= 100) {
           return this.height + '%'
         } else {
-          return '80%'
+          return 'auto'
         }
       }
 
@@ -87,7 +84,7 @@ export default {
         if (parseInt(this.width) <= 100) {
           return this.width + '%'
         } else {
-          return '80%'
+          return 'auto'
         }
       }
 
@@ -105,6 +102,7 @@ export default {
 
   methods: {
     handleClose() {
+
       //事件点击无效又可能是层级导致的
       this.curOpen = false;
     },
@@ -129,9 +127,19 @@ export default {
   box-sizing: border-box;
 }
 
+/* 防止出现滚动 穿透*/
+.prevent-touch-move {
+  position: fixed;
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+}
+
 .drawer-mask {
   overflow: hidden;
-  z-index: 9998;
+  z-index: 9998 !important;
   position: fixed;
   top: 0;
   left: 0;
@@ -199,6 +207,8 @@ export default {
   }
 
   &.top {
+    z-index: -1;
+
     .drawer-content {
       top: 0;
       left: 0;
@@ -265,7 +275,6 @@ export default {
       left: auto;
       right: 0;
       bottom: 0;
-
 
       &.round {
         border-top-left-radius: 10px;
