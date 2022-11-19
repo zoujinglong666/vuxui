@@ -1,30 +1,39 @@
 <template>
-  <vux-drawer v-model="isOpen" :style="offsetStyle" placement="top" style="position: absolute;"
-              @click.native="clickCloseMark"
-  >
-    <div v-for="(item,key) in options" :key="key" class="item" @click="handleClickItem(item)">
-      <div style="display: flex;justify-content: space-between">
-        <div :class="[selectActiveByStyle(item)]">{{ item.text }}</div>
-        <div v-if="selectActiveByStyle(item)"><i :class="selectActiveByStyle(item)" class="iconfont icon-add"></i></div>
+  <div v-show="showWarp" :style="[offsetStyle,heightStyle]" style="position: absolute;width: 100%;">
+    <vux-drawer v-model="isOpen" :close-on-click-overlay="closeOnClickOverlay" :placement="directionStyle"
+                style="position: absolute;overflow-y: auto;"
+                @click.native="clickCloseMark">
+      <div v-for="(item,key) in options" :key="key" class="vux-down-menu-item" @click="handleClickItem(item)">
+        <div style="display: flex;justify-content: space-between;">
+          <div :style="{color:activeColorStyle(item)?activeColor:''}">{{ item.text }}</div>
+          <div v-if="activeColorStyle(item)">
+            <span :style="{color:activeColorStyle(item)?activeColor:''}">√</span></div>
+        </div>
       </div>
-    </div>
-    <slot></slot>
-  </vux-drawer>
+      <slot></slot>
+    </vux-drawer>
+
+  </div>
+
 </template>
 
 <script>
 
-
 export default {
-  name: "VuxDropDownMenuItem",
+  name: "vuxDropDownMenuItem",
 
   data() {
     return {
       isOpen: false,
+      showWarp: false,
       offset: 0,
+      activeColor: this.$parent.activeColor,
+      direction: this.$parent.direction,
+      height: 0,
+      closeOnClickOverlay: this.$parent.closeOnClickOverlay,
+
     }
   },
-
   model: {
     prop: 'value',
   },
@@ -35,11 +44,11 @@ export default {
 //     title	菜单项标题	string	当前选中项文字
 //   options	选项数组	Option[]	[]
 //   disabled	是否禁用菜单	boolean	false
-    value: {
-      type: [Number, String]
-    },
+    value: {type: [String, Number, Array, Boolean]},
     disabled: {
-      title: Boolean,
+      type: Boolean,
+
+
     },
     title: {
       type: [Number, String]
@@ -52,36 +61,59 @@ export default {
 
   },
   computed: {
-
-
-    offsetStyle() {
-      return {
-        top: this.$parent.offset + 'px',
-      }
+    directionStyle() {
+      return this.direction === 'down' ? 'top' : 'bottom';
     },
+    offsetStyle() {
+      if (this.direction === 'down') {
+        return {
+          top: this.$parent.offset + 'px',
+        }
+      } else {
+        return {
+          bottom: this.$parent.offset + 'px',
+        }
+      }
 
-
+    },
+    heightStyle() {
+      if (this.direction === 'down') {
+        return {
+          height: this.height - this.$parent.offset + 'px',
+        }
+      } else {
+        return {
+          height: this.height + 'px',
+        }
+      }
+    }
   },
+
   watch: {
     value(newVal, oldVal) {
-      //这个语句尽量少用，
-      // if(val){
-      //
-      // }
       if (newVal !== oldVal) {
         this.$emit('input', newVal)
-        this.$emit('change', newVal)
         this.$parent.renderTitle();
       }
-
-
     }
 
   },
-
+  activated() {
+    this.init()
+  },
+  mounted() {
+    this.init()
+  },
   methods: {
+    init() {
+      this.height = window.innerHeight;
+    },
     handleClickItem(option) {
+      if (this.disabled) {
+        return
+      }
       this.isOpen = false;
+      this.showWarp = false;
       this.$emit('input', option.value);
       this.$emit('change', option);
     },
@@ -90,18 +122,21 @@ export default {
         return;
       }
       this.isOpen = show;
+      this.showWarp = show;
 
     },
     clickCloseMark() {
+      // if (!this.closeOnClickOverlay) {
+      //   return
+      // }
+
       this.$children.forEach(item => {
         item.isOpen = false;
+        item.showWarp = false;
       })
     },
-    selectActiveByStyle(item) {
-      if (item == this.options.find(item => item.value === this.value)) {
-        return 'red'
-      }
-      return ''
+    activeColorStyle(item) {
+      return item == this.options.find(item => item.value === this.value);
     },
 
 
@@ -110,11 +145,9 @@ export default {
 </script>
 
 <style lang="less" scoped>
-.red {
-  color: red;
-}
 
-.item {
+
+.vux-down-menu-item {
   height: 40px;
   line-height: 40px;
   text-align: left;

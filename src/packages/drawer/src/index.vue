@@ -24,6 +24,7 @@ export default {
     event: 'input'
   },
   props: {
+
     round: {
       type: Boolean,
       default: false,
@@ -54,7 +55,10 @@ export default {
       type: Boolean,
       default: true
     },
-
+    closeOnClickOverlay: {
+      type: Boolean,
+      default: true
+    }
   },
   computed: {
 
@@ -111,6 +115,9 @@ export default {
       if (e.target !== this.$el) {
         return;
       }
+      if (!this.closeOnClickOverlay) {
+        return;
+      }
       this.handleClose();
     },
 
@@ -128,17 +135,17 @@ export default {
 }
 
 /* 防止出现滚动 穿透*/
-.prevent-touch-move {
-  position: fixed;
-  overflow: hidden;
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
-}
+//.prevent-touch-move {
+//  position: fixed;
+//  overflow: hidden;
+//  width: 100%;
+//  height: 100%;
+//  top: 0;
+//  left: 0;
+//}
 
 .drawer-mask {
-  overflow: hidden;
+  //overflow: hidden;
   z-index: 9998 !important;
   position: fixed;
   top: 0;
@@ -147,6 +154,7 @@ export default {
   bottom: 0;
   background-color: rgba(0, 0, 0, 0.5);
   transition: opacity 300ms, height 2ms;
+
 
   .drawer-content {
     position: absolute;
@@ -181,6 +189,7 @@ export default {
       left: 0;
       right: 0;
       bottom: 0;
+
 
       &.round {
         border-top-left-radius: 10px;

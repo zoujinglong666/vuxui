@@ -1,10 +1,8 @@
 <template>
 <div>
-  <vux-drop-down-menu direction="down">
+  <vux-drop-down-menu>
     <vux-drop-down-menu-item v-model="value" :options="option"></vux-drop-down-menu-item>
     <vux-drop-down-menu-item v-model="value2" :options="option2"></vux-drop-down-menu-item>
-    <vux-drop-down-menu-item v-model="value3" :options="option3"></vux-drop-down-menu-item>
-
   </vux-drop-down-menu>
 </div>
 </template>

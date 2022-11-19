@@ -1,9 +1,11 @@
 <template>
-  <div ref="Rect" class="vux-down-menu" style="box-shadow: 0 2px 10px 0 rgb(0 0 0 / 10%);">
-    <div v-for="(item,key) in titleList" :key="key" class="vux-drop-down-menu title" @click="handleClickTitle(key)">
-      <span>{{ item.text }}
-      </span>
-
+  <div ref="Rect" class="vux-down-menu">
+    <div v-for="(item,key) in titleList" :key="key" class="vux-drop-down-menu title"
+         @click="handleClickTitle(key)">
+      <span :class="[disableStyle(item,key)]" :style="{color:activeColorStyle(item,key)?activeColor:''}"
+            style="font-weight: 500">{{ item.text }}</span>
+      <span :class="[disableStyle(item,key),activeColorStyle(item,key)?'down':'up']"
+            :style="{color:activeColorStyle(item,key)?activeColor:'' }" class="icon">^</span>
     </div>
     <slot></slot>
   </div>
@@ -12,7 +14,7 @@
 import {useRect} from "../uitls";
 
 export default {
-  name: "VuxDropDownMenu",
+  name: "vuxDropDownMenu",
   data() {
     return {
       titleList: [],
@@ -35,22 +37,48 @@ export default {
         return ['up', 'down'].includes(val)
       }
     },
+    closeOnClickOverlay: {
+      type: Boolean, default: true
+    }
   },
 
   activated() {
-    this.init()
+    this.updateOffset()
     this.renderTitle()
   },
   mounted() {
-    this.init()
+    const _this = this;
+    this.updateOffset()
     this.renderTitle()
+    window.addEventListener("resize", this.updateOffset);
+    window.addEventListener("click", function (evt) {
+      const rect = _this.$refs.Rect;
+      if (!rect.contains(evt.target)) {
+        _this.$children.forEach(item => {
+          item.toggle(false)
+        })
+
+      }
+
+
+    });
 
   },
-  watch: {},
-
-
   methods: {
 
+    activeColorStyle(item, index) {
+      //打开之后title高亮
+      if (this.$children[index].isOpen) {
+        return item.value == this.$children[index].value;
+      }
+    },
+    disableStyle(item, index) {
+      if (this.$children[index].disabled) {
+        return 'disabled'
+      }
+
+    },
+    //获取每个value的值显示的title
     renderTitle() {
       const value = this.$children.map(item => item.value)
       const data = this.$children.map(item => item.options)
@@ -59,21 +87,33 @@ export default {
       });
 
     },
-    init() {
+
+    updateOffset() {
+      //获取边距
       const rect = useRect(this.$refs.Rect);
       const {top, bottom} = rect;
-      this.offset = bottom + 40;
+      if (this.direction === 'down') {
+        this.offset = bottom;
+      } else {
+        this.offset = window.innerHeight - top;
+      }
 
     },
 
     handleClickTitle(active) {
+
+      if (this.$children[active].disabled) {
+        return
+      }
       this.$children.forEach((item, index) => {
         if (active === index) {
+          this.updateOffset()
+          //调用当前实例方法
           item.toggle()
+          //其他都关闭
         } else if (item.isOpen) {
           item.toggle(false)
         }
-
       })
     }
 
@@ -89,12 +129,34 @@ export default {
   align-items: center;
   justify-content: space-around;
   width: 100%;
+  flex: 1;
+  box-shadow: 0 2px 12px rgba(100, 101, 102, .12);
+  z-index: 9999;
+
+
+}
+
+.disabled {
+  opacity: 0.6 !important;
+  cursor: not-allowed !important;
+}
+
+.icon {
+  &.up {
+    transition: all 0.25s linear;
+    transform: rotate(180deg);
+  }
+
+  &.down {
+    transition: all 0.25s linear;
+  }
 }
 
 .vux-drop-down-menu {
   &.title {
+    background-color: #ffffff;
     width: 100%;
-    display: inline-flex;
+    display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
@@ -103,6 +165,9 @@ export default {
     font-size: 14px;
     color: #333;
     font-weight: 500;
+    min-width: 0;
+    z-index: 9999;
+
   }
 
 }
