@@ -117,6 +117,10 @@ export default {
       })
     }
 
+  },
+  beforeDestroy() {
+    window.removeEventListener('resize', this.updateOffset)
+    window.removeEventListener('click', this.updateOffset)
   }
 
 
@@ -131,7 +135,6 @@ export default {
   width: 100%;
   flex: 1;
   box-shadow: 0 2px 12px rgba(100, 101, 102, .12);
-  z-index: 9999;
 
 
 }

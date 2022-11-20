@@ -1,5 +1,5 @@
 <template>
-  <div v-show="showWarp" :style="[offsetStyle,heightStyle]" style="position: absolute;width: 100%;">
+  <div v-if="showWarp" :style="[offsetStyle,heightStyle]" style="position: absolute;width: 100%;transition: height 10s">
     <vux-drawer v-model="isOpen" :close-on-click-overlay="closeOnClickOverlay" :placement="directionStyle"
                 style="position: absolute;overflow-y: auto;"
                 @click.native="clickCloseMark">
@@ -91,6 +91,10 @@ export default {
 
   watch: {
     value(newVal, oldVal) {
+      // 不建议这样写,因为之前绑定了value是0,就没更新到相应数据
+      // if(newVal){
+      //
+      // }
       if (newVal !== oldVal) {
         this.$emit('input', newVal)
         this.$parent.renderTitle();
