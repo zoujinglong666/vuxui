@@ -2,10 +2,13 @@
   <div ref="Rect" class="vux-down-menu">
     <div v-for="(item,key) in titleList" :key="key" class="vux-drop-down-menu title"
          @click="handleClickTitle(key)">
-      <span :class="[disableStyle(item,key)]" :style="{color:activeColorStyle(item,key)?activeColor:''}"
+      <span :class="[disableStyle(item,key)]" :style="{color:activeColorStyle(item,key)}"
+            class="ellipsis"
             style="font-weight: 500">{{ item.text }}</span>
-      <span :class="[disableStyle(item,key),activeColorStyle(item,key)?'down':'up']"
-            :style="{color:activeColorStyle(item,key)?activeColor:'' }" class="icon">^</span>
+      <!--       x-icon 这里使用的是svg   颜色填充  fill-->
+      <span :class="[disableStyle(item,key),activeColorSelect(item,key)?'down':'up']"
+            :style="{color:activeColorStyle(item,key)}"
+            class="icon" size="16" type="ios-arrow-up">^</span>
     </div>
     <slot></slot>
   </div>
@@ -28,7 +31,7 @@ export default {
   props: {
     activeColor: {
       type: String,
-      default: '#0068FF'
+      default: '#0068ff'
     },
     direction: {
       type: String,
@@ -47,36 +50,34 @@ export default {
     this.renderTitle()
   },
   mounted() {
-    const _this = this;
     this.updateOffset()
     this.renderTitle()
-    window.addEventListener("resize", this.updateOffset);
-    window.addEventListener("click", function (evt) {
-      const rect = _this.$refs.Rect;
-      if (!rect.contains(evt.target)) {
-        _this.$children.forEach(item => {
+    window.addEventListener("resize", this.updateOffset, true);
+    window.addEventListener('click', (e) => {
+      //点击外部元素也就是除了遮罩以及点击区域title
+      const rect = this.$refs.Rect;
+      if (rect && !rect.contains(e.target)) {
+        this.$children.forEach(item => {
           item.toggle(false)
-        })
-
+        });
       }
 
 
-    });
+    })
 
   },
   methods: {
-
     activeColorStyle(item, index) {
+      return this.activeColorSelect(item, index) ? this.activeColor : ''
+    },
+    activeColorSelect(item, index) {
       //打开之后title高亮
       if (this.$children[index].isOpen) {
         return item.value == this.$children[index].value;
       }
     },
     disableStyle(item, index) {
-      if (this.$children[index].disabled) {
-        return 'disabled'
-      }
-
+      return this.$children[index].disabled ? 'disabled' : '';
     },
     //获取每个value的值显示的title
     renderTitle() {
@@ -89,6 +90,7 @@ export default {
     },
 
     updateOffset() {
+
       //获取边距
       const rect = useRect(this.$refs.Rect);
       const {top, bottom} = rect;
@@ -97,11 +99,9 @@ export default {
       } else {
         this.offset = window.innerHeight - top;
       }
-
     },
 
     handleClickTitle(active) {
-
       if (this.$children[active].disabled) {
         return
       }
@@ -120,7 +120,6 @@ export default {
   },
   beforeDestroy() {
     window.removeEventListener('resize', this.updateOffset)
-    window.removeEventListener('click', this.updateOffset)
   }
 
 
@@ -129,6 +128,7 @@ export default {
 
 <style lang="less" scoped>
 .vux-down-menu {
+  z-index: 9999;
   display: flex;
   align-items: center;
   justify-content: space-around;
@@ -138,6 +138,28 @@ export default {
 
 
 }
+
+
+.vux-drop-down-menu {
+  &.title {
+    background-color: #ffffff;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    height: 40px;
+    line-height: 40px;
+    font-size: 14px;
+    color: #333;
+    font-weight: 500;
+    min-width: 0;
+
+  }
+
+
+}
+
 
 .disabled {
   opacity: 0.6 !important;
@@ -155,24 +177,5 @@ export default {
   }
 }
 
-.vux-drop-down-menu {
-  &.title {
-    background-color: #ffffff;
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    height: 40px;
-    line-height: 40px;
-    font-size: 14px;
-    color: #333;
-    font-weight: 500;
-    min-width: 0;
-    z-index: 9999;
-
-  }
-
-}
-
 </style>
+

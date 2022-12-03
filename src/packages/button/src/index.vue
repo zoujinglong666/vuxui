@@ -29,7 +29,6 @@
           @click="handleBtnClick($event)"
 
   >
-
     <span v-if="loading">
       <i :class="[loading?`vux-loading-${loadingType}`:'']">
       </i>
@@ -244,24 +243,19 @@ export default {
 
 .vux-data-button {
   position: relative;
-  display: inline-block;
-  letter-spacing: normal;
-  white-space: nowrap;
   background: #fff;
   border: 1px solid #DCDFE6;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   color: #606266;
   text-align: center;
   box-sizing: border-box;
   outline: 0;
+  border-radius: 4px;
+  font-size: 14px;
   margin: 0;
-  transition: .1s;
-  font-weight: 500;
-  border-radius: 2px;
-  cursor: pointer;
-  -webkit-appearance: none;
-  -moz-user-select: none;
-  -webkit-user-select: none;
-  -ms-user-select: none;
+  padding: 0;
 
   &.primary {
     color: #fff;

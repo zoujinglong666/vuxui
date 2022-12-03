@@ -4,6 +4,7 @@ import Vue from "vue";
 import vuxAvatar from "./avatar/index"
 import vuxDropDownMenuItem from "./dropDownMenuItem/index"
 import vuxDropDownMenu from "./dropDownMenu/index"
+import VuxSegmented from "./segmented/index"
 import vuxButton from "./button/index"
 import vuxTag from "./tag/index"
 import vuxSwitch from './switch/index'
@@ -23,6 +24,7 @@ import transitionHeight from './transitionHeight/index'
 // 将各个封装的组件使用一个数组保存，便于统一注册
 const components = [
     vuxAvatar,
+    VuxSegmented,
     vuxDropDownMenuItem,
     vuxDropDownMenu,
     vuxDrawer,
