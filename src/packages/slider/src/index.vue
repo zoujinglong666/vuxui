@@ -2,7 +2,7 @@
   <!--  区间选择器-->
   <div class="vux-range">
     <div class="vux-range-box">
-      <p v-if="!valueRangeShow">{{ value[0] }}</p>
+      <p v-if="!showValueRange">{{ value[0] }}</p>
       <div ref="slider" class="vux-range-base"
            @click="handleClickSlider($event)">
         <div id="sliderMinBtn"
@@ -50,7 +50,7 @@
              class="vux-range-inner">
         </div>
       </div>
-      <p v-if="!valueRangeShow">{{ value[1] }}</p>
+      <p v-if="!showValueRange">{{ value[1] }}</p>
     </div>
   </div>
 
@@ -88,7 +88,7 @@ export default {
     },
     //双滑块
 
-    valueRangeShow: {
+    showValueRange: {
       type: Boolean,
       default: true
     },
@@ -97,8 +97,8 @@ export default {
       type: Array,
       default: () => [0, 100],
     },
-    //只有单个
-    //todo
+
+
     sliderColor: {
       type: String,
       default: '#0068ff'
@@ -136,8 +136,10 @@ export default {
         const stopsLength = Math.ceil(this.value[1] - this.value[0]) / this.stepSize;
         let res = []
         for (let i = 1; i < stopsLength; i++) {
-          res.push(i * this.stepSize * this.magnification)
+          res.push(i * this.stepSize / this.magnification * this.magnification)
         }
+        console.log(res)
+        console.log(this.magnification)
         return res
       }
     },
@@ -490,7 +492,7 @@ export default {
         padding: 2px;
         border-radius: 4px;
         position: absolute;
-        top: -16px;
+        top: -32px;
         left: 50%;
         transform: translate(-50%, -50%);
         font-size: 12px;

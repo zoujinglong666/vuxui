@@ -1,6 +1,6 @@
 <template>
   <div :class="checkBoxStyle" class="data-check-box">
-    <span v-for="(item,index) in list" :key="index"
+    <span v-for="(item,index) in options" :key="index"
           :class="[size,theme,color,checkBoxStyle,disabledByStyle(item),selectActiveByStyle(item)]"
           :style="{backgroundColor: selectActiveByStyle(item)?backgroundColor:'',borderColor: selectActiveByStyle(item)?backgroundColor:''}"
           class="check-box-item"
@@ -15,14 +15,14 @@
 
 <script>
 const colorArr = ["primary", "success", "warning", "danger"]
-const themeArr = ["dark", "light"]
+const themeArr = ["dark", "plain"]
 const sizeArr = ["medium", "small", "large"] // 标签大小数组
 export default {
   name: "VuxDataCheckBox",
   data() {
     return {
       singleData: '',
-      multipleDateList: []
+      multipleDataList: []
     }
   },
   model: {
@@ -37,7 +37,7 @@ export default {
     },
     //这里直接使用多个类型，默认值不需要，
     value: {type: [String, Number, Array, Boolean]},
-    list: {
+    options: {
       type: Array,
       default: () => []
     },
@@ -99,24 +99,24 @@ export default {
   },
   computed: {
 
-    multipleDateListCom() {
+    multipleDataListCom() {
       if (Array.isArray(this.value) && this.type === 'multiple') {
         if (this.prop) {
-          for (let item of this.list) {
+          for (let item of this.options) {
             if (this.value.includes(item[this.label])) {
-              this.multipleDateList.push(item)
+              this.multipleDataList.push(item)
             }
           }
         } else {
-          this.multipleDateList = this.value
+          this.multipleDataList = this.value
         }
       }
-      return this.multipleDateList
+      return this.multipleDataList
     },
     singleDataCom() {
       if (this.type === 'single') {
         if (this.prop) {
-          this.singleData = this.list.find(it => it[this.prop] == this.value);
+          this.singleData = this.options.find(it => it[this.prop] == this.value);
         } else {
           this.singleData = this.value;
         }
@@ -130,7 +130,7 @@ export default {
       return {'group': this.group, 'round': this.round}
     },
     selectActiveByStyle(item) {
-      if (item === this.singleDataCom || this.multipleDateListCom.some(it => it === item)) {
+      if (item === this.singleDataCom || this.multipleDataListCom.some(it => it === item)) {
         return 'select-active'
       }
       return ''
@@ -152,20 +152,20 @@ export default {
       this.$emit('click', item)
       switch (this.type) {
         case 'multiple':
-          if (!this.multipleDateList.includes(item)) {
-            if (this.multipleDateList.length === this.max) {
+          if (!this.multipleDataList.includes(item)) {
+            if (this.multipleDataList.length === this.max) {
               this.$msg.info('超出可选数量')
               return
             }
-            this.multipleDateList.push(item);
+            this.multipleDataList.push(item);
           } else {
-            this.multipleDateList = this.multipleDateList.filter(it => it !== item)
+            this.multipleDataList = this.multipleDataList.filter(it => it !== item)
           }
           if (this.prop) {
-            let list = this.multipleDateList.map(item => item[this.prop]) || []
-            this.$emit('change', list, this.multipleDateList)
+            let options = this.multipleDataList.map(item => item[this.prop]) || []
+            this.$emit('change', options, this.multipleDataList)
           } else {
-            this.$emit('change', this.multipleDateList)
+            this.$emit('change', this.multipleDataList)
 
           }
           break;
@@ -210,7 +210,7 @@ export default {
     background-color: #eee;
     margin: 0 2px;
     text-align: center;
-    border-radius: 4px;
+    border-radius: 2px;
     border: 1px solid transparent;
     transition: all .3s cubic-bezier(.645, .045, .355, 1);
     color: #606266;

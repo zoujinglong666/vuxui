@@ -20,6 +20,7 @@ import vuxNoticeBar from './NoticeBar/index'
 import VuxSlider from './slider/index'
 import vuxDrawer from './drawer/index'
 import transitionHeight from './transitionHeight/index'
+import vuxTreeSelect from './treeSelect/index'
 
 // 将各个封装的组件使用一个数组保存，便于统一注册
 const components = [
@@ -41,7 +42,8 @@ const components = [
     vuxCalender,
     vuxCollapseItem,
     vuxNoticeBar,
-    transitionHeight
+    transitionHeight,
+    vuxTreeSelect
 ]
 
 // 使用定义注册函数
