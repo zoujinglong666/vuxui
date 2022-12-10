@@ -44,27 +44,14 @@ export default {
   model: {
     prop: "mainActiveIndex"
   },
-  watch: {
-    leftIndex(newVal, oldVal) {
-
-    },
-    activeIdCom(newVal, oldVal) {
-
-      console.log(newVal, oldVal)
-
-    }
-  },
   computed: {
     activeIdCom: {
-
       get() {
         return this.activeId
       },
       set(val) {
         //使用 父组件加入.sync
-        console.log(val, 'val')
         this.$emit('update:active-id', val)
-        // this.$emit('update:activeId', val)
         //
       },
 
@@ -103,12 +90,15 @@ export default {
         return
       }
       this.leftIndex = index;
+      this.$emit('click-nav', this.leftIndex)
 
     },
     handleRightItem(childrenItem) {
       if (childrenItem.disabled) {
         return
       }
+      this.$emit('click-item', childrenItem)
+
       if (Array.isArray(this.activeId)) {
         if (!this.activeIdCom.includes(childrenItem.id)) {
           this.activeIdCom.push(childrenItem.id)

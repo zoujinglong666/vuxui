@@ -1,21 +1,32 @@
 <template>
   <div>
     <vux-tree-select v-model="leftIndex" :activeId.sync="activeId" :options="items"></vux-tree-select>
+    <vux-progress :strokeWidth="50"></vux-progress>
+    {{ activeId }}
 
+    <vux-radio-group v-model="activeId">
+      <vux-radio :name="1">1</vux-radio>
+      <vux-radio :name="2">2</vux-radio>
+      <vux-radio :name="3">3</vux-radio>
+      <vux-radio :name="4">4</vux-radio>
+    </vux-radio-group>
   </div>
 </template>
 
 <script>
 
 
+import VuxCheckboxGroup from "@/packages/checkBoxGroup/src";
+import VuxRadioGroup from "@/packages/radioGroup/src";
+
 export default {
-  components: {},
+  components: {VuxRadioGroup, VuxCheckboxGroup},
 
 
   data() {
     return {
       leftIndex: 1,
-      activeId: [1, 2],
+      activeId: [1],
       items: [
         {
           text: '浙江',

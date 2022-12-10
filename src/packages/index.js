@@ -21,9 +21,15 @@ import VuxSlider from './slider/index'
 import vuxDrawer from './drawer/index'
 import transitionHeight from './transitionHeight/index'
 import vuxTreeSelect from './treeSelect/index'
+import vuxCheckBox from './checkBox/index'
+import vuxCheckBoxGroup from './checkBoxGroup/index'
+import vuxRadio from './radio/index'
+import vuxRadioGroup from './radioGroup/index'
 
 // 将各个封装的组件使用一个数组保存，便于统一注册
 const components = [
+    vuxRadio,
+    vuxRadioGroup,
     vuxAvatar,
     VuxSegmented,
     vuxDropDownMenuItem,
@@ -43,7 +49,9 @@ const components = [
     vuxCollapseItem,
     vuxNoticeBar,
     transitionHeight,
-    vuxTreeSelect
+    vuxTreeSelect,
+    vuxCheckBoxGroup,
+    vuxCheckBox
 ]
 
 // 使用定义注册函数

@@ -7,7 +7,7 @@
            class="vux-progress-tip">
         {{ tipText ? tipText : strokeWidthStyle }}
       </div>
-      s
+
       <div :class="[size,square?'square':'',]"
            :style="{width:strokeWidthStyle,background:strokeColor,height:strokeHeightStyle}"
            class="vux-progress-inner">
