@@ -30,14 +30,12 @@ export default {
 
   data() {
     return {
-      value: this.checkValue,
-      cell: this.$parent.cell
-
+      cell: this.$parent.cell || false
     }
   }
   ,
   model: {
-    prop: 'checkValue',
+    prop: 'value',
   }
   ,
   props: {
@@ -55,7 +53,7 @@ export default {
       type: Boolean
     }
     ,
-    checkValue: {
+    value: {
       type: Boolean
     }
     ,
@@ -97,12 +95,14 @@ export default {
   }
   ,
   watch: {
-    checkValue(val) {
-      this.value = val;
-    }
-    ,
-    value(val) {
-      this.$emit('input', val)
+
+    checkValue: {
+      get() {
+        return this.value
+      },
+      set(val) {
+        this.handleEmit(val)
+      }
     }
   }
   ,
@@ -111,7 +111,7 @@ export default {
       if (this.$parent.value) {
         return this.$parent.value.indexOf(this.name) !== -1;
       }
-      return !!this.value
+      return this.value
     },
     checkBoxStyle() {
       return {
@@ -248,7 +248,7 @@ export default {
 .checked::after {
   content: '✓';
   color: #fff;
-  font-size: 14px;
+  font-size: 12px;
   font-weight: 500;
 }
 

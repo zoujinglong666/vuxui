@@ -30,9 +30,7 @@ export default {
 
   data() {
     return {
-      checkValue: this.value,
-      cell: this.$parent.cell
-
+      cell: this.$parent.cell || false
     }
   }
   ,
@@ -53,14 +51,9 @@ export default {
     },
     disabled: {
       type: Boolean
-    }
-    ,
-    value: {
-      type: Boolean
-    }
-    ,
+    },
     name: {
-      type: [String, Number, Object],
+      type: [Boolean, String, Number, Object, Array]
     }
     ,
 
@@ -96,21 +89,17 @@ export default {
 
   }
   ,
-  watch: {
-    value(val) {
-      this.checkValue = val;
-    }
-    ,
-    checkValue(val) {
-      this.$emit('input', val)
-    }
-  }
-  ,
   computed: {
-    checked() {
-      if (this.$parent.value) {
-        return this.$parent.value == this.name
+    checkValue: {
+      get() {
+        return this.value
+      },
+      set(val) {
+        this.handleEmit(val)
       }
+    },
+    checked() {
+      return this.$parent.value === this.name
     },
     checkBoxStyle() {
       return {
@@ -156,13 +145,7 @@ export default {
       if (this.disabled) {
         return
       }
-      if (this.$parent.value) {
-        this.$parent.updateParent(this.name)
-      } else {
-        this.value = !this.value;
-        this.$emit('click')
-        this.handleEmit(this.value)
-      }
+      this.$parent.updateParent(this.name)
     }
   }
 }

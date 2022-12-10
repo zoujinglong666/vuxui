@@ -119,7 +119,6 @@ export default {
   data() {
     return {
       weeks: ["日", "一", "二", "三", "四", "五", "六"],
-      curOpen: this.open,
       y: '',
       m: '',
       d: "",
@@ -298,12 +297,15 @@ export default {
     m() {
       this.getCalendar()
     },
-    open(val) {
-      this.curOpen = val;
+    curOpen: {
+      get() {
+        return this.open
+      },
+      set(val) {
+        this.$emit('input', val)
+      }
     },
-    curOpen(val) {
-      this.$emit('input', val)
-    }
+
   },
 
   methods: {

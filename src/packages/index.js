@@ -25,10 +25,12 @@ import vuxCheckBox from './checkBox/index'
 import vuxCheckBoxGroup from './checkBoxGroup/index'
 import vuxRadio from './radio/index'
 import vuxRadioGroup from './radioGroup/index'
+import vuxDialog from './dialog/index'
 
 // 将各个封装的组件使用一个数组保存，便于统一注册
 const components = [
     vuxRadio,
+    vuxDialog,
     vuxRadioGroup,
     vuxAvatar,
     VuxSegmented,

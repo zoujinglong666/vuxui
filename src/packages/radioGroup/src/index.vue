@@ -7,18 +7,14 @@
 export default {
   name: "VuxRadioGroup",
   data() {
-    return {
-      checkedList: this.value
-    }
+    return {}
   },
   model: {
     prop: 'value',
-    event: 'input'
   },
   props: {
     value: {
-      type: [String, Number, Array],
-
+      type: [Boolean, String, Number, Object, Array]
     },
     disabled: {
       type: Boolean
@@ -47,10 +43,15 @@ export default {
     }
 
   },
-  watch: {
-    value(value) {
-      this.checkedList = value;
-    },
+  computed: {
+    checkList: {
+      get() {
+        return this.value
+      },
+      set(val) {
+        this.handleEmit(val)
+      }
+    }
   },
   methods: {
     handleEmit(data) {
@@ -58,7 +59,6 @@ export default {
       this.$emit('change', data)
     },
     closeOther(name) {
-
       this.$children.forEach((item) => {
         // 将除了自身以外的都置为false，故其他的就都折叠上了
         if (item.name !== name) {
@@ -69,13 +69,12 @@ export default {
     updateParent(name) {
       this.closeOther(name)
       if (Array.isArray(this.checkedList)) {
-        this.checkedList = [name]
+        this.checkedList = [name];
         this.handleEmit(this.checkedList)
 
-      } else if (typeof this.checkedList === 'string' || typeof this.checkedList === 'number') {
+      } else {
         this.checkedList = name
         this.handleEmit(this.checkedList)
-
       }
 
     },
