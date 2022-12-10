@@ -5,13 +5,12 @@
       <vux-radio :name="false">false</vux-radio>
       <vux-radio :name="true">true</vux-radio>
     </vux-radio-group>
-    <vux-dialog v-model="activeId">111111111111111111111111111111111111</vux-dialog>
-
     <vux-checkbox-group v-model="activeId1">
       <vux-checkbox name="1">1</vux-checkbox>
       <vux-checkbox name="22">2</vux-checkbox>
 
     </vux-checkbox-group>
+    <vux-calendar v-model="activeId"></vux-calendar>
 
   </div>
 </template>

@@ -1,6 +1,6 @@
 <template>
   <div :class="caleClass" @click="closeMaskHandle">
-    <div :class="[round?'round':'',curOpen?'prevent-touch-move':'']" :style="{height:heightByStyle,width:widthStyle}"
+    <div v-show="curOpen" :class="[round?'round':'']" :style="{height:heightByStyle,width:widthStyle}"
          class="drawer-content">
         <span v-if="closable" class="close-icon"
               @click="handleClose"

@@ -1,5 +1,5 @@
 <template>
-  <vuxDrawer v-model="curOpen" round>
+  <vuxDrawer v-model="curOpen" :height="80" round>
     <div class="vux-calendar">
       <div class="vux-calendar-container">
         <div>
@@ -119,6 +119,7 @@ export default {
   data() {
     return {
       weeks: ["日", "一", "二", "三", "四", "五", "六"],
+      curOpen: this.open,
       y: '',
       m: '',
       d: "",
@@ -297,15 +298,12 @@ export default {
     m() {
       this.getCalendar()
     },
-    curOpen: {
-      get() {
-        return this.open
-      },
-      set(val) {
-        this.$emit('input', val)
-      }
+    open(val) {
+      this.curOpen = val;
     },
-
+    curOpen(val) {
+      this.$emit('input', val)
+    }
   },
 
   methods: {
