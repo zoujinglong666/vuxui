@@ -1,11 +1,13 @@
 <template>
 
-    <span :class="[disabled?'disabled':'','switch-content']" :style="{backgroundColor:value?activeColor:inactiveColor}"
-          @click="handleSwitch">
-      <span v-if="showText" :class="[value?'switch-text active':'switch-text']">{{ value ? '开' : '关' }}</span><span
-        :class="[value?'switch-bar active':'switch-bar']">
+    <span :class="{'disabled':disabled}" :style="{backgroundColor:checked?activeColor:inactiveColor}"
+          class="switch-content"
+          @click="onClick">
+      <span v-if="showText" :class="{'checked':checked}" class="switch-text">{{ checked ? '开' : '关' }}</span><span
+        :class="{'checked':checked}"
+        class="switch-bar">
       <span v-if="loading">
-      <i :class="[loading?`loading`:'']">
+      <i :class="{'loading':loading}">
       </i>
     </span>
     </span>
@@ -17,11 +19,11 @@
 export default {
   name: "vuxSwitch",
   model: {
-    prop: 'switchValue',
+    prop: 'value',
   },
   props: {
-    switchValue: {
-      type: Boolean
+    value: {
+      type: [Boolean, String, Number, Object, Array],
     },
     disabled: {
       type: Boolean
@@ -41,37 +43,36 @@ export default {
       type: String,
       default: '#fff'
 
-    }
-  },
-  data() {
-    return {
-      value: this.switchValue
-    }
-  },
-  watch: {
-    switchValue(val) {
-      this.value = val;
     },
-    value(val) {
-      this.$emit('input', val)
+    activeValue: {
+      type: [Boolean, String, Number, Object, Array],
+      default: true
+    },
+    inactiveValue: {
+      type: [Boolean, String, Number, Object, Array],
+      default: false
     }
+  },
 
+  computed: {
+    checked() {
+      return this.value === this.activeValue;
+    },
   },
   methods: {
-    handleSwitch() {
-      if (this.disabled) {
-        return
+    onClick(event) {
+      if (!this.disabled && !this.loading) {
+        this.$emit('click', event);
+        const newValue = this.checked ? this.inactiveValue : this.activeValue;
+        this.$emit('input', newValue);
+        this.$emit('change', newValue);
       }
-      this.value = !this.value
-      this.$emit('change', this.value)
     }
   }
 }
 </script>
 
 <style lang="scss" scoped>
-
-
 .switch-content {
   display: inline-flex;
   align-items: center;
@@ -85,13 +86,10 @@ export default {
   border: none !important;
   border: 0 !important;
   box-shadow: 0 0 0 0.5px #e2e0e0;
-
-
   &.disabled {
     opacity: 0.6 !important;
     cursor: not-allowed !important;
   }
-
   .loading {
     width: 8px;
     height: 8px;
@@ -102,7 +100,6 @@ export default {
     clip-path: polygon(0% 0%, 100% 0%, 100% 30%, 0% 30%);
     animation: loading 1s linear infinite;
   }
-
   @-webkit-keyframes loading {
     from {
       transform: rotatez(0deg);
@@ -134,7 +131,7 @@ export default {
   transform: translateX(-120%) !important;
 
 
-  &.active {
+  &.checked {
     left: 0;
     transform: translateX(50%) !important;
   }
@@ -152,12 +149,10 @@ export default {
   background-color: #fff;
   box-shadow: 0 3px 1px 0 rgba(0, 0, 0, 0.05), 0 2px 2px 0 rgba(0, 0, 0, 0.1), 0 3px 3px 0 rgba(0, 0, 0, 0.05);
 
-  &.active {
+  &.checked {
     left: 98% !important;
     transform: translateX(-100%) !important;
   }
 
 }
-
-
 </style>

@@ -4,13 +4,13 @@
       <div
           v-for="(text,index) in mainActiveTexts"
           :key="index"
-          :class="[leftIndex===index?'vux-selected-left-item':'vux-tree-select-left-item',text.disabled?'vux-tree-select disabled':'']"
+          :class="[newMainActiveIndex===index?'vux-selected-left-item':'vux-tree-select-left-item',text.disabled?'vux-tree-select disabled':'']"
           @click="handleLeftItem(text,index)">
         {{ text.text }}
       </div>
     </div>
     <div class="vux-tree-select right">
-      <div v-for="(children,index) in childrenArr[leftIndex]" :key="index"
+      <div v-for="(children,index) in childrenArr[newMainActiveIndex]" :key="index"
            class="vux-tree-select-right-item" @click="handleRightItem(children,index)"
       >
         <div :class="[children.disabled?'vux-tree-select disabled':'']" :style="activeColorStyle(children)">
@@ -45,7 +45,7 @@ export default {
     prop: "mainActiveIndex"
   },
   computed: {
-    activeIdCom: {
+    newActiveId: {
       get() {
         return this.activeId
       },
@@ -71,7 +71,7 @@ export default {
         return this.options.map(item => item.children).filter(Boolean) || []
       }
     },
-    leftIndex: {
+    newMainActiveIndex: {
       get() {
         return this.mainActiveIndex
       },
@@ -89,8 +89,8 @@ export default {
       if (text.disabled) {
         return
       }
-      this.leftIndex = index;
-      this.$emit('click-nav', this.leftIndex)
+      this.newMainActiveIndex = index;
+      this.$emit('click-nav', this.newMainActiveIndex)
 
     },
     handleRightItem(childrenItem) {
@@ -100,10 +100,10 @@ export default {
       this.$emit('click-item', childrenItem)
 
       if (Array.isArray(this.activeId)) {
-        if (!this.activeIdCom.includes(childrenItem.id)) {
-          this.activeIdCom.push(childrenItem.id)
+        if (!this.newActiveId.includes(childrenItem.id)) {
+          this.newActiveId.push(childrenItem.id)
         } else {
-          this.activeIdCom = this.activeIdCom.filter(it => it !== childrenItem.id);
+          this.newActiveId = this.newActiveId.filter(it => it !== childrenItem.id);
         }
       }
       this.activeIdItem = childrenItem;
@@ -112,7 +112,7 @@ export default {
 
 
       if (Array.isArray(this.activeId)) {
-        return this.activeIdCom.some(id => id === item.id)
+        return this.newActiveId.some(id => id === item.id)
       } else {
         return item === this.activeIdItem;
 
@@ -124,7 +124,6 @@ export default {
       return {
         color: this.activeColorSelect(item) ? this.activeColor : '',
         fontWeight: this.activeColorSelect(item) ? 'bold' : ""
-
       }
     },
   },

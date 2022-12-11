@@ -1,15 +1,15 @@
 <template>
   <ul class="treeMenu">
-    <li v-for="(item, index) in data" :key="item[props.key]">
-      {{ props }}
-      <i v-show="item[props.children]" :class="['triangle', carets[tapScopes[index]]]" @click="changeStatus(index)"/>
+    <li v-for="(item, index) in data" :key="item[prop.key]">
+      {{ prop }}
+      <i v-show="item[prop.children]" :class="['triangle', carets[tapScopes[index]]]" @click="changeStatus(index)"/>
       <p :class="['treeNode', { 'treeNode--select': item.onSelect }]">
         <label class="checkbox-wrap" @click="checked(item)">
           <input v-if="isSelect" v-model="item.checked" class="checkbox" type="checkbox"/>
         </label>
-        <span class="title" @click="tap(item, index)">{{ item[props.label] }}</span>
+        <span class="title" @click="tap(item, index)">{{ item[prop.label] }}</span>
       </p>
-      <tree-menus v-show="scopes[index]" :data="item[props.children]" v-bind="$props" v-on="$listeners"></tree-menus>
+      <tree-menus v-show="scopes[index]" :data="item[prop.children]" v-bind="$prop" v-on="$listeners"></tree-menus>
     </li>
   </ul>
 </template>
@@ -26,7 +26,7 @@ export default {
       type: Boolean,
       default: false,
     },
-    props: {
+    prop: {
       type: Object,
       default: () => {
         return {
@@ -49,7 +49,6 @@ export default {
       this.$emit('operation', {type, treeNode})
     },
     tap(item, index) {
-      console.log(item)
       this.$emit('node-click', item)
     },
     changeStatus(index) {
@@ -59,8 +58,7 @@ export default {
       // 展开闭合
       this.$set(this.scopes, index, this.scopes[index] ? false : true)
     },
-    async checked(item) {
-      console.log(item, 'item')
+    checked(item) {
       this.$emit('checked', item)
     },
   },

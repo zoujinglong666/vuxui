@@ -2,7 +2,7 @@
   <div class="search-container">
     <div :class="{'icon-placeholder-left':isFocus||noEmpty}" class="search-input gary">
       <img alt="搜索" class="search-icon" src="../../../assets/search.svg"/>
-      <input v-model="params.val"
+      <input v-model="searchVal"
              placeholder="搜索"
              type="text"
              @blur="handleBlur"
@@ -27,18 +27,15 @@ export default {
   data() {
     return {
       isFocus: false,
-      params: {
-        val: ""
-      }
+      searchVal: '',
     }
   },
   computed: {
     noEmpty() {
-      // return this.params.val!=="";
-      return this.params.val.length > 0
+      return this.searchVal.length > 0
     },
     val() {
-      return this.params.val
+      return this.searchVal
     }
   },
   watch: {
@@ -46,13 +43,12 @@ export default {
       if (n !== v) {
         this.emitOnChange(n, v)
       }
-
     }
   },
   methods: {
     //聚焦
     handleFocus() {
-      console.log('聚焦')
+
       this.isFocus = true;
     },
     //失焦
@@ -61,26 +57,26 @@ export default {
     },
     handleResetSearch(e) {
       e.preventDefault();
-      this.params.val = ''
+      this.searchVal = ''
     },
     handleCancel(e) {
       // e.preventDefault();
-      this.params.val = '';
-      this.emitOnsearch();
+      this.searchVal = '';
+      this.emitOnSearch();
     },
     handleSearch() {
-      this.emitOnsearch();
+      this.emitOnSearch();
     },
     handleSearchEnter(e) {
       e.preventDefault();
       this.emitOnpressEnter();
-      this.emitOnsearch();
+      this.emitOnSearch();
     },
-    emitOnsearch() {
-      this.$emit('on-search', this.params.val)
+    emitOnSearch() {
+      this.$emit('on-search', this.searchVal)
     },
     emitOnpressEnter() {
-      this.$emit('on-press-enter', this.params.val);
+      this.$emit('on-press-enter', this.searchVal);
     },
     emitOnChange(n, v) {
       this.$emit('on-change', n, v)

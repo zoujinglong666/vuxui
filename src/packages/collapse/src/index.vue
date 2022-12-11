@@ -75,7 +75,7 @@ export default {
         }
       }
       this.$emit("input", this.activeNames);
-      this.$emit("change", name, isOpen, vNode);
+      this.$emit("change", this.activeNames);
     },
     closeOther(name) {
 

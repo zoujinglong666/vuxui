@@ -59,7 +59,7 @@ export default {
   props: {
     value: {
       type:
-          [String, Number, Array, Boolean]
+          [String, Number, Array, Boolean, Object]
     },
     disabled: {
       type: Boolean,

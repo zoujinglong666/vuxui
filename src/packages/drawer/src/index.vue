@@ -64,7 +64,8 @@ export default {
 
     caleClass() {
       return [
-        this.showMark ? 'drawer-mask' : '',
+
+        this.curOpen && this.showMark ? 'drawer-mask' : '',
         this.placement,
         {
           'is-open': this.curOpen,

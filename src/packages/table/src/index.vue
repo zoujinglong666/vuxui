@@ -155,7 +155,6 @@ export default {
       },
       set(val) {
         this.$emit('update:data', val)
-        //
         this.$emit('change', val)
       }
     },
