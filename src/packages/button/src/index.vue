@@ -27,20 +27,12 @@
           }"
           class="vux-data-button ripple"
           @click="handleBtnClick($event)"
-
   >
-    <span v-if="loading">
-      <i :class="[loading?`vux-loading-${loadingType}`:'']">
-      </i>
-      {{ loadingText }}
-    </span>
-    <template>
-      <slot name="left"></slot>
-    </template>
+
+    <i v-if="loading" :class="[loading?`vux-loading`:'']"></i>
+    <slot name="left"></slot>
     <slot></slot>
-    <template>
-      <slot name="right"></slot>
-    </template>
+    <slot name="right"></slot>
   </button>
 </template>
 
@@ -57,7 +49,7 @@ export default {
 
   props: {
     //常用渐变
-    // background: linear-gradient(to right, #5faff8, #0068ff) !important;
+    // background: linear-gradient(to right, #5faff8, #0068ff) ;
     gradual: {
       type: Boolean,
     },
@@ -269,26 +261,26 @@ export default {
     }
 
     &.link {
-      border: 0 !important;
-      border: none !important;
-      background-color: transparent !important;
+      border: 0;
+      border: none;
+      background-color: transparent;
       color: #0068ff;
     }
 
     //实现0.5px边框
 
     &.hairline {
-      border: none !important;
-      border: 0 !important;
+      border: none;
+      border: 0;
       box-shadow: 0 0 0 0.5px #0068ff;
     }
 
     //传入 type+gradual
     &.gradual {
-      background: linear-gradient(to right, #5faff8, #0068ff) !important;
-      //border-image: linear-gradient(to right, #5faff8, #0068ff) !important;
-      border: none !important;
-      border: 0 !important;
+      background: linear-gradient(to right, #5faff8, #0068ff);
+      //border-image: linear-gradient(to right, #5faff8, #0068ff) ;
+      border: none;
+      border: 0;
     }
 
   }
@@ -299,31 +291,31 @@ export default {
     border-color: #07c160;
 
     &.plain {
-      color: #07c160 !important;
-      background-color: #fff !important;
-      border-color: #07c160 !important;
+      color: #07c160;
+      background-color: #fff;
+      border-color: #07c160;
     }
 
     &.link {
-      border: 0 !important;
-      border: none !important;
-      background-color: transparent !important;
+      border: 0;
+      border: none;
+      background-color: transparent;
       color: #07c160;
     }
 
     &.hairline {
-      border: none !important;
-      border: 0 !important;
+      border: none;
+      border: 0;
       box-shadow: 0 0 0 0.5px #07c160;
 
     }
 
     //传入 type+gradual
     &.gradual {
-      background: linear-gradient(to right, #36db84, #07c160) !important;
-      //border-image: linear-gradient(to right, #36db84, #07c160) !important;
-      border: none !important;
-      border: 0 !important;
+      background: linear-gradient(to right, #36db84, #07c160);
+      //border-image: linear-gradient(to right, #36db84, #07c160) ;
+      border: none;
+      border: 0;
     }
 
 
@@ -335,31 +327,31 @@ export default {
     border-color: #ff976a;
 
     &.link {
-      border: 0 !important;
-      border: none !important;
-      background-color: transparent !important;
+      border: 0;
+      border: none;
+      background-color: transparent;
       color: #ff976a;
     }
 
     &.plain {
-      color: #ff976a !important;
-      background-color: #fff !important;
-      border-color: #ff976a !important;
+      color: #ff976a;
+      background-color: #fff;
+      border-color: #ff976a;
     }
 
     &.hairline {
-      border: none !important;
-      border: 0 !important;
+      border: none;
+      border: 0;
       box-shadow: 0 0 0 0.5px #ff976a;
 
     }
 
     //传入 type+gradual
     &.gradual {
-      background: linear-gradient(to right, #ff976a, #fa6419) !important;
-      //border-image: linear-gradient(to right, #ff976a, #fa6419) !important;
-      border: none !important;
-      border: 0 !important;
+      background: linear-gradient(to right, #ff976a, #fa6419);
+      //border-image: linear-gradient(to right, #ff976a, #fa6419) ;
+      border: none;
+      border: 0;
     }
 
 
@@ -371,30 +363,30 @@ export default {
     border-color: #ff4040;
 
     &.link {
-      border: 0 !important;
-      border: none !important;
-      background-color: transparent !important;
+      border: 0;
+      border: none;
+      background-color: transparent;
       color: #ff4040;
     }
 
     &.plain {
-      color: #ff4040 !important;
-      background-color: #fff !important;
-      border-color: #ff4040 !important;
+      color: #ff4040;
+      background-color: #fff;
+      border-color: #ff4040;
     }
 
     &.hairline {
-      border: none !important;
-      border: 0 !important;
+      border: none;
+      border: 0;
       box-shadow: 0 0 0 0.5px #ff4040;
 
     }
 
     &.gradual {
-      background: linear-gradient(to right, #f15142, #ff4040) !important;
-      //border-image: linear-gradient(to right, #f15142, #fa2c19) !important;
-      border: none !important;
-      border: 0 !important;
+      background: linear-gradient(to right, #f15142, #ff4040);
+      //border-image: linear-gradient(to right, #f15142, #fa2c19) ;
+      border: none;
+      border: 0;
     }
 
 
@@ -406,21 +398,21 @@ export default {
     border-color: #ebedf0;
 
     &.link {
-      border: 0 !important;
-      border: none !important;
-      background-color: transparent !important;
+      border: 0;
+      border: none;
+      background-color: transparent;
       color: #333;
     }
 
     &.plain {
-      color: #333 !important;
-      background-color: #fff !important;
-      border-color: #ebedf0 !important;
+      color: #333;
+      background-color: #fff;
+      border-color: #ebedf0;
     }
 
     &.hairline {
-      border: none !important;
-      border: 0 !important;
+      border: none;
+      border: 0;
       box-shadow: 0 0 0 0.5px #ebedf0;
 
     }
@@ -464,22 +456,22 @@ export default {
 
 
   &.square {
-    border-radius: 0 !important;
+    border-radius: 0;
   }
 
   &.round {
-    border-radius: 44px !important;
+    border-radius: 44px;
   }
 
   &.noBorder {
-    border: none !important;
+    border: none;
 
   }
 
 
   &.disabled {
-    opacity: 0.6 !important;
-    cursor: not-allowed !important;
+    opacity: 0.6;
+    cursor: not-allowed;
   }
 
 
@@ -488,59 +480,26 @@ export default {
     height: 40px;
     border: 0;
     border: none;
-    padding: 0 !important;
+    padding: 0;
     border-radius: 50%;
     text-align: center;
 
   }
 
 
-  .vux-loading-one {
-    width: 18px;
-    height: 18px;
-    display: inline-block;
-    vertical-align: middle;
-    -webkit-animation: loadingOne 1s steps(12) infinite;
-    animation: loadingOne 1s steps(12) infinite;
-    background: transparent url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMjAiIGhlaWdodD0iMTIwIiB2aWV3Qm94PSIwIDAgMTAwIDEwMCI+PHBhdGggZmlsbD0ibm9uZSIgZD0iTTAgMGgxMDB2MTAwSDB6Ii8+PHJlY3Qgd2lkdGg9IjciIGhlaWdodD0iMjAiIHg9IjQ2LjUiIHk9IjQwIiBmaWxsPSIjRTlFOUU5IiByeD0iNSIgcnk9IjUiIHRyYW5zZm9ybT0idHJhbnNsYXRlKDAgLTMwKSIvPjxyZWN0IHdpZHRoPSI3IiBoZWlnaHQ9IjIwIiB4PSI0Ni41IiB5PSI0MCIgZmlsbD0iIzk4OTY5NyIgcng9IjUiIHJ5PSI1IiB0cmFuc2Zvcm09InJvdGF0ZSgzMCAxMDUuOTggNjUpIi8+PHJlY3Qgd2lkdGg9IjciIGhlaWdodD0iMjAiIHg9IjQ2LjUiIHk9IjQwIiBmaWxsPSIjOUI5OTlBIiByeD0iNSIgcnk9IjUiIHRyYW5zZm9ybT0icm90YXRlKDYwIDc1Ljk4IDY1KSIvPjxyZWN0IHdpZHRoPSI3IiBoZWlnaHQ9IjIwIiB4PSI0Ni41IiB5PSI0MCIgZmlsbD0iI0EzQTFBMiIgcng9IjUiIHJ5PSI1IiB0cmFuc2Zvcm09InJvdGF0ZSg5MCA2NSA2NSkiLz48cmVjdCB3aWR0aD0iNyIgaGVpZ2h0PSIyMCIgeD0iNDYuNSIgeT0iNDAiIGZpbGw9IiNBQkE5QUEiIHJ4PSI1IiByeT0iNSIgdHJhbnNmb3JtPSJyb3RhdGUoMTIwIDU4LjY2IDY1KSIvPjxyZWN0IHdpZHRoPSI3IiBoZWlnaHQ9IjIwIiB4PSI0Ni41IiB5PSI0MCIgZmlsbD0iI0IyQjJCMiIgcng9IjUiIHJ5PSI1IiB0cmFuc2Zvcm09InJvdGF0ZSgxNTAgNTQuMDIgNjUpIi8+PHJlY3Qgd2lkdGg9IjciIGhlaWdodD0iMjAiIHg9IjQ2LjUiIHk9IjQwIiBmaWxsPSIjQkFCOEI5IiByeD0iNSIgcnk9IjUiIHRyYW5zZm9ybT0icm90YXRlKDE4MCA1MCA2NSkiLz48cmVjdCB3aWR0aD0iNyIgaGVpZ2h0PSIyMCIgeD0iNDYuNSIgeT0iNDAiIGZpbGw9IiNDMkMwQzEiIHJ4PSI1IiByeT0iNSIgdHJhbnNmb3JtPSJyb3RhdGUoLTE1MCA0NS45OCA2NSkiLz48cmVjdCB3aWR0aD0iNyIgaGVpZ2h0PSIyMCIgeD0iNDYuNSIgeT0iNDAiIGZpbGw9IiNDQkNCQ0IiIHJ4PSI1IiByeT0iNSIgdHJhbnNmb3JtPSJyb3RhdGUoLTEyMCA0MS4zNCA2NSkiLz48cmVjdCB3aWR0aD0iNyIgaGVpZ2h0PSIyMCIgeD0iNDYuNSIgeT0iNDAiIGZpbGw9IiNEMkQyRDIiIHJ4PSI1IiByeT0iNSIgdHJhbnNmb3JtPSJyb3RhdGUoLTkwIDM1IDY1KSIvPjxyZWN0IHdpZHRoPSI3IiBoZWlnaHQ9IjIwIiB4PSI0Ni41IiB5PSI0MCIgZmlsbD0iI0RBREFEQSIgcng9IjUiIHJ5PSI1IiB0cmFuc2Zvcm09InJvdGF0ZSgtNjAgMjQuMDIgNjUpIi8+PHJlY3Qgd2lkdGg9IjciIGhlaWdodD0iMjAiIHg9IjQ2LjUiIHk9IjQwIiBmaWxsPSIjRTJFMkUyIiByeD0iNSIgcnk9IjUiIHRyYW5zZm9ybT0icm90YXRlKC0zMCAtNS45OCA2NSkiLz48L3N2Zz4=) no-repeat;
-    background-size: 100%;
-
-  }
-
-  @-webkit-keyframes loadingOne {
-    0% {
-      -webkit-transform: rotate(0deg);
-      transform: rotate(0deg);
-    }
-
-    to {
-      -webkit-transform: rotate(1turn);
-      transform: rotate(1turn);
-    }
-  }
-
-  .vux-loading-two {
+  .vux-loading {
     width: 14px;
     height: 14px;
-    border: 2px solid #C0C4CC;
+    border: 2px solid #fff;
     border-radius: 50%;
     display: inline-block;
-    vertical-align: middle;
+    vertical-align: top;
     clip-path: polygon(0% 0%, 100% 0%, 100% 30%, 0% 30%);
-    animation: loadingTwo 1s linear infinite;
+    animation: loading 1s linear infinite;
   }
 
-  @-webkit-keyframes loadingTwo {
-    from {
-      transform: rotatez(0deg);
-    }
 
-    to {
-      transform: rotatez(360deg);
-    }
-  }
-
-  @keyframes loadingTwo {
+  @keyframes loading {
     from {
       transform: rotatez(0deg);
     }

@@ -30,12 +30,13 @@ export default {
 
   data() {
     return {
+      value: this.checkValue,
       cell: this.$parent.cell || false
     }
   }
   ,
   model: {
-    prop: 'value',
+    prop: 'checkValue',
   }
   ,
   props: {
@@ -53,7 +54,7 @@ export default {
       type: Boolean
     }
     ,
-    value: {
+    checkValue: {
       type: Boolean
     }
     ,
@@ -95,15 +96,14 @@ export default {
   }
   ,
   watch: {
+    value(val) {
+      this.checkValue = val;
+    },
 
-    checkValue: {
-      get() {
-        return this.value
-      },
-      set(val) {
-        this.handleEmit(val)
-      }
+    checkValue(val) {
+      this.handleEmit(val)
     }
+
   }
   ,
   computed: {
@@ -248,7 +248,7 @@ export default {
 .checked::after {
   content: '✓';
   color: #fff;
-  font-size: 12px;
+  font-size: 6px;
   font-weight: 500;
 }
 

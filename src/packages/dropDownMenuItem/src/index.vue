@@ -25,7 +25,7 @@
         <div style="display: flex;justify-content: space-between;">
           <div :style="activeColorStyle(item)">{{ item.text }}</div>
           <div v-if="activeColorSelect(item)"><i :style="activeColorStyle(item)" class="iconfont icon-check"
-                                                 style="font-weight: bold;"></i></div>
+                                                 style="font-weight: bold;">√</i></div>
         </div>
       </div>
       <slot></slot>
@@ -47,10 +47,7 @@ export default {
   data() {
     return {
       isOpen: false,
-      activeColor: this.$parent.activeColor,
-      direction: this.$parent.direction,
       height: 0,
-      closeOnClickOverlay: this.$parent.closeOnClickOverlay || true,
     }
   },
   model: {
@@ -79,7 +76,15 @@ export default {
 
   },
   computed: {
-
+    activeColor() {
+      return this.$parent.activeColor
+    },
+    direction() {
+      return this.$parent.direction
+    },
+    closeOnClickOverlay() {
+      return this.$parent.closeOnClickOverlay
+    },
     directionStyle() {
       return this.direction === 'down' ? 'top' : 'bottom';
     },

@@ -1,53 +1,94 @@
 <template>
   <div>
-
-    <vux-radio-group v-model="activeId">
-      <vux-radio :name="0">false</vux-radio>
-      <vux-radio :name="1">true</vux-radio>
-    </vux-radio-group>
-    <vux-checkbox-group v-model="activeId1">
-      <vux-checkbox name="1">1</vux-checkbox>
-      <vux-checkbox name="22">2</vux-checkbox>
-
-    </vux-checkbox-group>
+    <vux-steps v-model="active" @change="onChange">
+      <vux-step title="买家下单"></vux-step>
+      <vux-step title="商家接单"></vux-step>
 
 
-    <vux-canvas></vux-canvas>
-    <vux-switch v-model="activeId" :active-value="1" :inactive-value="0"></vux-switch>
+    </vux-steps>
+
+
+    <vux-drop-down-menu>
+      <vux-drop-down-menu-item v-model="value1" :options="option1">
+      </vux-drop-down-menu-item>
+    </vux-drop-down-menu>
+
 
   </div>
 </template>
 
 <script>
 
+
 export default {
   components: {},
 
-
   data() {
     return {
-      leftIndex: 1,
-      activeId: 1,
-      activeId1: ['1'],
-      items: [
+      value1: 0,
+      option1: [
+        {text: '全部商品', value: 0},
+        {text: '新款商品', value: 1},
+        {text: '活动商品', value: 2},
+      ],
+      active: 1,
+      loading: false,
+      checked: false,
+      list: [
         {
-          text: '浙江',
+          key: 1,
+          title: '一级机构部门',
           children: [
-            {text: '杭州', id: 1},
-            {text: '温州', id: 2},
-            {text: '宁波', id: 3, disabled: true},
+            {
+              key: 90001,
+              title: '测试机构111',
+              children: [
+                {
+                  key: 90019,
+                  title: '测试机构111-2',
+                },
+                {
+                  key: 90025,
+                  title: '机构机构',
+                  children: [
+                    {
+                      key: 90026,
+                      title: '机构机构-2',
+                    },
+                  ],
+                },
+              ],
+            },
+            {
+              key: 90037,
+              title: '另一个机构部门',
+            },
           ],
         },
         {
-          text: '江苏',
+          key: 2,
+          title: '小卖部总舵',
           children: [
-            {text: '南京', id: 4},
-            {text: '无锡', id: 5},
-            {text: '徐州', id: 6},
+            {
+              key: 90037,
+              title: '小卖部河边分部',
+            },
           ],
         },
-        {text: '福建', disabled: true},
-      ]
+      ],
+
+    }
+  },
+  methods: {
+    onChange(index) {
+      console.log(index)
+
+    },
+    onChecked(val) {
+      console.log(val)
+    },
+    onclick() {
+      this.loading = !this.loading;
     }
   }
 

@@ -1,5 +1,4 @@
 <template>
-
     <span :class="{'disabled':disabled}" :style="{backgroundColor:checked?activeColor:inactiveColor}"
           class="switch-content"
           @click="onClick">
@@ -12,9 +11,7 @@
     </span>
     </span>
     </span>
-
 </template>
-
 <script>
 export default {
   name: "vuxSwitch",
@@ -37,7 +34,7 @@ export default {
     },
     activeColor: {
       type: String,
-      default: '#409eff'
+      default: '#0068ff'
     },
     inactiveColor: {
       type: String,
@@ -51,6 +48,9 @@ export default {
     inactiveValue: {
       type: [Boolean, String, Number, Object, Array],
       default: false
+    },
+    size: {
+      type: [Number, String]
     }
   },
 

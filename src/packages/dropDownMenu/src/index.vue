@@ -53,17 +53,9 @@ export default {
     this.updateOffset()
     this.renderTitle()
     window.addEventListener("resize", this.updateOffset, true);
-    window.addEventListener('click', (e) => {
-      //点击外部元素也就是除了遮罩以及点击区域title
-      const rect = this.$refs.Rect;
-      if (rect && !rect.contains(e.target)) {
-        this.$children.forEach(item => {
-          item.toggle(false)
-        });
-      }
-
-
-    })
+    window.addEventListener("click", (e) => {
+      this.clickOutElementClose(e)
+    }, true);
 
   },
   methods: {
@@ -100,7 +92,17 @@ export default {
         this.offset = window.innerHeight - top;
       }
     },
-
+    clickOutElementClose(e) {
+      const rect = this.$refs.Rect;
+      if (!rect) {
+        return
+      }
+      if (!rect.contains(e.target)) {
+        this.$children.forEach(item => {
+          item.toggle(false)
+        });
+      }
+    },
     handleClickTitle(active) {
       if (this.$children[active].disabled) {
         return
@@ -120,6 +122,7 @@ export default {
   },
   beforeDestroy() {
     window.removeEventListener('resize', this.updateOffset)
+    window.removeEventListener('click', this.clickOutElementClose)
   }
 
 

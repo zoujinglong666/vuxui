@@ -1,15 +1,14 @@
 <template>
   <ul class="treeMenu">
-    <li v-for="(item, index) in data" :key="item[prop.key]">
-      {{ prop }}
-      <i v-show="item[prop.children]" :class="['triangle', carets[tapScopes[index]]]" @click="changeStatus(index)"/>
-      <p :class="['treeNode', { 'treeNode--select': item.onSelect }]">
-        <label class="checkbox-wrap" @click="checked(item)">
-          <input v-if="isSelect" v-model="item.checked" class="checkbox" type="checkbox"/>
-        </label>
-        <span class="title" @click="tap(item, index)">{{ item[prop.label] }}</span>
+    <li v-for="(item, index) in data" :key="item[props.key]">
+      <i v-show="item[props.children]" :class="['triangle', carets[tapScopes[index]]]" @click="changeStatus(index)"/>
+      <p :class="['treeNode', { 'treeNode--select': item.onSelect }]" @click="changeStatus(index)">
+
+        <vux-checkbox v-if="isSelect"
+                      v-model="item.checked" shape="square" size="12" @click="checked(item)"></vux-checkbox>
+        <span class="title" @click="tap(item, index)">{{ item[props.label] }}</span>
       </p>
-      <tree-menus v-show="scopes[index]" :data="item[prop.children]" v-bind="$prop" v-on="$listeners"></tree-menus>
+      <vux-tree v-show="scopes[index]" :data="item[props.children]" v-bind="$props" v-on="$listeners"></vux-tree>
     </li>
   </ul>
 </template>
@@ -17,6 +16,8 @@
 const CARETS = {open: 'caret-down', close: 'caret-right'}
 export default {
   name: 'vuxTree',
+  components: {},
+
   props: {
     data: {
       type: Array,
@@ -26,7 +27,7 @@ export default {
       type: Boolean,
       default: false,
     },
-    prop: {
+    props: {
       type: Object,
       default: () => {
         return {
@@ -56,7 +57,7 @@ export default {
       // 图标变化
       this.$set(this.tapScopes, index, this.tapScopes[index] ? (this.tapScopes[index] === 'open' ? 'close' : 'open') : 'open')
       // 展开闭合
-      this.$set(this.scopes, index, this.scopes[index] ? false : true)
+      this.$set(this.scopes, index, !this.scopes[index])
     },
     checked(item) {
       this.$emit('checked', item)
@@ -75,7 +76,7 @@ export default {
 .triangle {
   transition: all 0.1s;
   left: 6px;
-  margin: 6px 0 0 0;
+  margin: 4px 0 0 0;
   position: absolute;
   cursor: pointer;
   width: 0;
