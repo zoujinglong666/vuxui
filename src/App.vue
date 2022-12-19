@@ -14,18 +14,21 @@
     </vux-drop-down-menu>
 
 
+    <vux-notice-bar></vux-notice-bar>
+    <board :slider-data="arr">1111111111111111111111</board>
   </div>
 </template>
 
 <script>
-
+import board from "@/packages/board/index1";
 
 export default {
-  components: {},
+  components: {board},
 
   data() {
     return {
       value1: 0,
+      arr: ['1111111111111111', '2222222222222222', '3', '4'],
       option1: [
         {text: '全部商品', value: 0},
         {text: '新款商品', value: 1},
