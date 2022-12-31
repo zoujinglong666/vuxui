@@ -421,15 +421,12 @@ export default {
   }
 
   &.large {
-    //todo
-    display: block;
     width: 100%;
     height: 44px;
   }
 
   &.block {
-    //todo
-    display: block;
+
     width: 100%;
     height: 40px;
   }
@@ -493,7 +490,8 @@ export default {
     border: 2px solid #fff;
     border-radius: 50%;
     display: inline-block;
-    vertical-align: top;
+    vertical-align: middle;
+    margin-right: 4px;
     clip-path: polygon(0% 0%, 100% 0%, 100% 30%, 0% 30%);
     animation: loading 1s linear infinite;
   }

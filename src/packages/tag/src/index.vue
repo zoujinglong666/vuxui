@@ -1,17 +1,12 @@
 <template>
-  <div style="display: inline-block">
     <span
-        :class="[type,size,theme,semicircle,round?'round':'',square?'square':''
-      ]"
-        :style="{backgroundColor: bgColor,
-       color: color,
-       borderColor:borderColor,
-       borderRadius:radiusStyle,
-       marginLeft:spaceLeftStyle,
-       marginRight:spaceRightStyle,
-       margin:spaceStyle
-    }"
         class="vux-tag"
+        :class="[type,size,theme,semicircle,
+      {
+        'round':round,
+        'square':square,
+      }]"
+        :style="tagStyle"
         @click="handleClick()"
     >
       <template>
@@ -25,7 +20,6 @@
         <slot name="right"></slot>
       </template>
     </span>
-  </div>
 
 </template>
 <script>
@@ -40,24 +34,12 @@ export default {
       type: String,
       default: ""
     },
-    bgColor: {
+    backgroundColor: {
       type: String,
-      default: ""
     },
+    textColor: String,
     //自定义圆角
     radius: {
-      type: [Number, String]
-    },
-    //左间距
-    spaceLeft: {
-      type: [Number, String]
-    },
-    //右间距
-    spaceRight: {
-      type: [Number, String]
-    },
-    ////左右间距
-    space: {
       type: [Number, String]
     },
     round: {
@@ -87,7 +69,7 @@ export default {
     // 三种标签大小
     size: {
       type: String,
-      default: "small",
+      default: "mini",
       validator(val) {
         return sizeArr.includes(val)
       }
@@ -110,27 +92,16 @@ export default {
   },
 
   computed: {
-    radiusStyle() {
-      if (this.radius) {
-        return this.radius + "px"
-      }
-    },
-    spaceStyle() {
-      if (this.space) {
-        return this.space + "px"
-      }
-    },
-    spaceLeftStyle() {
 
-      if (this.spaceLeft) {
-        return this.spaceLeft + "px"
+    tagStyle() {
+      return {
+        backgroundColor: this.backgroundColor,
+        color: this.color,
+        borderColor: this.borderColor,
+        borderRadius: this.radius + "px",
       }
     },
-    spaceRightStyle() {
-      if (this.spaceRight) {
-        return this.spaceRight + "px"
-      }
-    }
+
   },
   methods: {
     handleClose(event) {
@@ -150,18 +121,18 @@ export default {
 /* 默认标签样式 */
 .vux-tag {
   box-sizing: border-box;
-  padding: 0 8px;
+  padding: 0 6px;
   color: #252525;
   background-color: #fafafa;
   border: 1px solid #d9d9d9;
-  border-radius: 4px;
+  border-radius: 2px;
   font-size: 12px;
   white-space: nowrap;
   text-align: center;
 
 
   &.square {
-    border-radius: 0 !important;
+    border-radius: 0;
   }
 
   &.round {
@@ -179,14 +150,14 @@ export default {
 
     &.dark {
       background-color: #0068ff;
-      border-color: #0068ff;
+      border: 0;
       color: #fff;
     }
 
     &.plain {
-      background-color: #fff !important;
-      border-color: #b3d8ff !important;
-      color: #0068ff !important;
+      background-color: #fff;
+      border-color: #b3d8ff;
+      color: #0068ff;
     }
   }
 
@@ -199,15 +170,15 @@ export default {
     }
 
     &.dark {
-      border-color: #07c160;
       background-color: #07c160;
+      border: 0;
       color: #fff;
     }
 
     &.plain {
-      background-color: #fff !important;
-      border-color: #c2e7b0 !important;
-      color: #07c160 !important;
+      background-color: #fff;
+      border-color: #c2e7b0;
+      color: #07c160;
     }
   }
 
@@ -221,14 +192,15 @@ export default {
 
     &.dark {
       background-color: #909399;
-      border-color: #909399;
+      //border-color: #909399;
+      border: 0;
       color: #fff;
     }
 
     &.plain {
-      background-color: #fff !important;
-      border-color: #d3d4d6 !important;
-      color: #909399 !important;
+      background-color: #fff;
+      border-color: #d3d4d6;
+      color: #909399;
     }
   }
 
@@ -241,15 +213,15 @@ export default {
     }
 
     &.dark {
-      border-color: #ff976a;
       background-color: #ff976a;
+      border: 0;
       color: #fff;
     }
 
     &.plain {
-      background-color: #fff !important;
-      border-color: #f5dab1 !important;
-      color: #ff976a !important;
+      background-color: #fff;
+      border-color: #f5dab1;
+      color: #ff976a;
     }
   }
 
@@ -262,15 +234,15 @@ export default {
 
 
     &.dark {
-      border-color: #ff4040;
+      border: 0;
       background-color: #ff4040;
       color: #fff;
     }
 
     &.plain {
-      background-color: #fff !important;
-      border-color: #fbc4c4 !important;
-      color: #ff4040 !important;
+      background-color: #fff;
+      border-color: #fbc4c4;
+      color: #ff4040;
     }
   }
 
@@ -284,7 +256,7 @@ export default {
 
     &.dark {
       background-color: #909399;
-      border-color: #909399;
+      border: 0;
       color: #fff;
     }
 

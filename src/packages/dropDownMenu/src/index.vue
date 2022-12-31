@@ -88,6 +88,8 @@ export default {
       const {top, bottom} = rect;
       if (this.direction === 'down') {
         this.offset = bottom;
+        console.log(this.$children);
+
       } else {
         this.offset = window.innerHeight - top;
       }

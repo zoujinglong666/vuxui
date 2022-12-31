@@ -9,7 +9,6 @@
              ref="sliderMinBtn"
              v-touch:swipeleft="leftSlide"
              v-touch:swiperight="rightSlide"
-             :class="[getFarLeftAndRightStyle('min')]"
              :style="{left:initialLeftValueByStyle,borderColor:sliderColor}"
              class="vux-range-sliderMinBtn"
              @click="handleClickSliderBtn">
@@ -21,7 +20,6 @@
             ref="sliderMaxBtn"
             v-touch:swipeleft="leftSlideDouble"
             v-touch:swiperight="rightSlideDouble"
-            :class="[getFarLeftAndRightStyle('max')]"
             :style="{left:initialSlidingOffsetDouble,borderColor:sliderColor}"
             class="vux-range-sliderMinBtn"
             @click="handleClickSliderBtn">
@@ -227,14 +225,7 @@ export default {
     getStopStyle(position) {
       return {'left': position + '%'};
     },
-    getFarLeftAndRightStyle(type) {
-      if (this[type] === this.value[0]) {
-        return 'farLeft'
-      }
-      if (this[type] === this.value[1]) {
-        return 'farRight'
-      }
-    },
+
     init() {
       // //模拟移动端事件
       const sliderMinBtn = this.$refs.sliderMinBtn;

@@ -1,28 +1,28 @@
 <template>
   <div :class="checkBoxStyle" class="data-check-box">
     <span v-for="(item,index) in options" :key="index"
-          :class="[size,theme,color,checkBoxStyle,disabledByStyle(item),selectActiveByStyle(item)]"
-          :style="{backgroundColor: selectActiveByStyle(item)?backgroundColor:'',borderColor: selectActiveByStyle(item)?backgroundColor:''}"
+          :class="[size,theme,color,checkBoxStyle,disabledByStyle(item),selectActiveByStyle(item),{'check-mark':checkMark ,'round':round,
+          'noBorder':noBorder}]"
           class="check-box-item"
+          :style="{backgroundColor: selectActiveByStyle(item)?backgroundColor:'',borderColor: selectActiveByStyle(item)?backgroundColor:''}"
           @click="handleSelect(item)">
-      <span v-if="item.icon">
+      <span v-if="item.icon" style="margin-right: 2px;font-size: 12px">
         <i :class="iconStyle(item)"></i>
       </span>
       {{ prop ? item[label] : item }}
     </span>
   </div>
 </template>
-
 <script>
 const colorArr = ["primary", "success", "warning", "danger"]
-const themeArr = ["dark", "plain"]
+const themeArr = ["dark", "light"]
 const sizeArr = ["medium", "small", "large"] // 标签大小数组
 export default {
-  name: "VuxDataCheckBox",
+  name: "VuxDataCheckbox",
   data() {
     return {
       singleData: '',
-      multipleDataList: []
+      multipleDateList: []
     }
   },
   model: {
@@ -31,6 +31,10 @@ export default {
   },
 
   props: {
+    //勾选之后显示小对勾
+    checkMark: {
+      type: Boolean,
+    },
     //左右边距 类似element
     group: {
       type: Boolean,
@@ -49,7 +53,7 @@ export default {
       },
     },
 
-    cancellable: {
+    cancelable: {
       type: Boolean
     },
     disabled: {
@@ -76,6 +80,9 @@ export default {
         return themeArr.includes(val)
       }
     },
+    noBorder: {
+      type: Boolean
+    },
     color: {
       type: String,
       default: "primary",
@@ -99,19 +106,19 @@ export default {
   },
   computed: {
 
-    multipleDataListCom() {
+    multipleDateListCom() {
       if (Array.isArray(this.value) && this.type === 'multiple') {
         if (this.prop) {
           for (let item of this.options) {
             if (this.value.includes(item[this.label])) {
-              this.multipleDataList.push(item)
+              this.multipleDateList.push(item)
             }
           }
         } else {
-          this.multipleDataList = this.value
+          this.multipleDateList = this.value
         }
       }
-      return this.multipleDataList
+      return this.multipleDateList
     },
     singleDataCom() {
       if (this.type === 'single') {
@@ -130,16 +137,14 @@ export default {
       return {'group': this.group, 'round': this.round}
     },
     selectActiveByStyle(item) {
-      if (item === this.singleDataCom || this.multipleDataListCom.some(it => it === item)) {
+      if (item === this.singleDataCom || this.multipleDateListCom.some(it => it === item)) {
         return 'select-active'
       }
-      return ''
     },
     disabledByStyle(item) {
       if (this.disabled || item.hasOwnProperty('disabled') && item.disabled) {
         return 'disabled'
       }
-      return ''
     },
 
     iconStyle(item) {
@@ -152,26 +157,27 @@ export default {
       this.$emit('click', item)
       switch (this.type) {
         case 'multiple':
-          if (!this.multipleDataList.includes(item)) {
-            if (this.multipleDataList.length === this.max) {
+          if (!this.multipleDateList.includes(item)) {
+            if (this.multipleDateList.length === this.max) {
               this.$msg.info('超出可选数量')
               return
             }
-            this.multipleDataList.push(item);
+            this.multipleDateList.push(item);
           } else {
-            this.multipleDataList = this.multipleDataList.filter(it => it !== item)
+            this.multipleDateList = this.multipleDateList.filter(it => it !== item)
           }
           if (this.prop) {
-            let options = this.multipleDataList.map(item => item[this.prop]) || []
-            this.$emit('change', options, this.multipleDataList)
+            let list = this.multipleDateList.map(item => item[this.prop]) || []
+            this.$emit('change', list, this.multipleDateList)
           } else {
-            this.$emit('change', this.multipleDataList)
+            this.$emit('change', this.multipleDateList)
 
           }
           break;
         case 'single':
-          this.singleData = this.cancellable && this.singleData === item ? '' : item;
-          if (!this.cancellable) {
+
+          this.singleData = this.cancelable && this.singleData === item ? '' : item;
+          if (!this.cancelable) {
             this.singleData = item;
           }
           if (this.prop) {
@@ -203,18 +209,27 @@ export default {
 
   }
 
+
   .check-box-item {
     display: inline-flex;
-    align-items: center;
+    line-height: 1;
     justify-content: center;
+    align-items: center;
+    letter-spacing: normal;
     background-color: #eee;
-    margin: 0 2px;
+    margin-right: 4px;
+    border: 1px solid transparent;
+
     text-align: center;
     border-radius: 2px;
-    border: 1px solid transparent;
     transition: all .3s cubic-bezier(.645, .045, .355, 1);
     color: #606266;
     font-size: 13px;
+
+    &.noBorder {
+      border: none !important;
+      border: 0;
+    }
 
     &.group {
       margin: 0 !important;
@@ -231,7 +246,7 @@ export default {
     }
 
     &.large {
-      height: 28px;
+      height: 30px;
       padding: 0 14px;
     }
 
@@ -240,7 +255,169 @@ export default {
 
   .select-active {
     box-shadow: none !important;
+    position: relative;
+    overflow: hidden;
 
+
+    &.check-mark {
+      z-index: 1;
+      height: 12px;
+      padding: 6px;
+
+      &.dark {
+        &:before {
+          content: '';
+          position: absolute;
+          right: 0;
+          bottom: 0;
+          border: 8px solid #fff;
+          opacity: 0.85;
+          border-top-color: transparent;
+          border-left-color: transparent;
+        }
+
+        &.primary {
+          &:after {
+            content: '';
+            width: 2px;
+            height: 6px;
+            position: absolute;
+            right: 3px;
+            bottom: 2px;
+            border: 1px solid #0068ff;
+            border-top-color: transparent;
+            border-left-color: transparent;
+            transform: rotate(45deg);
+          }
+        }
+
+        &.success {
+          &:after {
+            content: '';
+            width: 2px;
+            height: 6px;
+            position: absolute;
+            right: 3px;
+            bottom: 2px;
+            border: 1px solid #07c160;
+            border-top-color: transparent;
+            border-left-color: transparent;
+            transform: rotate(45deg);
+          }
+        }
+
+        &.danger {
+          &:before {
+            content: '';
+            position: absolute;
+            right: 0;
+            bottom: 0;
+            border: 8px solid #07c160;
+            border-top-color: transparent;
+            border-left-color: transparent;
+          }
+
+          &:after {
+            content: '';
+            width: 2px;
+            height: 6px;
+            position: absolute;
+            right: 3px;
+            bottom: 2px;
+            border: 1px solid #ff4040;
+            border-top-color: transparent;
+            border-left-color: transparent;
+            transform: rotate(45deg);
+          }
+        }
+
+        &.warning {
+          &:after {
+            content: '';
+            width: 2px;
+            height: 6px;
+            position: absolute;
+            right: 3px;
+            bottom: 2px;
+            border: 1px solid #ff976a;
+            border-top-color: transparent;
+            border-left-color: transparent;
+            transform: rotate(45deg);
+          }
+        }
+      }
+
+      &.light {
+        &:after {
+          content: '';
+          width: 2px;
+          height: 6px;
+          position: absolute;
+          right: 3px;
+          bottom: 2px;
+          border: 1px solid #fff;
+          border-top-color: transparent;
+          border-left-color: transparent;
+          transform: rotate(45deg);
+        }
+
+        &.primary {
+          &:before {
+            content: '';
+            position: absolute;
+            right: 0;
+            bottom: 0;
+            border: 8px solid #0068ff;
+            border-top-color: transparent;
+            border-left-color: transparent;
+          }
+
+
+        }
+
+        &.success {
+          &:before {
+            content: '';
+            position: absolute;
+            right: 0;
+            bottom: 0;
+            border: 8px solid #07c160;
+            border-top-color: transparent;
+            border-left-color: transparent;
+          }
+
+
+        }
+
+        &.danger {
+          &:before {
+            content: '';
+            position: absolute;
+            right: 0;
+            bottom: 0;
+            border: 8px solid #ff4040;
+            border-top-color: transparent;
+            border-left-color: transparent;
+          }
+
+
+        }
+
+        &.warning {
+          &:before {
+            content: '';
+            position: absolute;
+            right: 0;
+            bottom: 0;
+            border: 8px solid #ff976a;
+            border-top-color: transparent;
+            border-left-color: transparent;
+          }
+
+
+        }
+      }
+    }
     &.primary {
       color: #0068ff;
       border-color: #0068ff;
@@ -299,12 +476,13 @@ export default {
     }
 
     &.large {
-      height: 28px;
+      height: 30px;
       padding: 0 14px;
     }
 
-
   }
+
+
 }
 
 
