@@ -76,7 +76,6 @@ export default {
   methods: {
 
     updateParent(index) {
-      console.log(index, 'FU')
       this.$emit('input', index)
       this.$emit('change', index)
       //这种方法也可以

@@ -1,10 +1,12 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import tag from "../views/tag"
+import button from "../views/button"
 
 Vue.use(VueRouter)
 const routes = [
     {path: '/tag', component: tag},
+    {path: '/button', component: button},
 ]
 
 const router = new VueRouter({

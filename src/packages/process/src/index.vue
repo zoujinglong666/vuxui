@@ -7,14 +7,13 @@
            class="vux-progress-tip">
         {{ tipText ? tipText : strokeWidthStyle }}
       </div>
-
-      <div :class="[size,square?'square':'',]"
+      <div :class="[size,square?'square':'']"
            :style="{width:strokeWidthStyle,background:strokeColor,height:strokeHeightStyle}"
            class="vux-progress-inner">
       </div>
     </div>
-    <div v-if="icon" class="vux-progress-text">
-      <i v-if="icon" :class="icon"></i>
+    <div class="vux-progress-text">
+      <slot name="icon"></slot>
     </div>
     <div v-if="showPercentage" class="vux-progress-text">
       <span>{{ strokeWidthStyle }}</span>
@@ -28,14 +27,13 @@
 const sizes = ["large", "small", "base"];
 export default {
   name: "vuxProgress",
+
+  model: {
+    prop: 'value'
+  },
   props: {
     strokeHeight: {
       type: Number,
-    },
-    // 0-1
-    percentage: {
-      type: String,
-      default: ''
     },
     //进度条背景颜色
     strokeColor: {
@@ -57,7 +55,7 @@ export default {
       },
     },
     //可以传入百分比和小数
-    strokeWidth: {
+    value: {
       type: Number,
       default: 50
     },
@@ -76,24 +74,34 @@ export default {
     //直角  默认圆角
     square: {
       type: Boolean
+    },
+    showAnimation: {
+      type: Boolean,
+      default: true
     }
+
+  },
+  watch: {
+
+    value(val) {
+      this.$emit('input', val)
+    },
 
   },
   computed: {
     strokeWidthStyle() {
-      return this.strokeWidth + '%'
+      return this.value + '%'
     },
     strokeHeightStyle() {
       return this.strokeHeight + 'px'
     },
-
   },
   methods: {
     getFarLeftAndRightStyle() {
-      if (this.strokeWidth === this.valueRange[0]) {
+      if (this.value === this.valueRange[0]) {
         return 'farLeft'
       }
-      if (this.strokeWidth === this.valueRange[1]) {
+      if (this.value === this.valueRange[1]) {
         return 'farRight'
       }
     },
@@ -108,25 +116,20 @@ export default {
   display: flex;
   align-items: center;
   margin: 20px 0;
+  padding: 0 10px;
 
 
   .vux-progress-base {
     position: relative;
     width: 100%;
     background-color: #f3f3f3;
-
     display: flex;
     align-items: center;
 
-    &.border {
-      background-color: transparent !important;
-      border: 1px solid #f3f3f3 !important;
-    }
 
     &.large {
       height: 14px;
       border-radius: 14px;
-
     }
 
     &.base {
@@ -142,6 +145,7 @@ export default {
     &.square {
       border-radius: 0 !important;
     }
+
 
   }
 
@@ -223,5 +227,29 @@ export default {
 
 }
 
+.vux-progress-base::before {
+  content: "";
+  opacity: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #fff;
+  border-radius: 10px;
+  animation: progressAnimation 2s infinite;
 
+
+}
+
+@keyframes progressAnimation {
+  0% {
+    opacity: 0.5;
+    width: 0;
+  }
+  100% {
+    opacity: 0;
+    width: 100%;
+  }
+}
 </style>

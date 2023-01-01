@@ -50,9 +50,9 @@
         <vux-tag size="small" theme="dark" type="primary">标签</vux-tag>
       </template>
     </vux-cell>
-    <vux-cell title="medium标签">
+    <vux-cell title="large标签">
       <template #value>
-        <vux-tag size="medium" theme="dark" type="primary">标签</vux-tag>
+        <vux-tag size="large" theme="dark" type="primary">标签</vux-tag>
       </template>
     </vux-cell>
     <p>自定义颜色</p>

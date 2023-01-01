@@ -280,17 +280,12 @@ export default {
 
 
   &.large {
-    padding: 6px 12px;
-    font-size: 14px;
+    padding: 4px 8px;
   }
 
-  &.medium {
-    padding: 4px 8px;
-    font-size: 14px;
-  }
 
   &.small {
-    padding: 2px 4px;
+    padding: 2px 6px;
     font-size: 12px;
 
 

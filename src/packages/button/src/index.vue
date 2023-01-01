@@ -39,7 +39,7 @@
 <script>
 //基本用法
 const types = ["default", "primary", "success", "warning", "danger"];
-const sizes = ["large", "small", "medium", "mini", "normal"];
+const sizes = ["large", "small", "mini", "normal"];
 const shapes = ["plain", "round", "square"];
 // 0 0.5 1
 const borders = ["noBorder", "hairline",];
@@ -244,8 +244,7 @@ export default {
   text-align: center;
   box-sizing: border-box;
   outline: 0;
-  border-radius: 4px;
-  font-size: 14px;
+  border-radius: 2px;
   margin: 0;
   padding: 0;
 
@@ -432,22 +431,17 @@ export default {
   }
 
   &.normal {
-    padding: 0 18px;
+    padding: 0 16px;
     height: 40px;
   }
 
   &.small {
-    padding: 0 16px;
+    padding: 0 12px;
     height: 32px;
   }
 
-  &.medium {
-    padding: 0 14px;
-    height: 28px;
-  }
-
   &.mini {
-    padding: 0 10px;
+    padding: 0 4px;
     height: 24px;
   }
 
@@ -475,8 +469,6 @@ export default {
   &.circle {
     width: 40px;
     height: 40px;
-    border: 0;
-    border: none;
     padding: 0;
     border-radius: 50%;
     text-align: center;

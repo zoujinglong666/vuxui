@@ -31,6 +31,7 @@ import vuxSteps from './steps/index'
 import vuxTree from './tree/index'
 import vuxCell from './cell/index'
 import vuxNavbar from './navBar/index'
+import vuxSpace from './space/index'
 // 将各个封装的组件使用一个数组保存，便于统一注册
 const components = [
     vuxRadio,
@@ -62,7 +63,8 @@ const components = [
     vuxTreeSelect,
     vuxCheckBoxGroup,
     vuxCheckBox,
-    vuxNavbar
+    vuxNavbar,
+    vuxSpace
 ]
 
 // 使用定义注册函数
