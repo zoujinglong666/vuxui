@@ -52,14 +52,14 @@
       <vux-button circle type="success">圆形</vux-button>
       <vux-button circle type="default">圆形</vux-button>
       <vux-button circle type="danger">圆形</vux-button>
-      <vux-button circletype="warning">圆形</vux-button>
+      <vux-button circle type="warning">圆形</vux-button>
     </vux-space>
   </div>
 </template>
 
 <script>
 export default {
-  name: "button",
+  name: "Button",
   components: {}
 
 }

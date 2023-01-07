@@ -17,7 +17,7 @@
 import {useRect} from "../uitls";
 
 export default {
-  name: "vuxDropDownMenu",
+  name: "VuxDropdownMenu",
   data() {
     return {
       titleList: [],
@@ -78,6 +78,30 @@ export default {
       this.titleList = data.map((it, i) => {
         return it.find(item => item.value == value[i]);
       });
+
+      //收集title
+      const title = this.$children.map(item => item.title).map(item => {
+        if (item) {
+          return {
+            text: item,
+            type: 'slot'
+          }
+        }
+        return item
+      });
+      const titleList = data.map((it, i) => {
+        return it.find(item => item.value == value[i]);
+      })
+
+      for (let i = 0; i < titleList.length; i++) {
+        const item = titleList[i];
+        const titleItem = title[i];
+        if (item === undefined) {
+          titleList.splice(i, 1);
+          titleList.splice(i, 0, titleItem)
+        }
+      }
+      this.titleList = titleList;
 
     },
 

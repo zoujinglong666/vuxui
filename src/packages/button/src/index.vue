@@ -443,6 +443,7 @@ export default {
   &.mini {
     padding: 0 4px;
     height: 24px;
+    font-size: 12px;
   }
 
 

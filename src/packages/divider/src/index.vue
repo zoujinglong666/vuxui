@@ -50,11 +50,11 @@ export default {
   border-width: 0;
 
   &.solid {
-    border-bottom: 1px solid #969799;
+    border-bottom: 1px solid #eee;
   }
 
   &.dashed {
-    border-bottom: 1px dashed #969799;
+    border-bottom: 1px dashed #eee;
   }
 
 
@@ -68,15 +68,15 @@ export default {
     font-size: 12px;
 
     &.left {
-      left: 25% !important;
+      left: 25%;
     }
 
     &.center {
-      left: 50% !important;
+      left: 50%;
     }
 
     &.right {
-      left: 75% !important;
+      left: 75%;
     }
   }
 

@@ -79,7 +79,7 @@ export default {
   position: relative;
   width: 50px;
   height: 26px;
-  line-height: 26px;
+  //line-height: 26px;
   border-radius: 26px;
   text-align: center;
   transition: background-color 0.3s linear;
@@ -94,6 +94,11 @@ export default {
     width: 8px;
     height: 8px;
     border: 1px solid #C0C4CC;
+
+    &.checked {
+      border: 1px solid #0068ff;
+    }
+
     border-radius: 50%;
     display: inline-block;
     vertical-align: middle;
@@ -136,7 +141,6 @@ export default {
     transform: translateX(50%) !important;
   }
 
-  //color: #fff;
 }
 
 .switch-bar {

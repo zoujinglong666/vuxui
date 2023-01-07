@@ -90,6 +90,7 @@ export default {
         return
       }
       this.newMainActiveIndex = index;
+      console.log('click')
       this.$emit('click-nav', this.newMainActiveIndex)
 
     },

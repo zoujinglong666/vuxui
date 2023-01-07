@@ -159,7 +159,7 @@ export default {
         case 'multiple':
           if (!this.multipleDateList.includes(item)) {
             if (this.multipleDateList.length === this.max) {
-              this.$msg.info('超出可选数量')
+             alert('超出可选数量')
               return
             }
             this.multipleDateList.push(item);
@@ -211,6 +211,7 @@ export default {
 
 
   .check-box-item {
+    box-sizing: border-box;
     display: inline-flex;
     line-height: 1;
     justify-content: center;
@@ -312,7 +313,7 @@ export default {
             position: absolute;
             right: 0;
             bottom: 0;
-            border: 8px solid #07c160;
+            border: 8px solid #fff;
             border-top-color: transparent;
             border-left-color: transparent;
           }

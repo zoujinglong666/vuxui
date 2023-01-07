@@ -2,7 +2,7 @@
   <div v-if="isOpen" :style="[offsetStyle,heightStyle]"
        style="position: absolute;width: 100%;transition: ease 0.5s">
     <vux-drawer
-        v-if="options.length" v-model="isOpen" :close-on-click-overlay="closeOnClickOverlay"
+        v-model="isOpen" :close-on-click-overlay="closeOnClickOverlay"
         :placement="directionStyle"
         style="position: absolute;overflow-y: auto;transition: ease 10s "
         @click.native="clickCloseMark">
@@ -28,6 +28,7 @@
                                                  style="font-weight: bold;">√</i></div>
         </div>
       </div>
+
       <slot></slot>
       <div class="vux-down-menu-footer">
         <template>
@@ -43,7 +44,7 @@
 
 <script>
 export default {
-  name: "vuxDropDownMenuItem",
+  name: "vuxDropdownItem",
   data() {
     return {
       isOpen: false,

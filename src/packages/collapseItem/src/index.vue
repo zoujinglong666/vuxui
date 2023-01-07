@@ -10,7 +10,7 @@
         <span><slot name="describe"></slot></span>
         <span v-if="showOperation||showOperationItem">{{ isOpen ? stowText : openText }}</span>
         <span :class="isOpen?'down':'up'" class="icon"
-        >❤</span>
+        >^</span>
       </div>
 
     </div>
@@ -111,7 +111,6 @@ export default {
   }
 
   .icon {
-    color: #fa2c19;
 
     &.up {
       transition: all 0.5s ease-in-out;
@@ -130,6 +129,8 @@ export default {
   box-sizing: border-box;
   padding: 0 10px;
   min-height: 40px;
+  line-height: 40px;
+
   width: 100%;
   height: auto;
 

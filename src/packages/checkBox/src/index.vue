@@ -3,7 +3,7 @@
   <div :class="[{'cell':cell}]" class="vux-checker">
     <div v-if="labelPosition==='left'" :class="{' vux-checker disabled':disabled}" :style="paddingLabelStyle"
          @click="toggleLabel()">
-      <slot :class="{' vux-checker disabled':disabled}"></slot>
+      <slot :class="{' vux-checker disabled':disabled}">{{ name }}</slot>
     </div>
     <div :class="[shape,{'checked':checked,'disabled':disabled}]"
          :style="checkBoxStyle"
@@ -19,7 +19,7 @@
     </div>
     <div v-if="labelPosition==='right'" :class="{'vux-checker disabled':disabled}" :style="paddingLabelStyle"
          @click="toggleLabel()">
-      <slot :class="{'vux-checker disabled':disabled}"></slot>
+      <slot :class="{' vux-checker disabled':disabled}">{{ name }}</slot>
     </div>
   </div>
 </template>
@@ -88,7 +88,7 @@ export default {
     },
     paddingLabel: {
       type: [Number, String],
-      size: 6
+      default: 6
 
     }
 
@@ -124,7 +124,9 @@ export default {
     },
     paddingLabelStyle() {
       if (this.labelPosition === 'right') {
+        console.log(this.paddingLabel)
         return {
+
           paddingLeft: this.paddingLabel + 'px'
         }
       }

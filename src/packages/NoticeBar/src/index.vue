@@ -1,5 +1,5 @@
 <template>
-  <div :class="[round?'round':'',type]" class="vux-notice-bar">
+  <div :class="[round?'round':'',type]" class="vux-notice-bar" @click="handleClick">
     <div style="display: flex;align-items: center">
       <span class="vux-notice-left">
         <span v-if="closable" class="vux-close-icon" @click="handleClose"></span>
@@ -33,7 +33,6 @@ export default {
     },
     closable: {
       type: Boolean,
-      default: true
     },
     type: {
       type: String,
@@ -49,6 +48,9 @@ export default {
     handleClose(e) {
       console.log(e)
       this.$emit('close', e)
+    }, handleClick(e) {
+      console.log(e)
+      this.$emit('click')
     },
 
   }
