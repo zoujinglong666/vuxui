@@ -1,5 +1,5 @@
 <template>
-  <div style="box-shadow: 0 0 0 0.5px #ebedf0">
+  <div>
     <slot></slot>
   </div>
 </template>

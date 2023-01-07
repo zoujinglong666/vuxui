@@ -1,7 +1,7 @@
 <template>
   <div>
     <router-link v-for="item in components" :to="item.path" class="vux__layout">{{
-        item.path.substring(1)
+        item.path
       }}
     </router-link>
   </div>
@@ -14,7 +14,7 @@ export default {
   name: "layout",
   data() {
     return {
-      components: ['tag', 'button', 'cell', 'progress', 'dataCheckBox']
+      components: []
     }
   },
   computed: {},
@@ -28,13 +28,20 @@ export default {
     //   this.$router.push(`/${item}`)
     // },
     toRouterData() {
-      this.components = routes
+      this.components = routes.map(item => {
+        return {
+          ...item,
+          path: item.path.substring(1)
+        }
+      })
     }
   }
 }
 </script>
 
 <style lang="less" scoped>
+
+
 a {
   text-decoration: none;
 }

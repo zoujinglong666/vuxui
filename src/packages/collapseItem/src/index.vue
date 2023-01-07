@@ -89,8 +89,7 @@ export default {
   justify-content: space-between;
   align-items: center;
   height: 40px;
-  //border-bottom: 1px solid #e9e9e9;
-  box-shadow: 0 0 0 0.5px #ebedf0;
+  border-bottom: 1px solid #e9e9e9;
   box-sizing: border-box;
   padding: 0 10px;
 
@@ -138,11 +137,12 @@ export default {
 }
 
 .vux-collapse-item:last-child .vux-collapse-item-header {
-  box-shadow: none;
+  box-sizing: border-box;
+  border-bottom: none;
 }
 
 .vux-collapse-item:last-child {
-  box-shadow: none;
+  border-bottom: none;
 }
 
 </style>

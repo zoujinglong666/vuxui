@@ -64,9 +64,17 @@ export default {
     },
     activeColorSelect(item, index) {
       //打开之后title高亮
-      if (this.$children[index].isOpen) {
-        return item.value == this.$children[index].value;
+
+      if (item.type) {
+        if (this.$children[index].isOpen) {
+          return item.text === this.$children[index].title;
+        }
+      } else {
+        if (this.$children[index].isOpen) {
+          return item.value == this.$children[index].value;
+        }
       }
+
     },
     disableStyle(item, index) {
       return this.$children[index].disabled ? 'disabled' : '';

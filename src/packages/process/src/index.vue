@@ -12,7 +12,7 @@
            class="vux-progress-inner">
       </div>
     </div>
-    <div class="vux-progress-text">
+    <div v-if="icon" class="vux-progress-text">
       <slot name="icon"></slot>
     </div>
     <div v-if="showPercentage" class="vux-progress-text">
@@ -112,11 +112,11 @@ export default {
 <style lang="less" scoped>
 
 .vux-progress {
+  box-sizing: border-box;
   width: 100%;
   display: flex;
   align-items: center;
   margin: 20px 0;
-  padding: 0 10px;
 
 
   .vux-progress-base {
