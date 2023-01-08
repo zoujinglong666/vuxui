@@ -57,6 +57,7 @@ export default {
   background-color: #FFFFFF;
   border-bottom: 1px solid #eeeeee;
   box-sizing: border-box;
+  padding: 0 8px;
 
   .vux__cell__title {
     font-size: 13px;

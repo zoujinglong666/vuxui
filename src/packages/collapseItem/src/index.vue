@@ -82,6 +82,7 @@ export default {
 
 <style lang="less" scoped>
 .vux-collapse-item-header {
+  position: relative;
   color: #303133;
   font-weight: 500;
   font-size: 14px;
@@ -89,9 +90,7 @@ export default {
   justify-content: space-between;
   align-items: center;
   height: 40px;
-  border-bottom: 1px solid #e9e9e9;
-  box-sizing: border-box;
-  padding: 0 10px;
+
 
   .vux-collapse-item-ellipsis {
     width: 200px;
@@ -137,12 +136,23 @@ export default {
 }
 
 .vux-collapse-item:last-child .vux-collapse-item-header {
-  box-sizing: border-box;
   border-bottom: none;
 }
 
 .vux-collapse-item:last-child {
   border-bottom: none;
+}
+
+.vux-collapse-item-header::after {
+  position: absolute;
+  box-sizing: border-box;
+  content: " ";
+  pointer-events: none;
+  bottom: 0;
+
+  border-bottom: 1px solid #e9e9e9;
+  width: 100%;
+  transform: scaleY(.5);
 }
 
 </style>

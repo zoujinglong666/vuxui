@@ -82,7 +82,7 @@ export default {
     },
     paddingLabel: {
       type: [Number, String],
-      size: 6
+      default: 6
 
     }
 

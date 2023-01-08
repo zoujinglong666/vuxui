@@ -11,6 +11,8 @@ import myDataCheckBox from "../views/DataCheckBox"
 import myDivider from '../views/Divider'
 import myCollapse from '../views/Collapse'
 import myTreeSelect from '../views/TreeSelect'
+import myRadio from '../views/Radio'
+
 
 Vue.use(VueRouter)
 export const routes = [{path: '/tag', component: myTag}, {path: '/button', component: myButton}, {
@@ -21,6 +23,8 @@ export const routes = [{path: '/tag', component: myTag}, {path: '/button', compo
     path: '/dataCheckBox', component: myDataCheckBox
 }, {path: '/divider', component: myDivider}, {path: '/collapse', component: myCollapse}, {
     path: '/treeSelect', component: myTreeSelect
+}, {
+    path: "/radio", component: myRadio
 }]
 
 

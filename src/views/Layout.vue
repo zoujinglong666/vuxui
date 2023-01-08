@@ -1,17 +1,21 @@
 <template>
   <div>
-    <router-link v-for="item in components" :to="item.path" class="vux__layout">{{
+    <vux-button v-for="item in components" :key="item.path" :to="item.path" block class="vux__layout" round
+                style="margin-bottom: 8px"
+                type="primary">{{
         item.path
       }}
-    </router-link>
+    </vux-button>
   </div>
 </template>
 
 <script>
 import {routes} from "@/router";
+import Button from "@/views/Button";
 
 export default {
   name: "layout",
+  components: {Button},
   data() {
     return {
       components: []

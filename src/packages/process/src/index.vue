@@ -116,7 +116,7 @@ export default {
   width: 100%;
   display: flex;
   align-items: center;
-  margin: 20px 0;
+  margin: 40px 0;
 
 
   .vux-progress-base {
