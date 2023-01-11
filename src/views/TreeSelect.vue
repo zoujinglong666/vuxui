@@ -4,6 +4,26 @@
     <vux-tree-select v-model="index" :options="options">
 
     </vux-tree-select>
+
+
+    <p>
+      自定义内容
+    </p>
+
+
+    <vux-tree-select v-model="activeIndex" :options="items">
+      <template #content>
+        <img
+            v-if="activeIndex === 0"
+            src="https://fastly.jsdelivr.net/npm/@vant/assets/apple-1.jpeg"
+        />
+        <img
+
+            v-if="activeIndex === 1"
+            src="https://fastly.jsdelivr.net/npm/@vant/assets/apple-2.jpeg"
+        />
+      </template>
+    </vux-tree-select>
   </div>
 
 </template>
@@ -14,6 +34,8 @@ export default {
   data() {
     return {
       index: 1,
+      activeIndex: 0,
+      items: [{text: '分组 1'}, {text: '分组 2'}],
       options: [
         {
           text: '浙江',

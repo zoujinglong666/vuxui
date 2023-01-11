@@ -20,6 +20,10 @@
           √
         </div>
       </div>
+      <slot name="content">
+
+      </slot>
+
     </div>
   </div>
 </template>
@@ -202,6 +206,7 @@ export default {
   }
 
   &.right {
+    width: 70%;
     flex: 1;
     flex-direction: column;
 

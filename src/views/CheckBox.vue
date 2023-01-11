@@ -70,5 +70,7 @@ export default {
 </script>
 
 <style scoped>
-
+/*p{*/
+/*  padding: 16px 0;*/
+/*}*/
 </style>
