@@ -228,7 +228,6 @@ export default {
 }
 
 .vux-progress-base::before {
-  content: "";
   opacity: 0;
   position: absolute;
   top: 0;

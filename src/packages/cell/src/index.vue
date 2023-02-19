@@ -18,7 +18,10 @@
 export default {
   name: "vuxCell",
   props: {
-
+    type: {
+      type: String,
+      default: ""
+    },
     //左侧标题
     title: {
       type: [Number, String]

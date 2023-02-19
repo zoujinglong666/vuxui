@@ -13,6 +13,7 @@
       <div v-for="(children,index) in childrenArr[newMainActiveIndex]" :key="index"
            class="vux-tree-select-right-item" @click="handleRightItem(children,index)"
       >
+
         <div :class="[children.disabled?'vux-tree-select disabled':'']" :style="activeColorStyle(children)">
           {{ children.text }}
         </div>
@@ -94,7 +95,6 @@ export default {
         return
       }
       this.newMainActiveIndex = index;
-      console.log('click')
       this.$emit('click-nav', this.newMainActiveIndex)
 
     },
@@ -114,13 +114,10 @@ export default {
       this.activeIdItem = childrenItem;
     },
     activeColorSelect(item, index) {
-
-
       if (Array.isArray(this.activeId)) {
         return this.newActiveId.some(id => id === item.id)
       } else {
         return item === this.activeIdItem;
-
       }
 
 

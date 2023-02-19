@@ -2,9 +2,20 @@
   <div :class="caleClass" @click="closeMaskHandle">
     <div v-show="curOpen" :class="[round?'round':'']" :style="{height:heightByStyle,width:widthStyle}"
          class="drawer-content">
-        <span v-if="closable" class="close-icon"
+      <div style="display: flex;
+  align-items: center;
+  position: relative;
+
+  font-weight: 500;
+  font-size: 16px;
+ ">
+        <p style="margin: 0 auto;
+    max-width: 60%;">{{ title }}</p>
+        <span v-if="closeable" class="close-icon"
               @click="handleClose"
-        ><i class="iconfont icon-close"></i></span>
+        ><i class="iconfont icon-close"></i>X</span>
+      </div>
+
       <slot>
       </slot>
     </div>
@@ -29,7 +40,7 @@ export default {
       type: Boolean,
       default: false,
     },
-    closable: {
+    closeable: {
       type: Boolean,
     },
     height: {
@@ -58,7 +69,8 @@ export default {
     closeOnClickOverlay: {
       type: Boolean,
       default: true
-    }
+    },
+    title: String
   },
   computed: {
 
@@ -165,11 +177,14 @@ export default {
 
 
     .close-icon {
-      z-index: 9999;
-      margin-top: 6px;
-      font-size: 16px;
+      z-index: 9;
+      right: 0;
+      align-items: center;
       position: absolute;
-      right: 20px;
+      top: 0;
+      bottom: 0;
+      display: flex;
+      padding: 0 8px;
     }
   }
 

@@ -30,7 +30,7 @@
       <vux-checkbox name="北京"></vux-checkbox>
     </vux-checkbox-group>
     <p>全选与反选</p>
-    <vux-checkbox-group ref="group" v-model="groupVal2" :max="2">
+    <vux-checkbox-group ref="group" v-model="groupVal2">
       <vux-checkbox name="上海"></vux-checkbox>
       <vux-checkbox name="深圳"></vux-checkbox>
       <vux-checkbox name="北京"></vux-checkbox>
