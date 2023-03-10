@@ -35,6 +35,8 @@ import vuxSpace from './space/index'
 import vuxDivider from './divider/index'
 import vuxCascader from './cascader/index'
 import vuxSwipeCell from './swipeCell/index'
+import vuxTabs from './tabs/index'
+import vuxTab from './tab/index'
 // 将各个封装的组件使用一个数组保存，便于统一注册
 const components = [
     vuxRadio,
@@ -70,7 +72,9 @@ const components = [
     vuxSpace,
     vuxDivider,
     vuxCascader,
-    vuxSwipeCell
+    vuxSwipeCell,
+    vuxTabs,
+    vuxTab
 ]
 
 // 使用定义注册函数

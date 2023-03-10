@@ -1,11 +1,10 @@
 <template>
   <div ref="Rect" class="vux-down-menu">
     <div v-for="(item,key) in titleList" :key="key" class="vux-drop-down-menu title"
-         @click="handleClickTitle(key)">
+         @click="handleClickTitle(item,key)">
       <span :class="[disableStyle(item,key)]" :style="{color:activeColorStyle(item,key)}"
             class="ellipsis"
-            style="font-weight: 500">{{ item.text }}</span>
-      <!--       x-icon 这里使用的是svg   颜色填充  fill-->
+            style="font-weight: 500">{{ item.renderTitle() }}</span>
       <span :class="[disableStyle(item,key),activeColorSelect(item,key)?'down':'up']"
             :style="{color:activeColorStyle(item,key)}"
             class="icon" size="16" type="ios-arrow-up">^</span>
@@ -47,11 +46,12 @@ export default {
 
   activated() {
     this.updateOffset()
-    this.renderTitle()
   },
   mounted() {
-    this.updateOffset()
-    this.renderTitle()
+    this.$nextTick(() => {
+      this.titleList = this.$children;
+      this.updateOffset()
+    })
     window.addEventListener("resize", this.updateOffset, true);
     window.addEventListener("click", (e) => {
       this.clickOutElementClose(e)
@@ -62,66 +62,21 @@ export default {
     activeColorStyle(item, index) {
       return this.activeColorSelect(item, index) ? this.activeColor : ''
     },
-    activeColorSelect(item, index) {
-      //打开之后title高亮
-
-      if (item.type) {
-        if (this.$children[index].isOpen) {
-          return item.text === this.$children[index].title;
-        }
-      } else {
-        if (this.$children[index].isOpen) {
-          return item.value == this.$children[index].value;
-        }
+    activeColorSelect(item) {
+      if (item.isOpen) {
+        return item.text === item.title;
       }
 
     },
-    disableStyle(item, index) {
-      return this.$children[index].disabled ? 'disabled' : '';
+    disableStyle(item) {
+      return item.disabled ? 'disabled' : '';
     },
-    //获取每个value的值显示的title
-    renderTitle() {
-      const value = this.$children.map(item => item.value)
-      const data = this.$children.map(item => item.options)
-      this.titleList = data.map((it, i) => {
-        return it.find(item => item.value == value[i]);
-      });
-
-      //收集title
-      const title = this.$children.map(item => item.title).map(item => {
-        if (item) {
-          return {
-            text: item,
-            type: 'slot'
-          }
-        }
-        return item
-      });
-      const titleList = data.map((it, i) => {
-        return it.find(item => item.value == value[i]);
-      })
-
-      for (let i = 0; i < titleList.length; i++) {
-        const item = titleList[i];
-        const titleItem = title[i];
-        if (item === undefined) {
-          titleList.splice(i, 1);
-          titleList.splice(i, 0, titleItem)
-        }
-      }
-      this.titleList = titleList;
-
-    },
-
     updateOffset() {
-
       //获取边距
       const rect = useRect(this.$refs.Rect);
       const {top, bottom} = rect;
       if (this.direction === 'down') {
         this.offset = bottom;
-        console.log(this.$children);
-
       } else {
         this.offset = window.innerHeight - top;
       }
@@ -137,11 +92,11 @@ export default {
         });
       }
     },
-    handleClickTitle(active) {
-      if (this.$children[active].disabled) {
+    handleClickTitle(item, active) {
+      if (item.disabled) {
         return
       }
-      this.$children.forEach((item, index) => {
+      this.$children.some((item, index) => {
         if (active === index) {
           this.updateOffset()
           //调用当前实例方法

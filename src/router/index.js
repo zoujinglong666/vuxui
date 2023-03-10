@@ -14,6 +14,7 @@ import myTreeSelect from '../views/TreeSelect'
 import myRadio from '../views/Radio'
 import myCascader from '../views/Cascader'
 import mySwipeCell from '../views/SwipeCell'
+import myTab from '../views/Tab'
 
 Vue.use(VueRouter)
 export const routes = [{path: '/tag', component: myTag}, {path: '/button', component: myButton}, {
@@ -30,6 +31,8 @@ export const routes = [{path: '/tag', component: myTag}, {path: '/button', compo
     path: "/cascader", component: myCascader
 }, {
     path: "/swipeCell", component: mySwipeCell
+}, {
+    path: "/tab", component: myTab
 }]
 
 

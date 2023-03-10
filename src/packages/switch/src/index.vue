@@ -1,13 +1,15 @@
 <template>
-    <span :class="{'disabled':disabled}" :style="{backgroundColor:checked?activeColor:inactiveColor}"
-          class="switch-content"
-          @click="onClick">
-      <span v-if="showText" :class="{'checked':checked}" class="switch-text">{{ checked ? '开' : '关' }}</span><span
-        :class="{'checked':checked}"
-        class="switch-bar">
+      <span :class="switchStyle" :style="{backgroundColor:checked?activeColor:inactiveColor}"
+            class="vux_switch-content"
+            @click="onClick">
+      <span v-if="activeText||inactiveText" :class="switchStyle" class="vux_switch-text">{{
+          checked ? maxlength(activeText, 6) : maxlength(inactiveText, 6)
+        }}</span>
+      <span
+          :class="switchStyle"
+          class="vux_switch-ball">
       <span v-if="loading">
-      <i :class="{'loading':loading}">
-      </i>
+      <i :class="{'loading':loading,'checked':checked}"></i>
     </span>
     </span>
     </span>
@@ -22,24 +24,30 @@ export default {
     value: {
       type: [Boolean, String, Number, Object, Array],
     },
+    title: {
+      type: [String, Number],
+    },
     disabled: {
       type: Boolean
     },
     loading: {
       type: Boolean
-
-    },
-    showText: {
-      type: Boolean
     },
     activeColor: {
       type: String,
-      default: '#0068ff'
+      default: '#07c160'
     },
     inactiveColor: {
       type: String,
-      default: '#fff'
-
+      default: '#E4E7ED'
+    },
+    activeText: {
+      type: String,
+      default: ''
+    },
+    inactiveText: {
+      type: String,
+      default: ''
     },
     activeValue: {
       type: [Boolean, String, Number, Object, Array],
@@ -50,16 +58,39 @@ export default {
       default: false
     },
     size: {
+      type: [Number, String],
+      default: "small",
+      validator(val) {
+        return ['small', 'mini'].includes(val)
+      }
+    },
+    height: {
       type: [Number, String]
     }
   },
-
   computed: {
     checked() {
       return this.value === this.activeValue;
     },
+
+    switchStyle() {
+      const {size, checked} = this;
+      return [size, {'checked': checked}]
+    }
+
+
   },
   methods: {
+    maxlength(value, n) {
+      if (!value) {
+        return ""
+      }
+      if (value.length > n) {
+        return value.slice(0, n) + "..."
+      } else {
+        return value;
+      }
+    },
     onClick(event) {
       if (!this.disabled && !this.loading) {
         this.$emit('click', event);
@@ -73,23 +104,56 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.switch-content {
+.vux_switch-content {
   display: inline-flex;
   align-items: center;
   position: relative;
-  width: 50px;
   height: 26px;
-  //line-height: 26px;
   border-radius: 26px;
   text-align: center;
-  transition: background-color 0.3s linear;
-  border: none !important;
-  border: 0 !important;
+  transition: background-color 0.3s cubic-bezier(0.25, 0.01, 0.25, 1);
   box-shadow: 0 0 0 0.5px #e2e0e0;
-  &.disabled {
-    opacity: 0.6 !important;
-    cursor: not-allowed !important;
+  min-width: 40px;
+  padding: 0 4px;
+  border: 0;
+  outline: 0;
+
+  &.mini {
+    padding: 0 2px;
+    min-width: 36px;
+    height: 20px;
   }
+
+  .vux_switch-text {
+    transition: all 0.3s ease;
+    left: 100%;
+    padding-left: 24px;
+    text-align: center;
+    color: #909399;
+
+    &.mini {
+      padding-left: 20px;
+    }
+
+    &.checked {
+      box-sizing: border-box;
+      left: 0;
+      transition: all 0.3s cubic-bezier(0.25, 0.01, 0.25, 1);
+      transform: translateX(-24px);
+
+      &.mini {
+        transform: translateX(-18px);
+      }
+
+      color: #fff;
+    }
+  }
+
+  &.disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+
   .loading {
     width: 8px;
     height: 8px;
@@ -103,60 +167,49 @@ export default {
     display: inline-block;
     vertical-align: middle;
     clip-path: polygon(0% 0%, 100% 0%, 100% 30%, 0% 30%);
-    animation: loading 1s linear infinite;
+    animation: loading 1s cubic-bezier(0.25, 0.01, 0.25, 1) infinite;
   }
+
   @-webkit-keyframes loading {
     from {
       transform: rotatez(0deg);
     }
-
     to {
       transform: rotatez(360deg);
     }
   }
-
   @keyframes loading {
     from {
       transform: rotatez(0deg);
     }
-
     to {
       transform: rotatez(360deg);
     }
   }
-
 }
 
-.switch-text {
-  transition: all 0.3s linear;
-  color: #fff;
-  font-size: 12px;
+
+.vux_switch-ball {
+
+  transition: all 0.3s cubic-bezier(0.25, 0.01, 0.25, 1);
   position: absolute;
-  left: 100%;
-  transform: translateX(-120%) !important;
-
-
-  &.checked {
-    left: 0;
-    transform: translateX(50%) !important;
-  }
-
-}
-
-.switch-bar {
-  transition: all 0.3s linear;
-  position: absolute;
-  left: 2%;
+  left: 1px;
   width: 24px;
   height: 24px;
   border-radius: 24px;
   background-color: #fff;
-  box-shadow: 0 3px 1px 0 rgba(0, 0, 0, 0.05), 0 2px 2px 0 rgba(0, 0, 0, 0.1), 0 3px 3px 0 rgba(0, 0, 0, 0.05);
 
-  &.checked {
-    left: 98% !important;
-    transform: translateX(-100%) !important;
+  &.mini {
+    width: 18px;
+    height: 18px;
+    border-radius: 18px;
   }
 
+  &.checked {
+    left: calc(100% - 1px);
+    transform: translateX(-100%);
+  }
 }
+
+
 </style>

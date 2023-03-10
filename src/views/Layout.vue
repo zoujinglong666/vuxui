@@ -1,8 +1,8 @@
 <template>
   <div>
-    <vux-button v-for="item in components" :key="item.path" :to="item.path" block class="vux__layout" round
+    <vux-button v-for="item in components" :key="item.path" :to="item.path" block class="vux__layout"
                 style="margin-bottom: 8px"
-                type="primary">{{
+    >{{
         item.path
       }}
     </vux-button>

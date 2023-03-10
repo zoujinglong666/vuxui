@@ -4,7 +4,7 @@
     <vux-drawer
         v-model="isOpen" :close-on-click-overlay="closeOnClickOverlay"
         :placement="directionStyle"
-        style="position: absolute;overflow-y: auto;transition: ease 10s "
+        style="position: absolute;"
         @click.native="clickCloseMark">
       <!--      一行多列模式-->
       <div v-if="cols">
@@ -119,7 +119,6 @@ export default {
   watch: {
     value(newVal, oldVal) {
       if (newVal !== oldVal) {
-        this.$parent.renderTitle();
       }
 
     }
@@ -133,7 +132,13 @@ export default {
 
   },
   methods: {
-
+    renderTitle() {
+      if (this.title) {
+        return this.title
+      }
+      const match = this.options.find((option) => option.value === this.value);
+      return match ? match.text : '';
+    },
     disabledByStyle(item) {
       if (this.disabled || item.hasOwnProperty('disabled') && item.disabled) {
         return 'disabled'
@@ -155,34 +160,23 @@ export default {
       this.$emit('input', option.value);
       this.$emit('change', option);
       this.isOpen = false;
-      //这种方法也可以
-      // this.$nextTick(()=>{
-      //   this.$parent.renderTitle();
-      // })
     },
     toggle(show = !this.isOpen) {
       if (show === this.isOpen) {
         return;
       }
       this.isOpen = show;
-
     },
     clickCloseMark() {
       if (!this.closeOnClickOverlay) {
         return
       }
-
       this.$children.forEach(item => {
         item.isOpen = false;
       })
     },
     activeColorSelect(item) {
-      if (this.cols) {
-        const res = this.options.filter(option => option.value === this.value)
-        return res.some(temp => temp === item)
-      }
       return item === this.options.find(item => item.value === this.value);
-
     },
 
 
