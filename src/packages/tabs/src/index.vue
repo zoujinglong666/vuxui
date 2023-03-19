@@ -11,9 +11,12 @@
     </div>
     <slot>
     </slot>
+
   </div>
 </template>
 <script>
+import {debounce} from "@/packages/tabs/src/index";
+
 export default {
   name: "vuxTabs",
   data() {
@@ -75,9 +78,9 @@ export default {
       this.tabsTitleList = this.$children;
       this.initActiveLine()
     })
-    window.addEventListener('resize', this.getLineOffset, false)
+    window.addEventListener('resize', this.debouncedGetLineOffset, false)
     this.$on('hooks:beforeDestroy', () => {
-      window.removeEventListener('resize', this.getLineOffset, false)
+      window.removeEventListener('resize', this.debouncedGetLineOffset, false)
     })
   },
   activated() {
@@ -138,7 +141,7 @@ export default {
   methods: {
     initActiveLine() {
       this.showActive();
-      this.getLineOffset();
+      this.debouncedGetLineOffset();
     },
     updateCurrentIndex(index) {
       this.$emit('input', index)
@@ -166,25 +169,15 @@ export default {
       this.updateCurrentIndex(index)
 
     },
-    getLineOffset() {
+    debouncedGetLineOffset() {
       this.$nextTick(() => {
         this.debouncedGetLineOffset()
       })
     },
-    debounce(func, delay) {
-      let timeoutId;
-      return function () {
-        const context = this;
-        const args = arguments;
-        clearTimeout(timeoutId);
-        timeoutId = setTimeout(() => {
-          func.apply(context, args);
-        }, delay);
-      };
-    },
-    debouncedGetLineOffset: this.debounce(function () {
+
+    debouncedGetLineOffset: debounce(function () {
       const titles = this.$refs.titleRef;
-      const title = titles[this.currentIndex];
+      const title = titles[+this.currentIndex];
       if (titles && title) {
         this.offsetLine = title.offsetLeft + title.offsetWidth / 2;
       }
@@ -237,11 +230,14 @@ export default {
   &.line {
     position: absolute;
     background-color: #0068ff;
-    bottom: 5px;
+    bottom: 0px;
     left: 0;
     z-index: 1;
     border-radius: 4px;
   }
+
+
+
 }
 
 </style>
