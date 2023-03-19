@@ -168,17 +168,31 @@ export default {
     },
     getLineOffset() {
       this.$nextTick(() => {
-        const titles = this.$refs.titleRef;
-        const title = titles[this.currentIndex];
-        if (titles && title) {
-          this.offsetLine = title.offsetLeft + title.offsetWidth / 2;
-        }
-
+        this.debouncedGetLineOffset()
       })
     },
+    debounce(func, delay) {
+      let timeoutId;
+      return function () {
+        const context = this;
+        const args = arguments;
+        clearTimeout(timeoutId);
+        timeoutId = setTimeout(() => {
+          func.apply(context, args);
+        }, delay);
+      };
+    },
+    debouncedGetLineOffset: this.debounce(function () {
+      const titles = this.$refs.titleRef;
+      const title = titles[this.currentIndex];
+      if (titles && title) {
+        this.offsetLine = title.offsetLeft + title.offsetWidth / 2;
+      }
+    }, 100),
 
 
   },
+
 
 }
 </script>
