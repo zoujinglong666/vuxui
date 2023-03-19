@@ -9,15 +9,15 @@
       <!--      inputmode="decimal "-->       <!--带小数点的键盘-->
       <input
           v-show="showInput"
-          ref="stepperIpt"
-          v-model="currentValue"
           :disabled="disableInput"
           :style="inputStyle"
-          class="vux_stepper_input"
+          ref="stepperIpt"
+          v-model="currentValue"
           inputmode="decimal"
+          class="vux_stepper_input"
           type="text"
-          @blur="handleBlur"
           @focus="handleFocus"
+          @blur="handleBlur"
       />
       <button v-show="showPlus" :disabled="disabledPlusBtn" :style="[disabledPlusBtn,buttonStyle]"
               class="vux_stepper_btn plus"
@@ -227,7 +227,6 @@ export default {
     color: #323233;
     font-size: 14px;
   }
-
   .vux_stepper_btn {
     box-sizing: border-box;
     border: 0;
@@ -243,7 +242,6 @@ export default {
       border-radius: 0 4px 4px 0;
     }
   }
-
   .vux_stepper_svg {
     fill: #000;
   }

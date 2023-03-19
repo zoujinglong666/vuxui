@@ -15,7 +15,7 @@ export default {
   },
   props: {
     title: {
-      type: [String, Number]
+      type: String
     },
     disabled: {
       type: Boolean

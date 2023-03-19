@@ -282,9 +282,10 @@ export default {
       }
     },
     isNumber(val) {
-      const reg = /^\d+.?\d*/ //判断是否是数字。
-      return reg.test(val)
+      return typeof value === 'number' && isFinite(value);
+
     }
+
   }
 }
 </script>
