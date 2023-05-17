@@ -9,7 +9,7 @@
           :class="switchStyle"
           class="vux_switch-ball">
       <span v-if="loading">
-      <i :class="{'loading':loading,'checked':checked}"></i>
+      <i :class="{'loading':loading,'checked':checked}" :style="{borderColor:checked?activeColor:inactiveColor}"></i>
     </span>
     </span>
     </span>
@@ -103,7 +103,7 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
+<style lang="less" scoped>
 .vux_switch-content {
   display: inline-flex;
   align-items: center;

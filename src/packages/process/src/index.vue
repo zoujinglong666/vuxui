@@ -163,8 +163,8 @@ export default {
     }
 
     &.small {
-      height: 6px;
-      border-radius: 6px;
+      height: 4px;
+      border-radius: 4px;
     }
 
     &.square {

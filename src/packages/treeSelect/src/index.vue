@@ -187,6 +187,7 @@ export default {
       position: relative;
       padding: 14px 12px;
       background: #fff;
+      transition: all 0.5s ease-in-out;
 
       &:before {
         position: absolute;
@@ -197,6 +198,7 @@ export default {
         background-color: #0068ff;
         transform: translateY(-50%);
         content: "";
+        transition: all 0.5s ease-in-out;
       }
     }
 

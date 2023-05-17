@@ -2,7 +2,7 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import myTag from "../views/tag"
 import myButton from "../views/Button"
-import mySwitch from "../views/switch"
+import mySwitch from "../views/Switch.vue"
 import myCheckBox from "../views/CheckBox"
 import myCell from "../views/Cell"
 import myDropdownMenu from "../views/DropdownMenu"
@@ -12,9 +12,17 @@ import myDivider from '../views/Divider'
 import myCollapse from '../views/Collapse'
 import myTreeSelect from '../views/TreeSelect'
 import myRadio from '../views/Radio'
-import myCascader from '../views/Cascader'
 import mySwipeCell from '../views/SwipeCell'
 import myTab from '../views/Tab'
+import myPopup from '../views/Popup'
+import myBackTop from '../views/BackTop.vue'
+import mySearch from '../views/Search.vue'
+import myCalendar from '../views/Calendar.vue'
+import myPicker from '../views/Picker.vue'
+import myOverlay from '../views/Overlay.vue'
+import myMessage from '../views/Message.vue'
+import myList from '../views/List.vue'
+import mySegmented from '../views/Segmented.vue'
 
 Vue.use(VueRouter)
 export const routes = [{path: '/tag', component: myTag}, {path: '/button', component: myButton}, {
@@ -28,11 +36,27 @@ export const routes = [{path: '/tag', component: myTag}, {path: '/button', compo
 }, {
     path: "/radio", component: myRadio
 }, {
-    path: "/cascader", component: myCascader
-}, {
     path: "/swipeCell", component: mySwipeCell
 }, {
     path: "/tab", component: myTab
+}, {
+    path: "/popup", component: myPopup
+}, {
+    path: "/backTop", component: myBackTop
+}, {
+    path: "/search", component: mySearch
+}, {
+    path: "/calendar", component: myCalendar
+}, {
+    path: "/picker", component: myPicker
+}, {
+    path: "/overlay", component: myOverlay
+}, {
+    path: "/message", component: myMessage
+}, {
+    path: "/list", component: myList
+}, {
+    path: "/segmented", component: mySegmented
 }]
 
 

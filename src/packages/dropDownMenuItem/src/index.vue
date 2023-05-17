@@ -9,7 +9,7 @@
       <!--      一行多列模式-->
       <div v-if="cols">
         <div class="vux-down-menu-container"
-             style="">
+           >
           <div v-for="(item,index) in options" :key="index"
                :class="[disabledByStyle(item),activeColorSelect(item)?'check-mark':'']"
                :style="{flexBasis:options.length>cols?(100/cols)-2+'%':(100/options.length)-2+'%'}"

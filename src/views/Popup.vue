@@ -1,0 +1,75 @@
+<template>
+  <div>
+
+
+    <vux-divider>
+      基本用法
+    </vux-divider>
+
+
+    <vux-space>
+
+      <vux-button size="small" @click="top">
+        顶部弹出
+      </vux-button>
+      <vux-button size="small" @click="bottom">
+        底部弹出
+      </vux-button>
+      <vux-button size="small" @click="left">
+        左侧弹出
+      </vux-button>
+      <vux-button size="small" @click="right">
+        右侧弹出
+      </vux-button>
+    </vux-space>
+
+
+    <vux-popup :popup-style="{width:'100%',height:'30%'}" :show.sync="topShow" closeable position="top">
+    </vux-popup>
+    <vux-popup :popup-style="{width:'80%',height:'100%'}" :show.sync="leftShow" position="left"></vux-popup>
+    <vux-popup :popup-style="{width:'80%',height:'100%'}" :show.sync="rightShow" position="right"></vux-popup>
+    <vux-popup :popup-style="{width:'100%',height:'30%'}" :show.sync="bottomShow" position="bottom"></vux-popup>
+  </div>
+</template>
+
+<script>
+import VuxDivider from "@/packages/divider/src/index.vue";
+import VuxSpace from "@/packages/space/src/index.vue";
+import VuxPopup from "@/packages/popup/index.vue";
+import VuxButton from "@/packages/button/src/index.vue";
+
+export default {
+  name: "Popup",
+  components: {VuxButton, VuxPopup, VuxSpace, VuxDivider},
+  data() {
+    return {
+
+      topShow: false,
+      leftShow: false,
+      rightShow: false,
+      bottomShow: false,
+    }
+  },
+
+  methods: {
+    top() {
+      this.topShow = true;
+    },
+    bottom() {
+      this.bottomShow = true;
+
+    },
+    left() {
+      this.leftShow = true;
+
+    },
+    right() {
+      this.rightShow = true;
+    }
+  }
+}
+</script>
+
+<style scoped>
+
+</style>

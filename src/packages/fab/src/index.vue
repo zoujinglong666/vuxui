@@ -2,7 +2,7 @@
   <div :class="[position]" :style="{bottom:bottomStyle}" class="vux-fab">
     <div :style="{background:bgColor}" class="vux-fab-container">
       <slot>
-        <i class="iconfont icon-add"></i>
+        top
       </slot>
     </div>
   </div>
@@ -24,7 +24,7 @@ export default {
     },
     position: {
       type: String,
-      default: 'left',
+      default: 'right',
       validator(val) {
         return positions.includes(val);
       },
@@ -74,6 +74,8 @@ export default {
     width: 48px;
     height: 48px;
     line-height: 48px;
+    font-size: 16px;
+    color: #ffffff;
 
     i {
       font-size: 32px;

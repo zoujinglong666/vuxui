@@ -244,7 +244,7 @@ export default {
   text-align: center;
   box-sizing: border-box;
   outline: 0;
-  border-radius: 2px;
+  border-radius: 4px;
   margin: 0;
   padding: 0;
 

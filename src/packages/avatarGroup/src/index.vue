@@ -1,5 +1,5 @@
 <template>
-  <div class="vux-avatar-gruop">
+  <div class="vux-avatar-group">
     <slot></slot>
   </div>
 </template>
@@ -11,7 +11,7 @@ export default {
 </script>
 
 <style lang="less" scoped>
-.vux-avatar-gruop {
+.vux-avatar-group {
   display: flex;
   align-items: center;
   position: relative;

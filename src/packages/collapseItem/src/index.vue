@@ -19,9 +19,9 @@
         <slot></slot>
       </div>
     </transition-height>
-    <!--    <div class="vux-collapse-item-body" v-show="isOpen">-->
-    <!--      <slot></slot>-->
-    <!--    </div>-->
+    <div v-show="isOpen" class="vux-collapse-item-body">
+      <slot></slot>
+    </div>
   </div>
 </template>
 
@@ -126,8 +126,8 @@ export default {
 .vux-collapse-item-body {
   box-sizing: border-box;
   padding: 0 10px;
-  min-height: 40px;
-  line-height: 40px;
+  //min-height: 40px;
+  //line-height: 40px;
 
   width: 100%;
   height: auto;

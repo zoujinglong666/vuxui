@@ -1,21 +1,42 @@
 <template>
-  <div>
-    <vux-cell isLink title="地区" @click="handleOpen"></vux-cell>
-    <vux-cascader v-model="value" :options="options" title="请选择地区"></vux-cascader>
-  </div>
-
+  <!--  <vux-picker title="标题" :columns="columns" :show.sync="show"/>-->
+  <!--  <vux-picker title="标题" :columns="columns1" :show.sync="show"/>-->
+  <vux-picker :columns="roles" :columns-field="{
+   text: 'label',
+                values: 'values',
+                children: 'children',
+  }" :show.sync="show" title="标题" value-key="label"></vux-picker>
 </template>
 
 <script>
-import VuxCalendar from "@/packages/calendar/src";
-
 export default {
-  name: "Cascader",
   data() {
     return {
-      value: false,
-      value1: false,
-      options: [
+      columns: [
+        // 第一列
+        [
+          {text: '周一', value: 'Monday'},
+          {text: '周二', value: 'Tuesday'},
+          {text: '周三', value: 'Wednesday'},
+          {text: '周四', value: 'Thursday'},
+          {text: '周五', value: 'Friday'},
+        ],
+        // 第二列
+        [
+          {text: '上午', value: 'Morning'},
+          {text: '下午', value: 'Afternoon'},
+          {text: '晚上', value: 'Evening'},
+        ],
+      ],
+      columns1: [
+        {text: '杭州', value: 'Hangzhou'},
+        {text: '宁波', value: 'Ningbo'},
+        {text: '温州', value: 'Wenzhou'},
+        {text: '绍兴', value: 'Shaoxing'},
+        {text: '湖州', value: 'Huzhou'},
+      ],
+
+      areaList: [
         {
           label: '北京市',
           value: '110000',
@@ -73,18 +94,56 @@ export default {
           ],
         },
       ],
-    }
+      roles: [
+        {
+          label: '战士',
+          value: '战士',
+          children: [
+            {
+              label: '夏侯惇',
+              value: '夏侯惇',
+            },
+            {
+              label: '吕布',
+              value: '吕布',
+            },
+            {
+              label: '铠',
+              value: '铠',
+            },
+            {
+              label: '狂铁',
+              value: '狂铁',
+            },
+          ],
+        },
+        {
+          label: '法师',
+          value: '法师',
+          children: [
+            {
+              label: '安琪拉',
+              value: '安琪拉',
+            },
+            {
+              label: '扁鹊',
+              value: '扁鹊',
+            },
+            {
+              label: '不知火舞',
+              value: '不知火舞',
+            },
+            {
+              label: '嫦娥',
+              value: '嫦娥',
+            },
+          ],
+        },
+      ],
+      show: true
+    };
   },
-  components: {VuxCalendar},
-  methods: {
-    handleOpen() {
-      this.value = true;
-    }, handleOpen1() {
-      this.value1 = true;
-    }
-  }
-
-}
+};
 </script>
 
 <style scoped>

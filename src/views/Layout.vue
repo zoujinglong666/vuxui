@@ -1,7 +1,12 @@
 <template>
   <div>
-    <vux-button v-for="item in components" :key="item.path" :to="item.path" block class="vux__layout"
-                style="margin-bottom: 8px"
+    <vux-button
+        v-for="item in components"
+        :key="item.path"
+        :to="item.path"
+        block
+        class="vux__layout"
+        style="margin-bottom: 8px"
     >{{
         item.path
       }}
@@ -56,7 +61,6 @@ a {
   line-height: 40px;
   text-align: center;
   box-sizing: border-box;
-  border-radius: 40px;
   margin-bottom: 4px;
   background-color: #b3d8ff;
   border-color: #b3d8ff;

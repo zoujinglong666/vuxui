@@ -250,7 +250,6 @@ export default {
 .checked::after {
   content: '✓';
   color: #fff;
-  font-size: 6px;
   font-weight: 500;
 }
 

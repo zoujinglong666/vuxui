@@ -23,6 +23,10 @@ export default {
     initHeight() {
       this.$nextTick(() => {
         this.height = this.$refs.transitionWrap.offsetHeight;
+
+        console.log(
+            this.height, 'this.height'
+        )
         this.$refs.transitionWrap.style.height = this.show
             ? `${this.height}px`
             : 0;

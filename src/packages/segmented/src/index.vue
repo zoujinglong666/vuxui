@@ -1,11 +1,11 @@
 <template>
-  <div class="vux-segmented-group">
-    <label v-for="(item,index) in options" :key="index" ref="segmented"
-           :class="[disabledStyle(item,index),selectedStyle(item,index)]"
-           class="vux-segmented-label">
-      <input class="vux-segmented-input" type="radio" @click="handleClickLabel(item,index)">
+  <div :class="{'block':block}" class="vux-segmented-group">
+    <div v-for="(item,index) in options" :key="index" ref="segmented"
+         :class="[disabledStyle(item,index),selectedStyle(item,index),{'block':block}]"
+         class="vux-segmented-label" @click="handleClickLabel(item,index)">
       <div class="vux-segmented-item-label">{{ prop ? item[label] : item }}</div>
-    </label>
+    </div>
+    <div :style="barStyle" class="vux-segmented-bar"></div>
   </div>
 </template>
 
@@ -15,6 +15,9 @@ export default {
   data() {
     return {
       singleData: '',
+      width: 0,
+      height: 0,
+      offsetLeft: 0
     }
   },
   model: {
@@ -38,6 +41,9 @@ export default {
     value: {
       type: [String, Number, Array, Boolean]
     },
+    block: {
+      type: Boolean
+    },
 
 
     options: {
@@ -46,6 +52,14 @@ export default {
     }
   },
   computed: {
+    barStyle() {
+      return {
+        width: this.width - 2 + 'px',
+        height: this.height + 'px',
+        transform: ` translateX(-50%) translateX(${this.offsetLeft}px) `,
+      }
+
+    },
 
     singleDataCom() {
       if (this.prop) {
@@ -54,10 +68,56 @@ export default {
         this.singleData = this.value;
       }
       return this.singleData
+    },
+    activeIndex() {
+      let index = -1;
+      if (this.prop) {
+        index = this.options.findIndex(it => it[this.prop] == this.value);
+      } else {
+        index = this.options.findIndex(it => it == this.value);
+      }
+      return index
     }
   },
-  methods: {
 
+  watch: {
+    activeIndex: {
+      handler(n, o) {
+        if (n !== o) {
+          console.log(n, o)
+          this.initActive()
+        }
+      }, immediate: true
+    }
+  },
+  mounted() {
+    window.addEventListener('resize', this.initActive)
+  },
+  beforeDestroy() {
+    window.removeEventListener('resize', this.initActive)
+  },
+  methods: {
+    initActive() {
+
+      if (this.activeIndex >= 0) {
+        console.log(this.activeIndex)
+        this.getOffsetLeftByIndex(this.activeIndex)
+      }
+    },
+    getOffsetLeftByIndex(index) {
+      this.$nextTick(() => {
+        console.log(this.$refs.segmented)
+        const title = this.$refs.segmented[+index];
+        console.log(title)
+        if (title) {
+
+          this.width = title.getBoundingClientRect().width;
+          this.height = title.getBoundingClientRect().height;
+          this.offsetLeft = title.offsetLeft + title.offsetWidth / 2;
+        }
+      })
+
+    },
     selectedStyle(item) {
       if (item === this.singleDataCom) {
         return 'vux-segmented-item-selected'
@@ -70,9 +130,7 @@ export default {
     },
 
     handleClickLabel(item, index) {
-      console.log(this.$refs.segmented);
 
-      // this.startWidth=item;
       this.singleData = this.cancellable && this.singleData === item ? '' : item;
       if (!this.cancellable) {
         this.singleData = item;
@@ -93,21 +151,25 @@ export default {
 <style lang="less" scoped>
 .vux-segmented-group {
   position: relative;
-  display: flex;
-  justify-items: flex-start;
-  width: 100%;
-  transition: all 0.3s linear;
+  display: inline-flex;
+  //justify-items: flex-start;
+  //transition: all 0.3s linear;
   align-items: center;
   height: 32px;
   line-height: 32px;
   border-radius: 4px;
   border: 1px solid #eee;
   background-color: #f5f5f5;
-  padding: 2px;
   box-sizing: border-box;
 
+  &.block {
+    width: 100%;
+
+  }
+
   .vux-segmented-label {
-    transition: all 0.3s cubic-bezier(.645, .045, .355, 1);
+
+    z-index: 1;
     position: relative;
     text-align: center;
     cursor: pointer;
@@ -117,14 +179,17 @@ export default {
     text-overflow: ellipsis;
     min-height: 28px;
     line-height: 28px;
-    padding: 0 11px;
+    padding: 0 14px;
+    box-sizing: border-box;
+    color: #666;
 
+    &.block {
+      flex: 1;
+
+    }
 
     &.vux-segmented-item-selected {
-      background-color: #fff;
-      color: rgba(0, 0, 0, .88);
-      box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.03), 0 1px 6px -1px rgba(0, 0, 0, 0.02), 0 2px 4px 0 rgba(0, 0, 0, 0.02);
-      transition: all 0.3s cubic-bezier(.645, .045, .355, 1);
+      color: #333;
     }
 
     &.vux-segmented-item-disabled {
@@ -132,30 +197,17 @@ export default {
       cursor: not-allowed !important;
     }
 
-
-    &::after {
-      content: "";
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      top: 0;
-      inset-inline-start: 0;
-      border-radius: 4px;
-
-      transition: background-color .2s;
-    }
   }
 
 
-  //隐藏input
-  .vux-segmented-input {
+  .vux-segmented-bar {
     position: absolute;
-    inset-block-start: 0;
-    inset-inline-start: 0;
-    width: 0;
-    height: 0;
-    opacity: 0;
-    pointer-events: none;
+    display: inline-block;
+    border-radius: 4px;
+    background-color: #fff;
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.03), 0 1px 6px -1px rgba(0, 0, 0, 0.02), 0 2px 4px 0 rgba(0, 0, 0, 0.02);
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1), width 0.2s cubic-bezier(0.4, 0, 0.2, 1),
+    background-color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   }
 }
 

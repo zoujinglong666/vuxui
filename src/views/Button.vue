@@ -30,11 +30,12 @@
     </vux-space>
     <p>按钮尺寸</p>
     <vux-button size="large" type="primary">大号按钮</vux-button>
-    <vux-space align="center" size="12" style="margin-top: 16px;">
+    <vux-space size="12" style="margin-top: 12px">
       <vux-button size="normal" type="primary">普通按钮</vux-button>
       <vux-button size="small" type="primary">小型按钮</vux-button>
       <vux-button size="mini" type="primary">迷你按钮</vux-button>
     </vux-space>
+
     <p>块级元素</p>
     <vux-button block type="primary">块级元素</vux-button>
     <p>
@@ -58,9 +59,11 @@
 </template>
 
 <script>
+import VuxSpace from "@/packages/space/src/index.vue";
+
 export default {
   name: "Button",
-  components: {}
+  components: {VuxSpace}
 
 }
 </script>

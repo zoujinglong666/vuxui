@@ -57,7 +57,7 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
+<style lang="less" scoped>
 .vux-notice-bar {
   display: flex;
   justify-content: space-between;

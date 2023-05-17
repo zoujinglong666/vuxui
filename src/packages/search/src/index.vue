@@ -104,7 +104,7 @@ body {
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  height: 36px;
+  height: 32px;
 
   .search-btn-group {
 
@@ -128,8 +128,10 @@ body {
     border-radius: 18px;
     box-sizing: border-box;
     flex: 1;
+    transition: all 0.5s ease-in-out;
 
     .search-icon {
+      transition: all 0.5s ease-in-out;
       position: absolute;
       left: ~'calc(50% - 32px)';
       width: 20px;
@@ -139,6 +141,7 @@ body {
     .reset-icon {
       width: 20px;
       height: 20px;
+      color: #d9d9d9;
     }
 
     &.gary {
@@ -153,7 +156,7 @@ body {
 
       input {
         margin-left: 19px !important;
-        caret-color: @color-btn-primary !important;
+        //caret-color: @color-btn-primary !important;
 
         &::placeholder {
           text-align: left !important;

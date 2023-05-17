@@ -1,19 +1,20 @@
 <template>
+
   <div
       v-clickoutside:touchstart="swipeMove"
       class="swipe-cell"
       @click="onClick('cell')"
       @touchcancel="endDrag"
       @touchend="endDrag"
-      @touchmove="onDrag"
+      @touchmove="moveDrag"
       @touchstart="startDrag"
   >
     <div :style="wrapperStyle" class="swipe-cell_wrapper" @transitionend="swipe = false">
-      <div v-if="leftWidth" class="swipe-cell_left" @click="onClick('left')">
+      <div ref="leftRef" class="swipe-cell_left" @click="onClick('left')">
         <slot name="left"></slot>
       </div>
       <slot></slot>
-      <div v-if="rightWidth" class="swipe-cell_right" @click="onClick('left')">
+      <div ref="rightRef" class="swipe-cell_right" @click="onClick('right')">
         <slot name="right"></slot>
       </div>
     </div>
@@ -39,7 +40,7 @@ export default {
   data() {
     return {
       offset: 0,
-      dragging: false,
+      moving: false,
       THRESHOLD: 0.5,
     };
   },
@@ -47,22 +48,25 @@ export default {
     wrapperStyle() {
       return {
         transform: `translate3d(${this.offset}px, 0, 0)`,
-        transitionDuration: this.dragging ? '0s' : '.6s',
+        transitionDuration: this.moving ? '0s' : '.6s',
       };
     },
     computedLeftWidth() {
-      return this.leftWidth;
+      return this.leftWidth ? this.leftWidth : this.getWidthByName('leftRef');
     },
     computedRightWidth() {
-      return this.rightWidth;
+      return this.rightWidth ? this.rightWidth : this.getWidthByName('rightRef');
     },
   },
   methods: {
+    getWidthByName(refName) {
+      return this.$refs[refName].clientWidth
+    },
     startDrag(event) {
       if (this.disabled) {
         return;
       }
-      this.dragging = true;
+      this.moving = true;
       this.startOffset = this.offset;
       this.touchStart(event);
     },
@@ -81,7 +85,7 @@ export default {
       this.offsetX = 0;
       this.offsetY = 0;
     },
-    onDrag(event) {
+    moveDrag(event) {
       if (this.disabled) {
         return;
       }
@@ -115,7 +119,7 @@ export default {
       if (this.disabled) {
         return;
       }
-      this.dragging = false;
+      this.moving = false;
       if (this.swiping) {
         this.swipeLeaveTransition(this.offset > 0 ? 'left' : 'right');
       }
@@ -134,7 +138,6 @@ export default {
     },
     swipeMove(offset = 0) {
       this.offset = Math.min(Math.max(offset, -this.computedRightWidth), this.computedLeftWidth);
-      console.log(this.offset, '1111111111111111')
       if (this.offset) {
         this.swiping = true;
       } else {
@@ -178,6 +181,8 @@ export default {
   overflow: hidden;
   position: relative;
   touch-action: none;
+  background: #FFFFFF;
+  box-sizing: border-box;
 
   &_left,
   &_right {
@@ -185,22 +190,12 @@ export default {
     height: 100%;
     position: absolute;
 
-    .spt-button {
-      float: right;
-    }
-
-    .spt-button + .spt-button {
-      margin: 0;
-    }
   }
 
   &_right {
     right: 0;
     transform: translate3d(100%, 0, 0);
 
-    .spt-button {
-      float: left;
-    }
   }
 
   &_left {

@@ -13,7 +13,7 @@
   </div>
 </template>
 <script>
-import {useRect} from "../uitls";
+import {useRect} from "../utils";
 
 export default {
   name: "VuxDropdownMenu",
@@ -93,10 +93,13 @@ export default {
       }
     },
     handleClickTitle(item, active) {
+
+      console.log(item)
+
       if (item.disabled) {
         return
       }
-      this.$children.some((item, index) => {
+      this.$children.forEach((item, index) => {
         if (active === index) {
           this.updateOffset()
           //调用当前实例方法

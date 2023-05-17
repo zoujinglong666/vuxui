@@ -1,5 +1,7 @@
 <template>
-  <div v-show="show" v-touch:swipeleft="leftSlide"
+  <div v-show="show"
+       v-touch:swipeleft="leftSlide"
+       style="width: 100%;"
        v-touch:swiperight="rightSlide">
     <slot></slot>
   </div>
@@ -15,7 +17,7 @@ export default {
   },
   props: {
     title: {
-      type: String
+      type: [String, Number]
     },
     disabled: {
       type: Boolean

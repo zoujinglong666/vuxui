@@ -27,7 +27,7 @@ export const useRect = (element) => {
         return makeDOMRect(width, height);
     }
 
-    if (element.getBoundingClientRect) {
+    if (element && element.getBoundingClientRect) {
         return element.getBoundingClientRect();
     } else {
         return makeDOMRect(0, 0);

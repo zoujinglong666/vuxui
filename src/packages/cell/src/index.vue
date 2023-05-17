@@ -5,7 +5,7 @@
       <div class="vux__cell__label">{{ label }}</div>
     </div>
 
-    <slot name="value"> <span class="vux__cell__value">
+    <slot> <span class="vux__cell__value">
         {{ value }}
       </span></slot>
     <span v-if="isLink" class="vux__cell__isLink">></span>
@@ -54,9 +54,9 @@ export default {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 40px;
+  height: 44px;
   background-color: #FFFFFF;
-  border-bottom: 1px solid #eeeeee;
+  //border-bottom: 1px solid #eeeeee;
   box-sizing: border-box;
   padding: 0 8px;
 

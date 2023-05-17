@@ -9,13 +9,13 @@
       </div>
       <div :style="lineStyle" class="vux_tab-title line"></div>
     </div>
-    <slot>
-    </slot>
-
+    <div style="width: 100%;">
+      <slot>
+      </slot>
+    </div>
   </div>
 </template>
 <script>
-import {debounce} from "@/packages/tabs/src/index";
 
 export default {
   name: "vuxTabs",
@@ -24,6 +24,8 @@ export default {
       tabsTitleList: [],
       offsetLine: 0,
       currentIndex: this.active,
+      width: 0,
+      height: 0
     }
   },
   props: {
@@ -45,7 +47,7 @@ export default {
       type: [Number, String], default: 40
     },
     lineHeight: {
-      type: [Number, String], default: 3
+      type: [Number, String], default: 2
     },
     ellipsis: {
       type: Boolean
@@ -56,7 +58,7 @@ export default {
     },
     titleActiveColor: {
       type: String,
-      default: '#0068ff'
+      default: '#333'
     },
     titleActiveSize: {
       type: [Number, String], default: 14
@@ -101,10 +103,12 @@ export default {
   computed: {
     lineStyle() {
       return {
-        width: this.lineWidth + 'px',
+        // width: this.width ? this.width + 'px' : this.lineWidth + 'px',
+        // height: this.height ? this.height + 'px' : this.lineHeight + 'px',
         height: this.lineHeight + 'px',
+        width: this.lineWidth + 'px',
         backgroundColor: this.backgroundColor,
-        transform: `translateX(${this.offsetLine}px) translateX(-50%)`,
+        transform: ` translateX(${this.offsetLine}px)  translateX(-50%)`,
         transitionDuration: `${this.duration}s`
 
       }
@@ -171,17 +175,17 @@ export default {
     },
     debouncedGetLineOffset() {
       this.$nextTick(() => {
-        this.debouncedGetLineOffset()
+        const titles = this.$refs.titleRef;
+        const title = titles[+this.currentIndex];
+        if (titles && title) {
+          this.offsetLine = title.offsetLeft + title.offsetWidth / 2;
+        }
       })
     },
 
-    debouncedGetLineOffset: debounce(function () {
-      const titles = this.$refs.titleRef;
-      const title = titles[+this.currentIndex];
-      if (titles && title) {
-        this.offsetLine = title.offsetLeft + title.offsetWidth / 2;
-      }
-    }, 100),
+    // getLineOffset: debounce(function () {
+    //
+    // }, 100),
 
 
   },
@@ -229,13 +233,13 @@ export default {
 
   &.line {
     position: absolute;
-    background-color: #0068ff;
+    background-color: #187ef9;
+    //opacity: 0.1;
     bottom: 0px;
     left: 0;
     z-index: 1;
     border-radius: 4px;
   }
-
 
 
 }

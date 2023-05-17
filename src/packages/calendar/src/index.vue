@@ -1,5 +1,5 @@
 <template>
-  <vuxDrawer v-model="curOpen" :height="80" round>
+  <vux-popup :popup-style="{height:'80%'}" :show.sync="curOpen" round>
     <div class="vux-calendar">
       <div class="vux-calendar-container">
         <div>
@@ -105,17 +105,19 @@
         </div>
       </div>
     </div>
-  </vuxDrawer>
+  </vux-popup>
 </template>
 
 <script>
 
 import calendar from "./calendar.js";
 import {dateFormat, daysFromNow, getCountDayByDate, getRangeDates, makeUpForZero} from "./date-utils.js";
+import VuxPopup from "@/packages/popup/index.vue";
 
 const SECONDS_PER_DAY = 24 * 60 * 60;
 export default {
   name: "VuxCalendar",
+  components: {VuxPopup},
   data() {
     return {
       weeks: ["日", "一", "二", "三", "四", "五", "六"],
@@ -142,7 +144,6 @@ export default {
     },
     open: {
       type: Boolean,
-      default: false,
     },
     //回显数据
     value: {
@@ -244,7 +245,6 @@ export default {
     },
     maxRange: {
       type: Number,
-      default: 3
     }
 
   },
@@ -703,7 +703,7 @@ export default {
 
 };
 </script>
-<style lang="scss" scoped>
+<style lang="less" scoped>
 * {
   margin: 0;
   padding: 0;
@@ -795,7 +795,7 @@ li {
   .confirm-button {
     box-sizing: border-box;
     padding: 8px 10px;
-    position: fixed;
+    position: absolute;
     width: 100%;
     left: 0;
     right: 0;

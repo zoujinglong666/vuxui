@@ -33,10 +33,13 @@ import vuxCell from './cell/index'
 import vuxNavbar from './navBar/index'
 import vuxSpace from './space/index'
 import vuxDivider from './divider/index'
-import vuxCascader from './cascader/index'
 import vuxSwipeCell from './swipeCell/index'
-import vuxTabs from './tabs/index'
 import vuxTab from './tab/index'
+import vuxTabs from './tabs/index'
+import vuxPopup from './popup/index'
+import vuxBackTop from './backTop/index'
+import vuxPicker from './picker/index'
+import Message from "@/packages/message/index";
 // 将各个封装的组件使用一个数组保存，便于统一注册
 const components = [
     vuxRadio,
@@ -71,10 +74,10 @@ const components = [
     vuxNavbar,
     vuxSpace,
     vuxDivider,
-    vuxCascader,
     vuxSwipeCell,
     vuxTabs,
-    vuxTab
+    vuxTab,
+    vuxPopup, vuxBackTop, vuxPicker
 ]
 
 // 使用定义注册函数
@@ -84,9 +87,13 @@ const installComponents = function (Vue) {
         Vue.component(component.name, component)
     })
     // 原型链注册
+    Vue.prototype.$msg = Message;
 }
 
 // 调用注册函数，去统一注册组件
 installComponents(Vue)
 
 // 分别暴露、便于引入使用
+export {
+    Message
+}
