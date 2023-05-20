@@ -1,16 +1,14 @@
 <template>
 
-  <div>
-    <!--    <vux-list :list="list" v-slot="item">-->
+  <vux-list :list="list">
 
-    <!--      {{item}}-->
-
-    <!--    </vux-list>-->
-    <div ref="el" style="height: 3000px;overflow-y: auto;" @scroll="handleScroll">
-
-      1
-    </div>
-  </div>
+    <template #default="item">
+      <div class="card">
+        <p>{{ item.id }}</p>
+        <p>{{ item.value }}</p>
+      </div>
+    </template>
+  </vux-list>
 
 
 </template>
@@ -32,21 +30,19 @@ export default {
     }
   },
   created() {
-    for (let i = 1; i <= 10000; i++) {
+    for (let i = 1; i <= 500; i++) {
       this.list.push({id: i, value: i + '字符内容'.repeat(Math.random() * 20)})
     }
   },
-  mounted() {
-    this.$refs.el.addEventListener("scroll", this.handleScroll, true);
-  },
-  methods: {
-    handleScroll() {
-      console.log('1111111')
-    }
-  }
+
+
 }
 </script>
 
 <style scoped>
+.card {
+  padding: 10px;
+  border-bottom: 1px solid #eee;
+}
 
 </style>

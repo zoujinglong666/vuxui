@@ -191,20 +191,16 @@ export default {
     },
     format(value) {
       const {min, max, allowEmpty, integer} = this;
+      const numValue = Number(value);
       if (allowEmpty && value === '') {
-        return ''
+        return '';
       }
       if (integer) {
-        return Math.floor(value)
+        return Math.floor(numValue);
       }
-      if (Number(value) < min || isNaN(value)) {
-        return min
-      } else if (Number(value) > max) {
-        return max
-      } else {
-        return value
-      }
-    },
+      return isNaN(numValue) || numValue < min ? min : numValue > max ? max : numValue;
+    }
+
 
   }
 

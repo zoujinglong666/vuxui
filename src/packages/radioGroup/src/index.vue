@@ -68,15 +68,7 @@ export default {
     },
     updateParent(name) {
       this.closeOther(name)
-      if (Array.isArray(this.checkedList)) {
-        this.checkedList = [name];
-        this.handleEmit(this.checkedList)
-
-      } else {
-        this.checkedList = name
-        this.handleEmit(this.checkedList)
-      }
-
+      this.handleEmit(name)
     },
   }
 }
