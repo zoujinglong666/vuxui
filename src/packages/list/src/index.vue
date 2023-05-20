@@ -33,7 +33,7 @@ export default {
     },
     containerHeight: {
       type: [Number, String],
-      default: '100%'
+      default: '667px'
     },
     defaultHeight: {
       type: Number,
@@ -69,15 +69,16 @@ export default {
   },
   mounted() {
     this.cache = {};
+    this.updateVisibleData();
+    this.list.forEach((item, index) => {
+      this.cache[index] = {
+        index: index,
+        top: index * this.defaultHeight,
+        bottom: index * this.defaultHeight + this.defaultHeight,
+      };
+    });
     this.$nextTick(() => {
-      this.updateVisibleData();
-      this.list.forEach((item, index) => {
-        this.cache[index] = {
-          index: index,
-          top: index * this.defaultHeight,
-          bottom: index * this.defaultHeight + this.defaultHeight,
-        };
-      });
+
       this.$refs.containerRef.addEventListener("scroll", this.handleScroll, false);
     });
   },
@@ -104,6 +105,14 @@ export default {
       ) {
         this.updateBoundaryIndex(curScrollTop);
         this.updateVisibleData();
+      }
+      console.log(this.startIndex)
+      console.log(this.bufferSize)
+      console.log(this.visibleCount)
+      console.log(this.list.length)
+      if (this.endIndex + this.bufferSize > this.list.length) {
+        this.endOffset = 0;
+        console.log('111111111111111111111111')
       }
     },
     updateBoundaryIndex(scrollTop = 0) {
