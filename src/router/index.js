@@ -23,6 +23,7 @@ import myOverlay from '../views/Overlay.vue'
 import myMessage from '../views/Message.vue'
 import myList from '../views/List.vue'
 import mySegmented from '../views/Segmented.vue'
+import myBottomSheet from '../views/BottomSheet.vue'
 
 Vue.use(VueRouter)
 export const routes = [{path: '/tag', component: myTag}, {path: '/button', component: myButton}, {
@@ -57,6 +58,8 @@ export const routes = [{path: '/tag', component: myTag}, {path: '/button', compo
     path: "/list", component: myList
 }, {
     path: "/segmented", component: mySegmented
+}, {
+    path: "/bottomSheet", component: myBottomSheet
 }]
 
 

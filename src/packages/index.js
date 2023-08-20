@@ -39,6 +39,7 @@ import vuxTabs from './tabs/index'
 import vuxPopup from './popup/index'
 import vuxBackTop from './backTop/index'
 import vuxPicker from './picker/index'
+import vuxBottomSheet from './bottomSheet/index'
 import Message from "@/packages/message/index";
 // 将各个封装的组件使用一个数组保存，便于统一注册
 const components = [
@@ -77,7 +78,7 @@ const components = [
     vuxSwipeCell,
     vuxTabs,
     vuxTab,
-    vuxPopup, vuxBackTop, vuxPicker
+    vuxPopup, vuxBackTop, vuxPicker, vuxBottomSheet
 ]
 
 // 使用定义注册函数

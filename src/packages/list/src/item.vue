@@ -1,5 +1,5 @@
 <template>
-  <div ref="itemRef" style="height: auto;">
+  <div ref="itemRef">
     <slot :item="item"/>
   </div>
 </template>
@@ -13,7 +13,7 @@ export default {
     cachePosition: Function,
   },
   mounted() {
-    if (this.cachePosition) {
+    if (typeof this.cachePosition === 'function') {
       this.cachePosition(this.$refs.itemRef, this.index);
     }
   },

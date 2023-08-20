@@ -3,9 +3,10 @@
   <vux-list :list="list">
 
     <template #default="item">
-      <div class="card">
+      <div style="border: 1px solid #eeeeee">
         <p>{{ item.id }}</p>
-        <p>{{ item.value }}</p>
+        <p>{{ item.content }}</p>
+
       </div>
     </template>
   </vux-list>
@@ -30,8 +31,14 @@ export default {
     }
   },
   created() {
-    for (let i = 1; i <= 10000; i++) {
-      this.list.push({id: i, value: i + '字符内容'.repeat(Math.random() * 20)})
+    for (let i = 1; i < 100000; i++) {
+      this.list.push({
+        id: i,
+        key: Math.random().toString(36).slice(-8),
+        words: 'word-' + i,
+        content: 'content-' + i,
+        height: Math.random() * 200,
+      });
     }
   },
 
