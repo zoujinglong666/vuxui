@@ -3,12 +3,16 @@
     <vux-overlay :show="calcShow" @click.native="handleClose"></vux-overlay>
     <transition :name="transitionName">
       <div v-show="calcShow"
+           @touchcancel="endDrag"
+           @touchend="endDrag"
+           @touchmove="moveDrag"
+           @touchstart="startDrag"
            :class="['bottom',round?'round':'']"
            :style="[offsetStyle]"
            class="vux_bottom-sheet">
         <div @touchcancel="endDrag"
-             @touchend="endDrag"
              @touchmove="moveDrag"
+             @touchend="endDrag"
              @touchstart="startDrag">
           <slot name="header">
             <div class="drag-header">
@@ -33,8 +37,6 @@
 </template>
 
 <script>
-
-
 import VuxOverlay from "@/packages/overlay/index.vue";
 import VuxButton from "@/packages/button/src/index.vue";
 
@@ -120,7 +122,7 @@ export default {
       return {
         height: addUnit(this.maxHeight, 'px'),
         transform: `translateY(calc(100% + ${addUnit(-this.calcHeight)}))`,
-        transition: !this.draggable && this.show ? `transform ${this.duration}ms` : `none`,
+        transition: !this.draging ? `transform ${this.duration}ms` : `none`,
       }
     },
 
@@ -164,21 +166,17 @@ export default {
       return this.anchors.map(item => {
         return Math.round(item / 100 * this.screenHeight)
       });
-
-
     },
 
 
   },
 
-  watch: {},
   data() {
-
     return {
       startY: 0,
       initHeight: 0,
       deltaY: 0,
-      draggable: false,
+      draging: false,
       screenHeight: 0
 
     }
@@ -190,7 +188,7 @@ export default {
     },
 
     handleClose() {
-      if (!this.closeOnClickOverlay || this.draggable) {
+      if (!this.closeOnClickOverlay || this.draging) {
         return
       }
       this.calcShow = false;
@@ -201,29 +199,28 @@ export default {
     startDrag(event) {
       this.reset()
       const touch = event.touches[0];
-      this.draggable = true;
+      this.draging = true;
       this.startY = touch.clientY;
       this.initHeight = -this.height;
     },
     moveDrag(e) {
-      if (!this.draggable) return;
+      if (!this.draging) return;
       const touch = e.touches[0];
       this.deltaY = touch.clientY - this.startY;
       const moveY = this.deltaY + this.initHeight;
-
-      console.log(moveY)
-      if (Math.abs(moveY) < MINI_BOTTOM_DISTANCE) {
+      if (Math.abs(this.calcHeight) < MINI_BOTTOM_DISTANCE) {
         this.$emit('update:show', false)
         this.$emit('update:height', Math.abs(this.minHeight))
         return;
       }
+
 
       this.calcHeight = -this.ease(moveY)
 
     },
 
     reset() {
-      this.draggable = false
+      this.draging = false
       this.startY = 0;
       this.initHeight = 0;
       this.deltaY = 0;
