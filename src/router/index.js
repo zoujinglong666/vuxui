@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import myTag from "../views/tag"
+import myTag from "../views/Tag.vue"
 import myButton from "../views/Button"
 import mySwitch from "../views/Switch.vue"
 import myCheckBox from "../views/CheckBox"

@@ -3,8 +3,11 @@
 </template>
 
 <script>
+import VuxFab from "@/packages/fab/src/index.vue";
+
 export default {
   name: "vuxBackTop",
+  components: {VuxFab},
   props: {
     zIndex: {
       type: [String, Number]
@@ -26,12 +29,10 @@ export default {
   mounted() {
     if (document.querySelector(this.target)) {
       this.scrollDom = document.querySelector(this.target);
-      this.scrollDom.addEventListener('scroll', this.showBackTop, false);
+      this.showBackTop()
     }
   },
-  beforeDestroy() {
-    this.scrollDom.removeEventListener("scroll", this.showBackTop, false);
-  },
+
   methods: {
     showBackTop() {
       this.show = this.scrollDom.scrollTop > this.offset;

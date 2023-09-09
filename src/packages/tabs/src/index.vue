@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div style="position: fixed;width: 100%">
     <div ref="tabRef" :style="tabsTitleStyle" class="vux_tab-title">
       <div v-for="(item,index) in tabsTitleList" :key="item.title" ref="titleRef"
            :style="[activeTitleStyle(item,index),disabledStyle(item,index)]" class="vux_tab-title item"

@@ -17,10 +17,11 @@
 <script>
 import {routes} from "@/router";
 import Button from "@/views/Button";
+import VuxButton from "@/packages/button/src/index.vue";
 
 export default {
   name: "layout",
-  components: {Button},
+  components: {VuxButton, Button},
   data() {
     return {
       components: []
@@ -33,9 +34,6 @@ export default {
     this.toRouterData()
   },
   methods: {
-    // handleClick(item) {
-    //   this.$router.push(`/${item}`)
-    // },
     toRouterData() {
       this.components = routes.map(item => {
         return {
@@ -49,12 +47,9 @@ export default {
 </script>
 
 <style lang="less" scoped>
-
-
 a {
   text-decoration: none;
 }
-
 .vux__layout {
   display: block;
   height: 40px;
