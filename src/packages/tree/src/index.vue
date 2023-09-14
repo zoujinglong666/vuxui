@@ -13,10 +13,12 @@
   </ul>
 </template>
 <script>
+import VuxCheckbox from "@/packages/checkBox/src/index.vue";
+
 const CARETS = {open: 'caret-down', close: 'caret-right'}
 export default {
   name: 'vuxTree',
-  components: {},
+  components: {VuxCheckbox},
 
   props: {
     data: {

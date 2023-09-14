@@ -129,6 +129,11 @@ export default {
       }
     },
 
+    emitChange(val) {
+      this.$emit('input', val)
+      this.$emit('change', val)
+    },
+
     handleClickLabel(item, index) {
 
       this.singleData = this.cancellable && this.singleData === item ? '' : item;
@@ -136,11 +141,9 @@ export default {
         this.singleData = item;
       }
       if (this.prop) {
-        this.$emit('input', this.singleData[this.prop])
-        this.$emit('change', this.singleData[this.prop])
+        this.emitChange(this.singleData[this.prop])
       } else {
-        this.$emit('input', this.singleData)
-        this.$emit('change', this.singleData)
+        this.emitChange(this.singleData)
       }
 
     }
@@ -205,9 +208,8 @@ export default {
     display: inline-block;
     border-radius: 4px;
     background-color: #fff;
-    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.03), 0 1px 6px -1px rgba(0, 0, 0, 0.02), 0 2px 4px 0 rgba(0, 0, 0, 0.02);
-    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1), width 0.2s cubic-bezier(0.4, 0, 0.2, 1),
-    background-color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: all 0.3s;
+
   }
 }
 

@@ -13,8 +13,8 @@ export default {
     cachePosition: Function,
   },
   mounted() {
-    if (this.cachePosition) {
-      this.cachePosition(this.$refs.itemRef, this.index, true);
+    if (typeof this.cachePosition === 'function') {
+      this.cachePosition(this.$refs.itemRef, this.index);
     }
   },
 };

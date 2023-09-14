@@ -194,13 +194,13 @@ export default {
 
   &_right {
     right: 0;
-    transform: translate3d(100%, 0, 0);
+    transform: translate3d(101%, 0, 0);
 
   }
 
   &_left {
     left: 0;
-    transform: translate3d(-100%, 0, 0);
+    transform: translate3d(-101%, 0, 0);
   }
 
   &_wrapper,

@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import myTag from "../views/tag"
+import myTag from "../views/Tag.vue"
 import myButton from "../views/Button"
 import mySwitch from "../views/Switch.vue"
 import myCheckBox from "../views/CheckBox"
@@ -24,6 +24,7 @@ import myMessage from '../views/Message.vue'
 import myList from '../views/List.vue'
 import mySegmented from '../views/Segmented.vue'
 import mySwipe from '../views/Swipe.vue'
+import myBottomSheet from '../views/BottomSheet.vue'
 
 Vue.use(VueRouter)
 export const routes = [{path: '/tag', component: myTag}, {path: '/button', component: myButton}, {
@@ -60,6 +61,8 @@ export const routes = [{path: '/tag', component: myTag}, {path: '/button', compo
     path: "/segmented", component: mySegmented
 }, {
     path: "/swipe", component: mySwipe
+}, {
+    path: "/bottomSheet", component: myBottomSheet
 }]
 
 

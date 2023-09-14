@@ -1,5 +1,5 @@
 <template>
-  <div class="huadong">
+  <div class="huadong" style="height: 667px;overflow: auto">
     稀土掘金
     首页
     沸点

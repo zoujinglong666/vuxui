@@ -60,9 +60,12 @@
 </template>
 
 <script>
+import VuxCell from "@/packages/cell/src/index.vue";
+import VuxTag from "@/packages/tag/src/index.vue";
+
 export default {
   name: "tag",
-  components: {},
+  components: {VuxTag, VuxCell},
 
 
 }
