@@ -13,7 +13,7 @@
 
     <p>搭配单元格</p>
     <vux-cell title="标题">
-      <template #value>
+      <template>
         <vux-switch v-model="value"></vux-switch>
       </template>
     </vux-cell>
@@ -21,6 +21,8 @@
 </template>
 
 <script>
+import VuxSwitch from "@/packages/switch/src/index.vue";
+
 export default {
   name: "switch",
   data() {
@@ -30,7 +32,7 @@ export default {
       loadingValue: true
     }
   },
-  components: {}
+  components: {VuxSwitch}
 
 }
 </script>

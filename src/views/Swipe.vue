@@ -1,7 +1,10 @@
 <template>
   <div>
     <vux-swipe v-model="active">
-      <vux-swipe-item v-for="(item,index) in colors" :style="{background:item}">{{ index }}</vux-swipe-item>
+      <vux-swipe-item v-for="(item,index) in colors"
+                      :key="index"
+                      :style="{background:item}">{{ index }}
+      </vux-swipe-item>
     </vux-swipe>
   </div>
 </template>

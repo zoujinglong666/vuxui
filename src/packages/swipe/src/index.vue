@@ -119,11 +119,13 @@ export default {
   methods: {
 
     init(active) {
-      if (this.$el) {
-        this.activeIndex = active || +this.initialSwipe;
-        this.offset = this.getOffset(active)
-      }
-
+      this.clear();
+      this.$nextTick(() => {
+        if (this.$el) {
+          this.activeIndex = active || +this.initialSwipe;
+          this.offset = this.getOffset(active)
+        }
+      })
     },
     clear() {
       clearTimeout(this.timer)
@@ -160,8 +162,6 @@ export default {
       let offset = event.touches[0].clientX - this.startX;
       console.log(offset)
       console.log(this.activeIndex, 'this.a')
-      // this.move(1)
-
 
     },
     startDrag(event) {

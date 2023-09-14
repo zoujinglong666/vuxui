@@ -5,9 +5,11 @@
       <div class="vux__cell__label">{{ label }}</div>
     </div>
 
-    <slot> <span class="vux__cell__value">
+    <slot>
+      <span class="vux__cell__value">
         {{ value }}
-      </span></slot>
+      </span>
+    </slot>
     <span v-if="isLink" class="vux__cell__isLink">></span>
   </div>
 
@@ -72,8 +74,9 @@ export default {
     color: #999999;
   }
 
-  .vux__cel__value {
+  .vux__cell__value {
     color: #666;
+    width: auto;
 
   }
 
