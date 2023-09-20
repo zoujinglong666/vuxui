@@ -1,6 +1,5 @@
 <template>
   <div>
-    <vux-navbar title="tag标签"></vux-navbar>
     <p>基本用法</p>
     <vux-cell title="primary类型">
       <vux-tag theme="dark" type="primary">标签</vux-tag>

@@ -26,6 +26,8 @@
 </template>
 
 <script>
+import VuxProgress from "@/packages/process/src/index.vue";
+
 export default {
   name: "Progress",
   data() {
@@ -35,7 +37,7 @@ export default {
       value2: 70,
     }
   },
-  components: {}
+  components: {VuxProgress}
 
 }
 </script>

@@ -28,10 +28,11 @@
 
 <script>
 import VuxRadioGroup from "@/packages/radioGroup/src";
+import VuxRadio from "@/packages/radio/src/index.vue";
 
 export default {
   name: "Radio",
-  components: {VuxRadioGroup},
+  components: {VuxRadio, VuxRadioGroup},
   data() {
     return {
       value: '1'

@@ -6,7 +6,6 @@
         :to="item.path"
         block
         class="vux__layout"
-        style="margin-bottom: 8px"
     >{{
         item.path
       }}
@@ -56,9 +55,11 @@ a {
   line-height: 40px;
   text-align: center;
   box-sizing: border-box;
-  margin-bottom: 4px;
+  width: 100%;
   background-color: #b3d8ff;
   border-color: #b3d8ff;
   color: #0068ff;
+  margin: 8px 0;
+
 }
 </style>

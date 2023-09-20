@@ -24,6 +24,9 @@
 </template>
 
 <script>
+import VuxDataCheckbox from "@/packages/dataCheckBox/src/index.vue";
+import VuxSpace from "@/packages/space/src/index.vue";
+
 export default {
   name: "DataCheckBox",
   data() {
@@ -34,7 +37,7 @@ export default {
       value3: ['上海']
     }
   },
-  components: {}
+  components: {VuxSpace, VuxDataCheckbox}
 
 }
 </script>

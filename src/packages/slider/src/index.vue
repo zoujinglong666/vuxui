@@ -136,8 +136,6 @@ export default {
         for (let i = 1; i < stopsLength; i++) {
           res.push(i * this.stepSize / this.magnification * this.magnification)
         }
-        console.log(res)
-        console.log(this.magnification)
         return res
       }
     },

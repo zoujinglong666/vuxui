@@ -23,47 +23,125 @@ import myOverlay from '../views/Overlay.vue'
 import myMessage from '../views/Message.vue'
 import myList from '../views/List.vue'
 import mySegmented from '../views/Segmented.vue'
-import mySwipe from '../views/Swipe.vue'
 import myBottomSheet from '../views/BottomSheet.vue'
+import mySlider from '../views/Slider.vue'
 
 Vue.use(VueRouter)
-export const routes = [{path: '/tag', component: myTag}, {path: '/button', component: myButton}, {
-    path: '/switch', component: mySwitch
-}, {path: '/checkBox', component: myCheckBox}, {path: '/cell', component: myCell}, {
-    path: '/dropDownMenu', component: myDropdownMenu
-}, {path: '/progress', component: myProgress}, {
-    path: '/dataCheckBox', component: myDataCheckBox
-}, {path: '/divider', component: myDivider}, {path: '/collapse', component: myCollapse}, {
-    path: '/treeSelect', component: myTreeSelect
+export const routes = [{
+    path: '/tag', component: myTag, meta: {
+        title: "标签"
+    }
 }, {
-    path: "/radio", component: myRadio
+    path: '/button', component: myButton, meta: {
+        title: "按钮"
+    }
 }, {
-    path: "/swipeCell", component: mySwipeCell
+    path: '/switch', component: mySwitch, meta: {
+        title: "开关"
+    }
 }, {
-    path: "/tab", component: myTab
+    path: '/checkBox', component: myCheckBox, meta: {
+        title: "单选框"
+    }
 }, {
-    path: "/popup", component: myPopup
+    path: '/cell', component: myCell,
+    meta: {
+        title: "单元格"
+    }
 }, {
-    path: "/backTop", component: myBackTop
+    path: '/dropDownMenu', component: myDropdownMenu, meta: {
+        title: "下拉菜单"
+    }
 }, {
-    path: "/search", component: mySearch
+    path: '/progress', component: myProgress, meta: {
+        title: "进度条"
+    }
 }, {
-    path: "/calendar", component: myCalendar
+
+    path: '/dataCheckBox', component: myDataCheckBox, meta: {
+        title: "数据复选框"
+    }
 }, {
-    path: "/picker", component: myPicker
+    path: '/divider', component: myDivider, meta: {
+        title: "分割线"
+    }
 }, {
-    path: "/overlay", component: myOverlay
+    path: '/collapse', component: myCollapse, meta: {
+        title: "数据复选框"
+    }
 }, {
-    path: "/message", component: myMessage
+    path: '/treeSelect', component: myTreeSelect, meta: {
+        title: "树形选择"
+    }
 }, {
-    path: "/list", component: myList
+    path: "/radio", component: myRadio, meta: {
+        title: "单选框"
+    }
+}, {
+    path: "/swipeCell", component: mySwipeCell, meta: {
+        title: "滑动单元格"
+    }
+}, {
+    path: "/tab", component: myTab, meta: {
+        title: "数据复选框"
+    }
+}, {
+    path: "/popup", component: myPopup, meta: {
+        title: "数据复选框"
+    }
+}, {
+    path: "/backTop", component: myBackTop, meta: {
+        title: "回到顶部"
+    }
+
+}, {
+    path: "/search", component: mySearch, meta: {
+        title: "搜索框"
+    }
+}, {
+    path: "/calendar", component: myCalendar, meta: {
+        title: "日历"
+    }
+
+}, {
+    path: "/picker", component: myPicker, meta: {
+        title: "旋转器"
+    }
+}, {
+    path: "/overlay", component: myOverlay, meta: {
+        title: "遮罩层"
+    }
+}, {
+    path: "/message", component: myMessage, meta: {
+        title: "消息"
+    }
+}, {
+    path: "/list", component: myList, meta: {
+        title: "虚拟列表"
+    }
 }, {
     path: "/segmented", component: mySegmented
-}, {
-    path: "/swipe", component: mySwipe
-}, {
-    path: "/bottomSheet", component: myBottomSheet
-}]
+    , meta: {
+        title: "分段控制器"
+    }
+},
+    {
+        path: "/bottomSheet", component: myBottomSheet, meta: {
+            title: "浮动面板"
+        }
+    },
+    {
+        path: "/slider",
+        component: mySlider,
+        meta: {
+            title: "区间选择器"
+        }
+
+    },
+    // {
+    //     path: "/swipe", component: mySwipe
+    // },
+]
 
 
 const router = new VueRouter({
