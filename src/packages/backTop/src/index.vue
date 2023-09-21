@@ -1,13 +1,14 @@
 <template>
-  <vux-fab v-if="show" @click.native="handleClick"></vux-fab>
+  <vux-fab v-show="show" @click.native="handleClick"></vux-fab>
+
+
 </template>
 
 <script>
-import VuxFab from "@/packages/fab/src/index.vue";
 
 export default {
   name: "vuxBackTop",
-  components: {VuxFab},
+
   props: {
     zIndex: {
       type: [String, Number]
@@ -22,66 +23,37 @@ export default {
   },
   data() {
     return {
-      scrollDom: null,
+      scrollEl: null,
       show: false
     }
   },
-  mounted() {
-    if (document.querySelector(this.target)) {
-      this.scrollDom = document.querySelector(this.target);
-      this.showBackTop()
-    }
-  },
 
+  watch: {},
+  mounted() {
+    this.$nextTick(() => {
+      const target = document.querySelector(this.target)
+      if (target) {
+        this.scrollEl = target;
+        this.scrollEl.addEventListener('scroll', this.showBackTop, false)
+      }
+    })
+  },
+  beforeDestroy() {
+    // 最后要解除监听滚动事件
+    this.scrollEl.removeEventListener("scroll", this.showBackTop, false);
+  },
   methods: {
     showBackTop() {
-      this.show = this.scrollDom.scrollTop > this.offset;
+      this.show = this.scrollEl.scrollTop > this.offset;
     },
     handleClick() {
-      this.scrollDom.scrollTo({
-        top: 0,
-        behavior: "smooth"
-      });
-    },
-    /**
-     * @Description 节流函数
-     * @param { Function } fn 需要做节流的函数
-     * @param { Function } intervalTime 间隔实践
-     * @param { Function } immediate 是否立即执行
-     * @return { Number } intervalTime
-     **/
-    throttle(fn, intervalTime = 200, immediate = true) {
-      let oldTime = Date.now();
-      return function (...arg) {
-        if (immediate) {
-          fn.bind(this)(...arg);
-          immediate = false;
-        }
-        let nowTime = Date.now();
-        if (nowTime - oldTime >= intervalTime) {
-          fn.bind(this)(...arg);
-          oldTime = nowTime;
-        }
-      };
-    },
-
-    debounce(func, delay) {
-      let timeoutId;
-      return function () {
-        const context = this;
-        const args = arguments;
-        clearTimeout(timeoutId);
-        timeoutId = setTimeout(() => {
-          func.apply(context, args);
-        }, delay);
-      };
+      this.scrollEl.scrollTop = 0
     }
-
-
   }
 }
 </script>
 
 <style scoped>
+
 
 </style>

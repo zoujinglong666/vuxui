@@ -285,7 +285,7 @@ export default {
             position: absolute;
             right: 3px;
             bottom: 2px;
-            border: 1px solid #0068ff;
+            border: 1px solid #1989fa;
             border-top-color: transparent;
             border-left-color: transparent;
             transform: rotate(45deg);
@@ -368,7 +368,7 @@ export default {
             position: absolute;
             right: 0;
             bottom: 0;
-            border: 8px solid #0068ff;
+            border: 8px solid #1989fa;
             border-top-color: transparent;
             border-left-color: transparent;
           }
@@ -420,14 +420,14 @@ export default {
       }
     }
     &.primary {
-      color: #0068ff;
-      border-color: #0068ff;
+      color: #1989fa;
+      border-color: #1989fa;
       background-color: #ecf5ff;
 
 
       &.dark {
-        background-color: #0068ff;
-        border-color: #0068ff;
+        background-color: #1989fa;
+        border-color: #1989fa;
         color: #fff;
       }
     }

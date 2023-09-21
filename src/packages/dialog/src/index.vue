@@ -59,7 +59,7 @@ export default {
 
     titleColor: {
       type: String,
-      default: '#0068ff'
+      default: '#1989fa'
     },
     showTitle: {
       type: Boolean,

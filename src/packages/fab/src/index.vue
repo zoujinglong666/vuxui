@@ -20,7 +20,7 @@ export default {
   props: {
     bgColor: {
       type: String,
-      default: '#0068ff'
+      default: '#1989fa'
     },
     position: {
       type: String,
@@ -40,7 +40,7 @@ export default {
 
 <style lang="less" scoped>
 .vux-fab {
-  position: absolute;
+  position: fixed;
 
   &.left {
     bottom: 48px;
@@ -70,7 +70,7 @@ export default {
     justify-content: center;
     //text-align: center;
     border-radius: 50%;
-    background: #0068ff;
+    background: #1989fa;
     width: 48px;
     height: 48px;
     line-height: 48px;

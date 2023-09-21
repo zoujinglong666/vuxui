@@ -49,7 +49,7 @@ export default {
     },
     activeColor: {
       type: String,
-      default: "#0068ff"
+      default: "#1989fa"
     },
     inactiveColor: {
       type: String,

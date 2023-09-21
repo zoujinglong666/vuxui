@@ -80,7 +80,7 @@ export default {
     ,
     checkColor: {
       type: String,
-      default: '#0068ff'
+      default: '#1989fa'
     },
     size: {
       type: [Number, String],
@@ -226,7 +226,7 @@ export default {
     }
 
     &.checked {
-      background: #0068FF;
+      background: #1989fa;
     }
 
     &.disabled {

@@ -1,12 +1,12 @@
 <template>
   <div>
     <p>基本用法</p>
-    <vux-switch v-model="value"></vux-switch>
+    <vux-switch v-model="value" activeText="开启"></vux-switch>
     <p>禁用状态</p>
     <vux-switch v-model="disabledValue" disabled></vux-switch>
 
     <p>加载状态</p>
-    <vux-switch v-model="loadingValue" loading></vux-switch>
+    <vux-switch v-model="loadingValue" activeText="开启" inactiveText="关闭"></vux-switch>
 
     <p>自定义颜色</p>
     <vux-switch v-model="value" activeColor="red"></vux-switch>

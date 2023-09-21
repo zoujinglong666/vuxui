@@ -49,7 +49,7 @@ export default {
 
   props: {
     //常用渐变
-    // background: linear-gradient(to right, #5faff8, #0068ff) ;
+    // background: linear-gradient(to right, #5faff8, #1989fa) ;
     gradual: {
       type: Boolean,
     },
@@ -250,20 +250,20 @@ export default {
 
   &.primary {
     color: #fff;
-    background-color: #0068ff;
-    border-color: #0068ff;
+    background-color: #1989fa;
+    border-color: #1989fa;
 
     &.plain {
-      color: #0068ff;
+      color: #1989fa;
       background-color: #fff;
-      border-color: #0068ff;
+      border-color: #1989fa;
     }
 
     &.link {
       border: 0;
       border: none;
       background-color: transparent;
-      color: #0068ff;
+      color: #1989fa;
     }
 
     //实现0.5px边框
@@ -271,13 +271,13 @@ export default {
     &.hairline {
       border: none;
       border: 0;
-      box-shadow: 0 0 0 0.5px #0068ff;
+      box-shadow: 0 0 0 0.5px #1989fa;
     }
 
     //传入 type+gradual
     &.gradual {
-      background: linear-gradient(to right, #5faff8, #0068ff);
-      //border-image: linear-gradient(to right, #5faff8, #0068ff) ;
+      background: linear-gradient(to right, #5faff8, #1989fa);
+      //border-image: linear-gradient(to right, #5faff8, #1989fa) ;
       border: none;
       border: 0;
     }

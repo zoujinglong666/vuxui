@@ -2,7 +2,7 @@
       <span :class="switchStyle" :style="{backgroundColor:checked?activeColor:inactiveColor}"
             class="vux_switch-content"
             @click="onClick">
-      <span v-if="activeText||inactiveText" :class="switchStyle" class="vux_switch-text">{{
+      <span v-show="activeText||inactiveText" :class="switchStyle" class="vux_switch-text">{{
           checked ? maxlength(activeText, 6) : maxlength(inactiveText, 6)
         }}</span>
       <span
@@ -43,11 +43,9 @@ export default {
     },
     activeText: {
       type: String,
-      default: ''
     },
     inactiveText: {
       type: String,
-      default: ''
     },
     activeValue: {
       type: [Boolean, String, Number, Object, Array],
@@ -125,7 +123,7 @@ export default {
   }
 
   .vux_switch-text {
-    transition: all 0.3s ease;
+    transition: all 0.3s cubic-bezier(0.25, 0.01, 0.25, 1);
     left: 100%;
     padding-left: 24px;
     text-align: center;
@@ -136,7 +134,6 @@ export default {
     }
 
     &.checked {
-      box-sizing: border-box;
       left: 0;
       transition: all 0.3s cubic-bezier(0.25, 0.01, 0.25, 1);
       transform: translateX(-24px);
@@ -160,7 +157,7 @@ export default {
     border: 1px solid #C0C4CC;
 
     &.checked {
-      border: 1px solid #0068ff;
+      border: 1px solid #1989fa;
     }
 
     border-radius: 50%;

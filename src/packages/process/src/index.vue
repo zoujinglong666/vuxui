@@ -38,7 +38,7 @@ export default {
     //进度条背景颜色
     strokeColor: {
       type: String,
-      default: '#0068ff'
+      default: '#1989fa'
     },
     border: {
       type: Boolean

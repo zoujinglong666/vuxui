@@ -132,7 +132,7 @@ export default {
   props: {
     activeColor: {
       type: String,
-      default: '#0068ff'
+      default: '#1989fa'
     },
     options: {
       type: Array,
@@ -195,7 +195,7 @@ export default {
         left: 0;
         width: 4px;
         height: 16px;
-        background-color: #0068ff;
+        background-color: #1989fa;
         transform: translateY(-50%);
         content: "";
         transition: all 0.5s ease-in-out;

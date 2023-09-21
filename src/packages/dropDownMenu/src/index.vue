@@ -30,7 +30,7 @@ export default {
   props: {
     activeColor: {
       type: String,
-      default: '#0068ff'
+      default: '#1989fa'
     },
     direction: {
       type: String,

@@ -40,7 +40,7 @@ export default {
     },
     checkedColor: {
       type: String,
-      default: '#0068FF'
+      default: '#1989fa'
     },
     cell: {
       type: Boolean

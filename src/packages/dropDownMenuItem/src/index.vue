@@ -237,7 +237,7 @@ export default {
       position: absolute;
       right: 0;
       bottom: 0;
-      border: 8px solid #0068ff;
+      border: 8px solid #1989fa;
       border-top-color: transparent;
       border-left-color: transparent;
     }

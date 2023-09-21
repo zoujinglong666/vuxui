@@ -79,7 +79,7 @@ export default {
     color: {
       type: [Array, String],
       default: () => {
-        return ['#0068ff', 'red']
+        return ['#1989fa', 'red']
       }
     },
     fill: {

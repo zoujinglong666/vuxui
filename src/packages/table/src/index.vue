@@ -310,7 +310,7 @@ export default {
 
 
     &:focus {
-      border: 1px solid #0068ff;
+      border: 1px solid #1989fa;
     }
 
   }

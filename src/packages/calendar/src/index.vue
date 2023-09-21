@@ -806,7 +806,7 @@ li {
   .todayActive, .default-text {
 
     &.primary {
-      color: #0068ff;
+      color: #1989fa;
     }
 
     &.danger {
@@ -823,7 +823,7 @@ li {
 
     &.primary {
       background-color: #ecf5ff;
-      color: #0068ff;
+      color: #1989fa;
     }
   }
 
@@ -841,7 +841,7 @@ li {
     }
 
     &.primary {
-      background: #0068ff !important;
+      background: #1989fa !important;
     }
   }
 

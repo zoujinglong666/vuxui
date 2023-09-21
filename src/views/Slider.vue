@@ -6,17 +6,16 @@
 
 </template>
 <script>
-import {defineComponent} from "vue";
 import VuxSlider from "@/packages/slider/src/index.vue";
 
-export default defineComponent({
+export default {
   components: {VuxSlider},
   data() {
     return {
       value: [0, 100]
     }
   },
-})
+}
 
 </script>
 <style lang="less" scoped>

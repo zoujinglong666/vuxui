@@ -149,7 +149,7 @@ export default {
     }
 
     &.dark {
-      background-color: #0068ff;
+      background-color: #1989fa;
       border: 0;
       color: #fff;
     }
@@ -157,7 +157,7 @@ export default {
     &.plain {
       background-color: #fff;
       border-color: #b3d8ff;
-      color: #0068ff;
+      color: #1989fa;
     }
   }
 

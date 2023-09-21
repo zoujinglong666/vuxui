@@ -58,7 +58,7 @@ a {
   width: 100%;
   background-color: #b3d8ff;
   border-color: #b3d8ff;
-  color: #0068ff;
+  color: #1989fa;
   margin: 8px 0;
 
 }
