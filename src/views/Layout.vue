@@ -1,6 +1,7 @@
 <template>
   <div>
-    <vux-button
+
+  <vux-button
         v-for="item in components"
         :key="item.path"
         :to="item.path"

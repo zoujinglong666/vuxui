@@ -1,37 +1,31 @@
 <template>
   <div>
 
-    <!--    <vux-space size="12" direction="vertical">-->
-    <!--      &lt;!&ndash;    <VuxMessage type="success"></VuxMessage>&ndash;&gt;-->
-    <!--      &lt;!&ndash;    <VuxMessage type="info"></VuxMessage>&ndash;&gt;-->
-    <!--      &lt;!&ndash;    <VuxMessage type="warning"></VuxMessage>&ndash;&gt;-->
-    <!--      <VuxMessage type="error"></VuxMessage>-->
-    <!--    </vux-space>-->
+    <vux-button type="success" @click="handleSuccessMsg">
+      成功消息
+    </vux-button>
+    <vux-button type="danger" @click="handleErrorMsg">
+      危险消息
+    </vux-button>
 
-
-    <button @click="handleMsg">
-
-    </button>
-    <button @click="handleMsg1">
-
-    </button>
 
   </div>
 </template>
-
 <script>
+import VuxButton from "@/packages/button/src/index.vue";
 
 export default {
   name: "Message",
+  components: {VuxButton},
   methods: {
-    handleMsg() {
+    handleSuccessMsg() {
       this.$msg({
-        message: '11111111', type: 'success'
+        message: '成功消息', type: 'success'
       })
     },
-    handleMsg1() {
+    handleErrorMsg() {
       this.$msg({
-        message: '11111111', type: 'error'
+        message: '危险消息', type: 'error'
       })
     }
   }

@@ -40,6 +40,8 @@
 </template>
 
 <script>
+import VuxTreeSelect from "@/packages/treeSelect/src/index.vue";
+
 const areaList = {
   provinces: {
     110000: '北京市',
@@ -150,7 +152,7 @@ export default {
       ],
     }
   },
-  components: {},
+  components: {VuxTreeSelect},
   created() {
     this.citys = this.generateTree();
     console.log(this.citys)

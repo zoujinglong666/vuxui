@@ -67,7 +67,7 @@ export const routes = [{
     }
 }, {
     path: '/collapse', component: myCollapse, meta: {
-        title: "数据复选框"
+        title: "折叠面板"
     }
 }, {
     path: '/treeSelect', component: myTreeSelect, meta: {
@@ -83,11 +83,11 @@ export const routes = [{
     }
 }, {
     path: "/tab", component: myTab, meta: {
-        title: "数据复选框"
+        title: "标签页"
     }
 }, {
     path: "/popup", component: myPopup, meta: {
-        title: "数据复选框"
+        title: "弹出层"
     }
 }, {
     path: "/backTop", component: myBackTop, meta: {
@@ -105,7 +105,7 @@ export const routes = [{
 
 }, {
     path: "/picker", component: myPicker, meta: {
-        title: "旋转器"
+        title: "选择器"
     }
 }, {
     path: "/overlay", component: myOverlay, meta: {
