@@ -1,13 +1,10 @@
 <template>
   <div class="data" style="height: 667px;overflow: auto">
     <div v-for="item  in 10">
-
       <div class="item">{{ item }}</div>
-
     </div>
     <vux-back-top target=".data"></vux-back-top>
   </div>
-
 </template>
 
 <script>
@@ -30,5 +27,9 @@ export default {
   width: 100%;
   height: 180px;
   border: 1px solid #eee;
+  text-align: center;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
 }
 </style>
