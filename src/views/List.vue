@@ -31,16 +31,16 @@ export default {
     }
   },
   created() {
-    for (let i = 1; i < 100000; i++) {
+    for (let i = 1; i < 1000; i++) {
       this.list.push({
         id: i,
         key: Math.random().toString(36).slice(-8),
         words: 'word-' + i,
-        content: 'content-' + i,
+        content: i + '字符内容'.repeat(Math.random() * 20),
         height: Math.random() * 200,
       });
     }
-  },
+    }
 
 
 }

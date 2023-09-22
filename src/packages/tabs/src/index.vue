@@ -47,7 +47,7 @@ export default {
       type: [Number, String], default: 40
     },
     lineHeight: {
-      type: [Number, String], default: 2
+      type: [Number, String], default: 3
     },
     ellipsis: {
       type: Boolean

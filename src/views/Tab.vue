@@ -2,82 +2,8 @@
 
   <div>
     <vux-tabs v-model="activeIndex">
-      <vux-tab title="尤">
-        尤雨溪我爱你1
-        尤雨溪我爱你1
-        尤雨溪我爱你1
-        尤雨溪我爱你1
-        尤雨溪我爱你1
-        尤雨溪我爱你1
-        尤雨溪我爱你1
-        尤雨溪我爱你1
-        尤雨溪我爱你1
-        尤雨溪我爱你1
-        尤雨溪我爱你1
-        尤雨溪我爱你1
-        尤雨溪我爱你1
-        尤雨溪我爱你1
-        尤雨溪我爱你1
-      </vux-tab>
-      <vux-tab title="雨">
-        尤雨溪我爱你2
-        尤雨溪我爱你2
-        尤雨溪我爱你2
-        尤雨溪我爱你2
-        尤雨溪我爱你2
-        尤雨溪我爱你2
-        尤雨溪我爱你2
-        尤雨溪我爱你2
-      </vux-tab>
-      <vux-tab title="溪">
-        尤雨溪我爱你3
-        尤雨溪我爱你3
-        尤雨溪我爱你3
-        尤雨溪我爱你3
-        尤雨溪我爱你3
-        尤雨溪我爱你3
-        尤雨溪我爱你3
-        尤雨溪我爱你3
-        尤雨溪我爱你3
-        尤雨溪我爱你3
-      </vux-tab>
-      <vux-tab title="我">
-        尤雨溪我爱你4
-        尤雨溪我爱你4
-        尤雨溪我爱你4
-        尤雨溪我爱你4
-        尤雨溪我爱你4
-        尤雨溪我爱你4
-        尤雨溪我爱你4
-        尤雨溪我爱你4
-        尤雨溪我爱你4
-        尤雨溪我爱你4
-        尤雨溪我爱你4
-        尤雨溪我爱你4
-      </vux-tab>
-      <vux-tab title="爱">
-        尤雨溪我爱你5
-        尤雨溪我爱你5
-        尤雨溪我爱你5
-        尤雨溪我爱你5
-        尤雨溪我爱你5
-        尤雨溪我爱你5
-        尤雨溪我爱你5
-        尤雨溪我爱你5
-        尤雨溪我爱你5
-      </vux-tab>
-      <vux-tab title="你">
-        尤雨溪我爱你6
-        尤雨溪我爱你6
-        尤雨溪我爱你6
-        尤雨溪我爱你6
-        尤雨溪我爱你6
-        尤雨溪我爱你6
-        尤雨溪我爱你6
-        尤雨溪我爱你6
-        尤雨溪我爱你6
-        尤雨溪我爱你6
-        尤雨溪我爱你6
+      <vux-tab v-for="item in tabData" :key="item" :title="item">
+        {{ item }}
       </vux-tab>
     </vux-tabs>
 
@@ -87,10 +13,27 @@
 
 <script>
 
+import VuxTab from "@/packages/tab/src/index.vue";
+import VuxTabs from "@/packages/tabs/src/index.vue";
+
 export default {
   name: "Tab",
+  components: {VuxTabs, VuxTab},
   data() {
-    return {activeIndex: 0, value: "",}
+    return {
+      activeIndex: 0,
+      value: "",
+      tabData: []
+    }
+  },
+  mounted() {
+    this.$nextTick(() => {
+      this.tabData = Array.from({length: 5}, (_, i) => i + 1).map(item => {
+        return "标签" + item;
+      })
+    })
+
+
   },
   methods: {},
 

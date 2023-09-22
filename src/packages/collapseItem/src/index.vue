@@ -82,6 +82,7 @@ export default {
 
 <style lang="less" scoped>
 .vux-collapse-item-header {
+  background: #fff;
   position: relative;
   color: #303133;
   font-weight: 500;
@@ -90,49 +91,41 @@ export default {
   justify-content: space-between;
   align-items: center;
   height: 40px;
+  padding: 0 16px;
+  box-sizing: border-box;
+  border-radius: 2px;
+}
 
+.vux-collapse-item-header .vux-collapse-item-ellipsis {
+  width: 200px;
+  word-break: break-all;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  line-clamp: 1;
+  -webkit-line-clamp: 1;
+  overflow: hidden;
+}
 
-  .vux-collapse-item-ellipsis {
-    width: 200px;
-    word-break: break-all;
-    text-overflow: ellipsis;
-    display: -webkit-box;
-    -webkit-box-orient: vertical;
-    line-clamp: 1;
-    -webkit-line-clamp: 1; /* 这里是超出几行省略 */
-    overflow: hidden;
-  }
+.vux-collapse-item-header.disabled {
+  opacity: 0.6 !important;
+  cursor: not-allowed !important;
+}
 
-  &.disabled {
-    opacity: 0.6 !important;
-    cursor: not-allowed !important;
-  }
+.vux-collapse-item-header .icon.up {
+  transition: all 0.5s ease-in-out;
+  transform: rotate(180deg);
+}
 
-  .icon {
-
-    &.up {
-      transition: all 0.5s ease-in-out;
-      transform: rotate(180deg);
-    }
-
-    &.down {
-      transition: all 0.5s ease-in-out;
-    }
-
-  }
-
+.vux-collapse-item-header .icon.down {
+  transition: all 0.5s ease-in-out;
 }
 
 .vux-collapse-item-body {
   box-sizing: border-box;
   padding: 0 10px;
-  //min-height: 40px;
-  //line-height: 40px;
-
   width: 100%;
   height: auto;
-
-
 }
 
 .vux-collapse-item:last-child .vux-collapse-item-header {
@@ -145,14 +138,15 @@ export default {
 
 .vux-collapse-item-header::after {
   position: absolute;
-  box-sizing: border-box;
   content: " ";
   pointer-events: none;
   bottom: 0;
-
+  padding: 0 16px;
   border-bottom: 1px solid #e9e9e9;
   width: 100%;
   transform: scaleY(.5);
+  box-sizing: border-box;
+  border-radius: 1px;
 }
 
 </style>
