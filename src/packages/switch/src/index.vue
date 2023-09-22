@@ -110,7 +110,6 @@ export default {
   border-radius: 26px;
   text-align: center;
   transition: background-color 0.3s cubic-bezier(0.25, 0.01, 0.25, 1);
-  box-shadow: 0 0 0 0.5px #e2e0e0;
   min-width: 40px;
   padding: 0 4px;
   border: 0;
@@ -167,14 +166,6 @@ export default {
     animation: loading 1s cubic-bezier(0.25, 0.01, 0.25, 1) infinite;
   }
 
-  @-webkit-keyframes loading {
-    from {
-      transform: rotatez(0deg);
-    }
-    to {
-      transform: rotatez(360deg);
-    }
-  }
   @keyframes loading {
     from {
       transform: rotatez(0deg);
@@ -185,9 +176,7 @@ export default {
   }
 }
 
-
 .vux_switch-ball {
-
   transition: all 0.3s cubic-bezier(0.25, 0.01, 0.25, 1);
   position: absolute;
   left: 1px;

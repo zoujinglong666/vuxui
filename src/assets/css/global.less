@@ -3,6 +3,7 @@ body {
   line-height: 1.5;
   box-sizing: border-box;
   -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
 }
 
 * {
@@ -15,38 +16,16 @@ p {
   padding: 0;
 }
 
-/*
-  1. Use a more-intuitive box-sizing model.
-*/
-*, *::before, *::after {
-  box-sizing: border-box;
-}
-
-/*
-  2. Remove default margin
-*/
-* {
-  margin: 0;
-}
-
-/*
-  3. Allow percentage-based heights in the application
-*/
 html, body {
   height: 100%;
   width: 100%;
   overflow-x: hidden;
 }
-
-
 img, picture, video, canvas, svg {
   display: block;
   max-width: 100%;
 }
 
-/*
-  9. Create a root stacking context
-*/
 #root, #__next {
   isolation: isolate;
 }
