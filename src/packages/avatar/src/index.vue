@@ -38,7 +38,7 @@ export default {
   },
   computed: {
     avatarText() {
-      return this.text.charAt(0)
+      return this.text
     },
     badgeVal() {
       if (this.badge) {

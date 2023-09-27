@@ -5,21 +5,21 @@
             ref="canvas"
             :height="canvasHeight" :style="{backgroundColor:bgColor}"
             :width="canvasWidth"
-
     ></canvas>
-    <!--    <div v-if="btnType==='icon'">-->
-    <!--      <div style="display: flex;justify-content: space-around;padding: 0 20px">-->
-    <!--        &lt;!&ndash;        todo&ndash;&gt;-->
-    <!--        <vux-button size="small" @click="eraserCanvas" :type="isEraser?'success':'default'" circle>橡</vux-button>-->
-    <!--        <vux-button size="small" @click="revokeCanvas" circle>撤</vux-button>-->
-    <!--        <vux-button size="small" @click="antiCancellationCanvas" circle >反</vux-button>-->
-    <!--        <vux-button size="small" @click="clearCanvas" circle icon="iconfont icon-delete" type="danger"></vux-button>-->
-    <!--        <vux-button size="small" @click="exportCanvas" type="primary" circle>确</vux-button>-->
-    <!--      </div>-->
-    <!--    </div>-->
+    <div v-if="btnType==='icon'">
+      <div style="display: flex;justify-content: space-around;padding: 0 20px">
+        <vux-button :type="isEraser?'success':'default'" circle size="small" @click="eraserCanvas">橡</vux-button>
+        <vux-button circle size="small" @click="revokeCanvas">撤</vux-button>
+        <vux-button circle size="small" @click="antiCancellationCanvas">反</vux-button>
+        <vux-button circle icon="iconfont icon-delete" size="small" type="danger" @click="clearCanvas"></vux-button>
+        <vux-button circle size="small" type="primary" @click="exportCanvas">确</vux-button>
+      </div>
+    </div>
     <div v-if="btnType==='text'">
-      <vux-button round size="small" type="danger" @click="clearCanvas">重签</vux-button>
-      <vux-button round size="small" type="primary" @click="exportCanvas">确认</vux-button>
+      <vux-space style="margin-top: 12px">
+        <vux-button round size="small" type="danger" @click="clearCanvas">重签</vux-button>
+        <vux-button round size="small" type="primary" @click="exportCanvas">确认</vux-button>
+      </vux-space>
     </div>
 
   </div>
@@ -28,8 +28,12 @@
 
 <script>
 
+import VuxSpace from "@/packages/space/src/index.vue";
+import VuxButton from "@/packages/button/src/index.vue";
+
 export default {
   name: "vuxCanvas",
+  components: {VuxButton, VuxSpace},
   props: {
     //画板颜色
     bgColor: {
@@ -320,5 +324,8 @@ export default {
 
 <style lang="less" scoped>
 
-
+#canvas {
+  border: 1px solid #eee;
+  border-radius: 8px;
+}
 </style>

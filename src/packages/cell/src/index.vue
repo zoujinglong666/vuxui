@@ -21,6 +21,7 @@ export default {
       type: String,
       default: ""
     },
+
     //左侧标题
     title: {
       type: [Number, String]

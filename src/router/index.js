@@ -26,6 +26,11 @@ import mySegmented from '../views/Segmented.vue'
 import myBottomSheet from '../views/BottomSheet.vue'
 import mySlider from '../views/Slider.vue'
 import myCircleProgress from '../views/CircleProgress.vue'
+import myCanvas from '../views/Canvas.vue'
+import myAvatar from '../views/Avatar.vue'
+import mySteps from '../views/Step.vue'
+import myStepper from '../views/Stepper.vue'
+import myNoticebar from '../views/NoticeBar.vue'
 
 Vue.use(VueRouter)
 export const routes = [{
@@ -147,6 +152,51 @@ export const routes = [{
         }
 
     },
+    {
+        path: "/canvas",
+        component: myCanvas,
+        meta: {
+            title: "签字"
+        }
+
+    },
+    {
+        path: "/avatar",
+        component: myAvatar,
+        meta: {
+            title: "头像"
+        }
+
+    },
+    {
+        path: "/steps",
+        component: mySteps
+        ,
+        meta: {
+            title: "步骤条"
+        }
+
+    },
+
+    {
+        path: "/stepper",
+        component: myStepper
+        ,
+        meta: {
+            title: "步进器"
+        }
+
+    },
+    {
+        path: "/noticebar",
+        component: myNoticebar
+        ,
+        meta: {
+            title: "通知滚动"
+        }
+
+    },
+
 
     // {
     //     path: "/swipe", component: mySwipe

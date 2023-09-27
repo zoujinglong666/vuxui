@@ -42,6 +42,7 @@ import vuxPicker from './picker/index'
 import vuxBottomSheet from './bottomSheet/index'
 import vuxCircleProgress from './circleProgress'
 import Message from "@/packages/message/index";
+import vuxStepper from "@/packages/steper/src/index.vue";
 // 将各个封装的组件使用一个数组保存，便于统一注册
 const components = [
     vuxRadio,
@@ -80,7 +81,8 @@ const components = [
     vuxTabs,
     vuxTab,
     vuxPopup, vuxBackTop, vuxPicker, vuxBottomSheet,
-    vuxCircleProgress
+    vuxCircleProgress,
+    vuxStepper,
 ]
 
 // 使用定义注册函数

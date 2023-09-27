@@ -4,7 +4,7 @@
       <button v-show="showMinus" :disabled="disabledMinusBtn" :style="[disabledMinusBtn,buttonStyle]"
               class="vux_stepper_btn minus"
               @click="handleMinus">
-        <x-icon class="vux_stepper_svg" size="20" type="ios-minus-empty"></x-icon>
+        -
       </button>
       <!--      inputmode="decimal "-->       <!--带小数点的键盘-->
       <input
@@ -22,13 +22,13 @@
       <button v-show="showPlus" :disabled="disabledPlusBtn" :style="[disabledPlusBtn,buttonStyle]"
               class="vux_stepper_btn plus"
               @click="handlePlus">
-        <x-icon class="vux_stepper_svg" size="20" type="ios-plus-empty"></x-icon>
+        +
       </button>
     </div>
   </div>
 </template>
 <script>
-import {floatAdd} from "../utils/util";
+
 
 const addUnit = (val, unit = 'px') => {
   return Number(val) + unit
@@ -38,7 +38,7 @@ const disabled = {
   cursor: 'not-allowed'
 }
 export default {
-  name: "vueStepper",
+  name: "vuxStepper",
   props: {
     value: {
       type: [Number, String]
@@ -49,6 +49,7 @@ export default {
     },
     max: {
       type: [Number],
+      default: Infinity
     },
     autoFixed: {
       type: Boolean
@@ -92,6 +93,9 @@ export default {
       default: false
     },
     disableInput: {
+      type: Boolean,
+    },
+    disabled: {
       type: Boolean,
     },
     //保留一位小数
@@ -149,7 +153,7 @@ export default {
       if (this.currentValue <= this.min) {
         return
       }
-      let value = this.format(floatAdd(+this.currentValue, -this.step));
+      let value = this.format(this.myAdd(+this.currentValue, -this.step));
       this.changeValueBtn(value)
       this.$emit('minus')
     },
@@ -157,7 +161,8 @@ export default {
       if (this.currentValue >= this.max) {
         return
       }
-      let value = this.format(floatAdd(+this.currentValue, +this.step));
+      const res = this.myAdd(+this.currentValue, +this.step);
+      let value = this.format(this.myAdd(+this.currentValue, +this.step));
       this.changeValueBtn(value)
       this.$emit('plus')
 
@@ -199,12 +204,19 @@ export default {
         return Math.floor(numValue);
       }
       return isNaN(numValue) || numValue < min ? min : numValue > max ? max : numValue;
+    },
+
+    myAdd(num1, num2) {
+      const num1Digits = (num1.toString().split('.')[1] || '').length;
+      const num2Digits = (num2.toString().split('.')[1] || '').length;
+      const baseNum = Math.pow(10, Math.max(num1Digits, num2Digits));
+      return (num1 * baseNum + num2 * baseNum) / baseNum;
     }
-
-
   }
 
+
 }
+
 </script>
 
 <style lang="less" scoped>
@@ -223,6 +235,7 @@ export default {
     color: #323233;
     font-size: 14px;
   }
+
   .vux_stepper_btn {
     box-sizing: border-box;
     border: 0;
@@ -238,6 +251,7 @@ export default {
       border-radius: 0 4px 4px 0;
     }
   }
+
   .vux_stepper_svg {
     fill: #000;
   }
