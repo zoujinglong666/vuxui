@@ -21,10 +21,11 @@
 import VuxButton from "@/packages/button/src/index.vue";
 import VuxFab from "@/packages/fab/src/index.vue";
 import VuxSwipeCell from "@/packages/swipeCell/src/index.vue";
+import VuxDivider from "@/packages/divider/src/index.vue";
 
 export default {
   name: "SwipeCell",
-  components: {VuxSwipeCell, VuxFab, VuxButton},
+  components: {VuxDivider, VuxSwipeCell, VuxFab, VuxButton},
 
 
   methods: {

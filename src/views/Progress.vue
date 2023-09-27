@@ -1,32 +1,26 @@
 <template>
-  <div>
-    <p>
-      基本用法
-    </p>
+  <DemoPage>
+    <DemoBlock title="基本用法"></DemoBlock>
     <vux-progress v-model="value">
-
     </vux-progress>
-    <p>线条粗细</p>
+    <DemoBlock title="线条粗细"></DemoBlock>
     <vux-progress v-model="value" size="base">
-
     </vux-progress>
-
-    <p>样式定制</p>
-    <vux-progress v-model="value" strokeColor="red" tipText="粉色">
-
+    <DemoBlock title="样式定制"></DemoBlock>
+    <vux-progress v-model="value" strokeColor="#07c160" tipText="绿色">
     </vux-progress>
-    <vux-progress v-model="value1" strokeColor="pink" tipText="粉色">
-
+    <vux-progress v-model="value1" strokeColor="#ff976a" tipText="橙色">
     </vux-progress>
-    <vux-progress v-model="value2" strokeColor="blue" tipText="蓝色">
-
+    <vux-progress v-model="value2" strokeColor="rgb(114, 50, 221)" tipText="紫色">
     </vux-progress>
-  </div>
+  </DemoPage>
 
 </template>
 
 <script>
 import VuxProgress from "@/packages/process/src/index.vue";
+import DemoBlock from "@/components/DemoBlock.vue";
+import DemoPage from "@/components/DemoPage.vue";
 
 export default {
   name: "Progress",
@@ -37,7 +31,7 @@ export default {
       value2: 70,
     }
   },
-  components: {VuxProgress}
+  components: {DemoPage, DemoBlock, VuxProgress}
 
 }
 </script>

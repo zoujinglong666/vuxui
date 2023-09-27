@@ -1,11 +1,9 @@
 <template>
   <div>
 
-
     <vux-divider>
       基本用法
     </vux-divider>
-
 
     <vux-space>
 

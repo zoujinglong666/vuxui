@@ -77,31 +77,31 @@
 
       <div class="confirm-button">
         <div style="display: flex;align-items: center;width: 100%">
-
-          <vux-button
-              v-if="singleDate.length||rangeDateList.length||multipleDateList.length"
-              :type="theme"
-              block
-              plain round @click="clearDate">
-            清空
-          </vux-button>
-
-          <vux-button
-              v-else
-              :type="theme"
-              bg-color="#f5f7fa"
-              block
-              no-border
-              plain round @click="handleClose">
-            取消
-          </vux-button>
-          <vux-button
-              v-if="showConfirm"
-              :disabled="confirmTextByRange"
-              :type="theme" block
-              round @click="handleConfirm">
-            {{ confirmTextByRange ? `请选择${endText}时间` : confirmText }}
-          </vux-button>
+          <vux-space size="12">
+            <vux-button
+                v-if="singleDate.length||rangeDateList.length||multipleDateList.length"
+                :type="theme"
+                block
+                plain round @click="clearDate">
+              清空
+            </vux-button>
+            <vux-button
+                v-else
+                :type="theme"
+                bg-color="#f5f7fa"
+                block
+                no-border
+                plain round @click="handleClose">
+              取消
+            </vux-button>
+            <vux-button
+                v-if="showConfirm"
+                :disabled="confirmTextByRange"
+                :type="theme" block
+                round @click="handleConfirm">
+              {{ confirmTextByRange ? `请选择${endText}时间` : confirmText }}
+            </vux-button>
+          </vux-space>
         </div>
       </div>
     </div>
@@ -113,11 +113,14 @@
 import calendar from "./calendar.js";
 import {dateFormat, daysFromNow, getCountDayByDate, getRangeDates, makeUpForZero} from "./date-utils.js";
 import VuxPopup from "@/packages/popup/index.vue";
+import VuxTag from "@/packages/tag/src/index.vue";
+import VuxButton from "@/packages/button/src/index.vue";
+import VuxSpace from "@/packages/space/src/index.vue";
 
 const SECONDS_PER_DAY = 24 * 60 * 60;
 export default {
   name: "VuxCalendar",
-  components: {VuxPopup},
+  components: {VuxSpace, VuxButton, VuxTag, VuxPopup},
   data() {
     return {
       weeks: ["日", "一", "二", "三", "四", "五", "六"],

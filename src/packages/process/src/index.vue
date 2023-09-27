@@ -153,12 +153,12 @@ export default {
     width: 100%;
 
     &.large {
-      height: 14px;
+      height: 12px;
       border-radius: 14px;
     }
 
     &.base {
-      height: 10px;
+      height: 8px;
       border-radius: 10px;
     }
 

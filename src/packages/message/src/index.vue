@@ -45,7 +45,7 @@ export default {
     controlTop() {
       return {
         // 距离顶部的位置，取决于创建了几个message
-        top: `${12 + (this.count - 1) * 60}px`,
+        top: `${12 + (this.count - 1) * 48}px`,
       };
     },
   },
@@ -102,7 +102,7 @@ export default {
   border-radius: 4px; // 加圆角好看一些
   background-color: #edf2fc;
   // 过渡效果
-  transition: opacity 0.3s, transform 0.4s, top 0.4s;
+  transition: opacity 0.3s, transform 0.3s, top 0.3s;
   display: flex; // 开启弹性盒垂直居中
   align-items: center;
 }

@@ -25,6 +25,7 @@ import myList from '../views/List.vue'
 import mySegmented from '../views/Segmented.vue'
 import myBottomSheet from '../views/BottomSheet.vue'
 import mySlider from '../views/Slider.vue'
+import myCircleProgress from '../views/CircleProgress.vue'
 
 Vue.use(VueRouter)
 export const routes = [{
@@ -41,7 +42,7 @@ export const routes = [{
     }
 }, {
     path: '/checkBox', component: myCheckBox, meta: {
-        title: "单选框"
+        title: "复选框"
     }
 }, {
     path: '/cell', component: myCell,
@@ -138,6 +139,15 @@ export const routes = [{
         }
 
     },
+    {
+        path: "/circleProgress",
+        component: myCircleProgress,
+        meta: {
+            title: "环形进度条"
+        }
+
+    },
+
     // {
     //     path: "/swipe", component: mySwipe
     // },

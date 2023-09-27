@@ -72,14 +72,15 @@ export default {
     rate: {
       type: [Number, String],
       default: 100,
-    }, value: {
+    },
+    value: {
       type: [Number, String],
       default: 40,
     },
     color: {
       type: [Array, String],
       default: () => {
-        return ['#1989fa', 'red']
+        return ['#1989fa', '#1989fa']
       }
     },
     fill: {

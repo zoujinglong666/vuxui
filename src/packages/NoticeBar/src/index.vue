@@ -46,10 +46,9 @@ export default {
   },
   methods: {
     handleClose(e) {
-      console.log(e)
       this.$emit('close', e)
-    }, handleClick(e) {
-      console.log(e)
+    },
+    handleClick(e) {
       this.$emit('click')
     },
 

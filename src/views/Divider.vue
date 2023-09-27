@@ -1,27 +1,29 @@
 <template>
   <div>
-
-    <p>基本用法</p>
+    <DemoBlock title="基本用法"></DemoBlock>
     <vux-divider></vux-divider>
-    <p>展示文本</p>
+    <DemoBlock title="展示文本"></DemoBlock>
     <vux-divider>2002-2023</vux-divider>
-    <p>内容位置</p>
+    <DemoBlock title="内容位置"></DemoBlock>
     <vux-divider contentPosition="left">再见2022</vux-divider>
     <vux-divider contentPosition="right">欢迎2023</vux-divider>
-    <p>虚线</p>
+    <DemoBlock title="虚线"></DemoBlock>
+
     <vux-divider lineShape="dashed">
       虚线
     </vux-divider>
-    <p>自定义样式</p>
+    <DemoBlock title="自定义样式"></DemoBlock>
     <vux-divider borderColor="blue" contentColor="blue">自定义样式</vux-divider>
-
   </div>
 </template>
 
 <script>
+import DemoBlock from "@/components/DemoBlock.vue";
+import VuxDivider from "@/packages/divider/src/index.vue";
+
 export default {
   name: "Divider",
-  components: {}
+  components: {VuxDivider, DemoBlock}
 
 }
 </script>

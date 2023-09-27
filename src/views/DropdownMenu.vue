@@ -1,21 +1,16 @@
 <template>
   <div>
-    <p>基本用法</p>
+    <demo-block title="基本用法"></demo-block>
     <vux-dropdown-menu>
       <vux-dropdown-item v-model="value1" :options="option1"></vux-dropdown-item>
       <vux-dropdown-item v-model="value2" :options="option2"></vux-dropdown-item>
     </vux-dropdown-menu>
-
-
-    <p>
-      自定义选中颜色
-    </p>
+    <demo-block title="自定义选中颜色"></demo-block>
     <vux-dropdown-menu activeColor="red">
       <vux-dropdown-item v-model="value1" :options="option1"></vux-dropdown-item>
       <vux-dropdown-item v-model="value2" :options="option2"></vux-dropdown-item>
-
     </vux-dropdown-menu>
-    <p>自定义内容</p>
+    <demo-block title="自定义内容"></demo-block>
     <vux-dropdown-menu activeColor="red">
       <vux-dropdown-item v-model="value1" :options="option1"></vux-dropdown-item>
       <vux-dropdown-item title="slot">
@@ -46,21 +41,20 @@
       </vux-dropdown-item>
 
     </vux-dropdown-menu>
-    <p>向上展开</p>
+    <demo-block title="向上展开"></demo-block>
     <vux-dropdown-menu direction="up">
       <vux-dropdown-item v-model="value1" :options="option1"></vux-dropdown-item>
       <vux-dropdown-item v-model="value2" :options="option2"></vux-dropdown-item>
 
     </vux-dropdown-menu>
-    <p>禁用菜单</p>
+    <demo-block title="禁用菜单"></demo-block>
     <vux-dropdown-menu>
       <vux-dropdown-item v-model="value1" :options="option1" disabled></vux-dropdown-item>
       <vux-dropdown-item v-model="value2" :options="option2" disabled></vux-dropdown-item>
 
     </vux-dropdown-menu>
-    <p>
-      多列模式
-    </p>
+
+    <demo-block title="多列模式"></demo-block>
     <vux-dropdown-menu>
       <vux-dropdown-item v-model="value1" :cols="3" :options="option1"></vux-dropdown-item>
       <vux-dropdown-item v-model="value2" :cols="3" :options="option2"></vux-dropdown-item>
@@ -72,8 +66,13 @@
 
 <script>
 
+import VuxDropdownMenu from "@/packages/dropDownMenu/src/index.vue";
+import VuxDropdownItem from "@/packages/dropDownMenuItem/src/index.vue";
+import DemoBlock from "@/components/DemoBlock.vue";
+
 export default {
   name: "dropDownMenu",
+  components: {DemoBlock, VuxDropdownItem, VuxDropdownMenu},
   data() {
     return {
       value1: 0,

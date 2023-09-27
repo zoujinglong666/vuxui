@@ -1,38 +1,25 @@
 <template>
-  <div>
-    <p>基本用法</p>
-    <vux-switch v-model="value" activeText="开启"></vux-switch>
-    <p>禁用状态</p>
-    <vux-switch v-model="disabledValue" disabled></vux-switch>
 
-    <p>加载状态</p>
+  <DemoPage>
+    <demo-block title="基本用法"></demo-block>
     <vux-switch v-model="loadingValue" activeText="开启" inactiveText="关闭"></vux-switch>
-
-    <p>自定义颜色</p>
-    <vux-switch v-model="value" activeColor="red"></vux-switch>
-
-    <p>搭配单元格</p>
-    <vux-cell title="标题">
-      <template>
-        <vux-switch v-model="value"></vux-switch>
-      </template>
-    </vux-cell>
-  </div>
+  </DemoPage>
 </template>
 
 <script>
 import VuxSwitch from "@/packages/switch/src/index.vue";
+import VuxCell from "@/packages/cell/src/index.vue";
+import DemoBlock from "@/components/DemoBlock.vue";
+import DemoPage from "@/components/DemoPage.vue";
 
 export default {
   name: "switch",
   data() {
     return {
-      value: true,
-      disabledValue: true,
       loadingValue: true
     }
   },
-  components: {VuxSwitch}
+  components: {DemoPage, DemoBlock, VuxCell, VuxSwitch}
 
 }
 </script>

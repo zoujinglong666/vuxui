@@ -19,9 +19,6 @@
         <slot></slot>
       </div>
     </transition-height>
-    <div v-show="isOpen" class="vux-collapse-item-body">
-      <slot></slot>
-    </div>
   </div>
 </template>
 
@@ -123,7 +120,8 @@ export default {
 
 .vux-collapse-item-body {
   box-sizing: border-box;
-  padding: 0 10px;
+  padding: 12px 16px;
+  background: #fff;
   width: 100%;
   height: auto;
 }
@@ -136,14 +134,15 @@ export default {
   border-bottom: none;
 }
 
-.vux-collapse-item-header::after {
+.vux-collapse-item-header:after {
   position: absolute;
   content: " ";
   pointer-events: none;
+  right: 16px;
+  left: 16px;
   bottom: 0;
-  padding: 0 16px;
   border-bottom: 1px solid #e9e9e9;
-  width: 100%;
+  //width: 100%;
   transform: scaleY(.5);
   box-sizing: border-box;
   border-radius: 1px;

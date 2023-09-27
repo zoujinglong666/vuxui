@@ -55,6 +55,7 @@ export default {
   line-height: 46px;
   font-weight: 500;
   font-size: 16px;
+  padding: 0 16px;
   background-color: #FFFFFF;
   border-bottom: 1px solid #eeeeee;
 
@@ -64,7 +65,6 @@ export default {
     bottom: 0;
     display: flex;
     align-items: center;
-    padding: 0 8px;
     font-size: 13px;
   }
 
@@ -81,7 +81,6 @@ export default {
     top: 0;
     bottom: 0;
     display: flex;
-    padding: 0 8px;
 
   }
 }

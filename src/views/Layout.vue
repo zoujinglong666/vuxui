@@ -1,16 +1,15 @@
 <template>
   <div>
 
-  <vux-button
-        v-for="item in components"
-        :key="item.path"
-        :to="item.path"
-        block
-        class="vux__layout"
-    >{{
-        item.path
-      }}
-    </vux-button>
+  <vux-cell
+      v-for="item in components"
+      :key="item.path"
+      :title="item.title"
+      :to="item.path"
+      block
+      is-link
+  >
+  </vux-cell>
   </div>
 </template>
 
@@ -18,10 +17,11 @@
 import {routes} from "@/router";
 import Button from "@/views/Button";
 import VuxButton from "@/packages/button/src/index.vue";
+import VuxCell from "@/packages/cell/src/index.vue";
 
 export default {
   name: "layout",
-  components: {VuxButton, Button},
+  components: {VuxCell, VuxButton, Button},
   data() {
     return {
       components: []
@@ -38,7 +38,8 @@ export default {
       this.components = routes.map(item => {
         return {
           ...item,
-          path: item.path.substring(1)
+          path: item.path.substring(1),
+          title: item.path.substring(1) + item.meta.title
         }
       })
     }

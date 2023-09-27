@@ -4,7 +4,6 @@
       <span class="vux__cell__title">{{ title }}</span>
       <div class="vux__cell__label">{{ label }}</div>
     </div>
-
     <slot>
       <span class="vux__cell__value">
         {{ value }}
@@ -12,8 +11,6 @@
     </slot>
     <span v-if="isLink" class="vux__cell__isLink">></span>
   </div>
-
-
 </template>
 
 <script>
@@ -45,6 +42,10 @@ export default {
   methods: {
     handleClick(e) {
       this.$emit('click', e)
+      if (this.to) {
+        this.$router.push(this.to)
+      }
+
 
     }
   }
@@ -53,15 +54,17 @@ export default {
 
 <style lang="less" scoped>
 .vux__cell {
+  background: #fff;
+  position: relative;
+  color: #303133;
+  font-weight: 500;
+  font-size: 14px;
   display: flex;
-  align-items: center;
   justify-content: space-between;
+  align-items: center;
   height: 44px;
-  background-color: #FFFFFF;
-  border-bottom: 1px solid #eeeeee;
-
+  padding: 0 16px;
   box-sizing: border-box;
-  padding: 0 8px;
 
   .vux__cell__title {
     font-size: 13px;
@@ -84,6 +87,18 @@ export default {
     color: #999999;
     font-weight: 500;
   }
+}
 
+.vux__cell:after {
+  position: absolute;
+  content: " ";
+  pointer-events: none;
+  right: 16px;
+  left: 16px;
+  bottom: 0;
+  border-bottom: 1px solid #e9e9e9;
+  //width: 100%;
+  transform: scaleY(.5);
+  box-sizing: border-box;
 }
 </style>

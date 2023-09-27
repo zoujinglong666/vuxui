@@ -1,12 +1,9 @@
 <template>
-
-
   <div>
     <vux-button @click="show=true">
       显示嵌套内容
     </vux-button>
     <vux-overlay :show.sync="show">
-
     </vux-overlay>
   </div>
 
@@ -14,11 +11,12 @@
 
 <script>
 import VuxOverlay from "@/packages/overlay/index.vue";
+import VuxButton from "@/packages/button/src/index.vue";
 
 export default {
   name: "Overlay",
 
-  components: {VuxOverlay},
+  components: {VuxButton, VuxOverlay},
   data() {
     return {
       show: false

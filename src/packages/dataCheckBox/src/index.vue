@@ -159,7 +159,9 @@ export default {
         case 'multiple':
           if (!this.multipleDateList.includes(item)) {
             if (this.multipleDateList.length === this.max) {
-             alert('超出可选数量')
+              this.$msg({
+                message: '超出可选数量', type: 'error'
+              })
               return
             }
             this.multipleDateList.push(item);
