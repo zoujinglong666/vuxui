@@ -1,7 +1,8 @@
 <template>
   <div class="vux__navbar">
     <div class="vux__navbar__left" @click="goBack">
-      <span>      返回
+      <span>
+        <ArrowLeft></ArrowLeft>
 </span>
     </div>
     <div class="vux__navbar__title"><span>
@@ -19,8 +20,11 @@
 </template>
 
 <script>
+import ArrowLeft from "@/components/ArrowLeft.vue";
+
 export default {
   name: "VuxNavbar",
+  components: {ArrowLeft},
   props: {
     title: String,
     leftText: {
