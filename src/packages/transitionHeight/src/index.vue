@@ -43,7 +43,7 @@ export default {
 
 <style scoped>
 .transitionWrap {
-  transition: height 0.2s linear;
+  transition: height 0.25s ease-in-out;
   overflow: hidden;
 }
 </style>

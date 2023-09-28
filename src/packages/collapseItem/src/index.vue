@@ -127,6 +127,8 @@ export default {
   background: #fff;
   width: 100%;
   height: auto;
+  color: #999;
+  font-size: 14px;
 }
 
 .vux-collapse-item:last-child .vux-collapse-item-header {
