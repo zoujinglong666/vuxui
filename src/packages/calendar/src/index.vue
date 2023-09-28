@@ -10,12 +10,14 @@
         </div>
       </div>
       <div class="select-year-month">
-        <span v-if="!disabledYear" class="round-arrow right" @click="switchYearDate('left')"><</span>
-        <span class="round-arrow left" @click="switchMonthDate('left')"><</span>
+        <span v-if="!disabledYear" @click="switchYearDate('left')">
+          <ArrowLeft></ArrowLeft>
+        </span>
+        <span @click="switchMonthDate('left')"> <ArrowLeft></ArrowLeft></span>
         <div @click="reset()">{{ y }}年{{ m }}月
         </div>
-        <span class="round-arrow left" @click="switchMonthDate('right')">></span>
-        <span v-if="!disabledYear" class="round-arrow right" @click="switchYearDate('right')">></span>
+        <span @click="switchMonthDate('right')"> <arrow-right></arrow-right></span>
+        <span v-if="!disabledYear" @click="switchYearDate('right')"><arrow-right></arrow-right></span>
       </div>
       <ul class="week-container">
         <li v-for="(item,index) in weeks" :key="index"
@@ -116,11 +118,13 @@ import VuxPopup from "@/packages/popup/index.vue";
 import VuxTag from "@/packages/tag/src/index.vue";
 import VuxButton from "@/packages/button/src/index.vue";
 import VuxSpace from "@/packages/space/src/index.vue";
+import ArrowLeft from "@/components/ArrowLeft.vue";
+import ArrowRight from "@/components/ArrowRight.vue";
 
 const SECONDS_PER_DAY = 24 * 60 * 60;
 export default {
   name: "VuxCalendar",
-  components: {VuxSpace, VuxButton, VuxTag, VuxPopup},
+  components: {ArrowRight, ArrowLeft, VuxSpace, VuxButton, VuxTag, VuxPopup},
   data() {
     return {
       weeks: ["日", "一", "二", "三", "四", "五", "六"],
@@ -847,24 +851,6 @@ li {
       background: #1989fa !important;
     }
   }
-
-  .round-arrow {
-    width: 16px;
-    height: 16px;
-    line-height: 16px;
-    text-align: center;
-    border-radius: 50%;
-    color: #fff;
-
-    &.left {
-      background-color: #989898
-    }
-
-    &.right {
-      background-color: #BEBEBE;
-    }
-  }
-
 
   .select-year-month {
     display: flex;

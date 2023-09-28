@@ -105,23 +105,11 @@ export default {
   right: 16px;
   left: 16px;
   bottom: 0;
-  border-bottom: 1px solid #e9e9e9;
-  //width: 100%;
+  border-bottom: 1px solid #eee;
   transform: scaleY(.5);
   box-sizing: border-box;
+  border-radius: 1px;
 
-  //&.border {
-  //  border-bottom: 1px solid #e9e9e9;
-  //
-  //}
-  //
-  //&.noBorder {
-  //  border: none;
-  //  border: 0;
-  //  border-bottom: 0px solid #e9e9e9;
-  //
-  //
-  //}
 
 }
 </style>

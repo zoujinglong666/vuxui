@@ -1,7 +1,9 @@
 <template>
   <div class="vux-doc-demo-block">
     <h2 v-if="title" class="vux-doc-demo-block__title">
-      {{ title }}
+      <slot>
+        {{ title }}
+      </slot>
     </h2>
   </div>
 </template>
