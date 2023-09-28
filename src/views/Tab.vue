@@ -5,7 +5,6 @@
       <vux-tab v-for="item in tabData" :key="item" :title="item">
         <div style="display: flex;align-items: center;justify-content: center;height: 200px">
           {{ item }}
-
         </div>
       </vux-tab>
     </vux-tabs>

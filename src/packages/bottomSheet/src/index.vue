@@ -1,6 +1,6 @@
 <template>
   <div>
-    <vux-overlay :show="calcShow" @click.native="handleClose"></vux-overlay>
+    <vux-overlay v-if="showMark" :show="calcShow" @click.native="handleClose"></vux-overlay>
     <transition :name="transitionName">
       <div v-show="calcShow"
            @touchcancel="endDrag"
@@ -63,9 +63,13 @@ export default {
     anchors: {
       type: Array,
       default: () => {
-        return [20, 30, 50, 70, 90]
+        return [20, 30, 50, 70, 80]
       }
 
+    },
+    showMark: {
+      type: Boolean,
+      default: false
     },
     show: {
       type: Boolean,
@@ -100,6 +104,10 @@ export default {
     closeOnClickOverlay: {
       type: Boolean,
       default: false
+    },
+    headerDrag: {
+      type: Boolean,
+      default: true
     },
 
 
@@ -208,11 +216,11 @@ export default {
       const touch = e.touches[0];
       this.deltaY = touch.clientY - this.startY;
       const moveY = this.deltaY + this.initHeight;
-      if (Math.abs(this.calcHeight) < MINI_BOTTOM_DISTANCE) {
-        this.$emit('update:show', false)
-        this.$emit('update:height', Math.abs(this.minHeight))
-        return;
-      }
+      // if (Math.abs(this.calcHeight) < MINI_BOTTOM_DISTANCE) {
+      //   this.$emit('update:show', false)
+      //   this.$emit('update:height', Math.abs(this.minHeight))
+      //   return;
+      // }
 
 
       this.calcHeight = -this.ease(moveY)
