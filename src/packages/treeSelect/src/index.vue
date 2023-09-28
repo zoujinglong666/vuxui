@@ -18,7 +18,7 @@
           {{ children.text }}
         </div>
         <div v-if="activeColorSelect(children,index)" :style="activeColorStyle(children)">
-          √
+          <Checkmark :color="activeColor" :style="activeColorStyle(children)"></Checkmark>
         </div>
       </div>
       <slot name="content">
@@ -30,8 +30,11 @@
 </template>
 
 <script>
+import Checkmark from "@/components/Checkmark.vue";
+
 export default {
   name: "VuxTreeSelect",
+  components: {Checkmark},
   data() {
     return {
       activeIdItem: {},

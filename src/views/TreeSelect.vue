@@ -1,25 +1,22 @@
 <template>
   <div>
-    <p>基本用法</p>
+    <DemoBlock title="基本用法">
+
+    </DemoBlock>
     <vux-tree-select v-model="index" :options="options">
 
     </vux-tree-select>
 
+    <DemoBlock title="多选模式">
 
-    <p>
-      多选模式
+    </DemoBlock>
 
-
-    </p>
     <vux-tree-select v-model="activeIndex1" :activeId.sync="activeId" :options="options">
 
     </vux-tree-select>
+    <DemoBlock title="自定义内容">
 
-    <p>
-      自定义内容
-    </p>
-
-
+    </DemoBlock>
     <vux-tree-select v-model="activeIndex" :options="items">
       <template #content>
         <img
@@ -41,6 +38,7 @@
 
 <script>
 import VuxTreeSelect from "@/packages/treeSelect/src/index.vue";
+import DemoBlock from "@/components/DemoBlock.vue";
 
 const areaList = {
   provinces: {
@@ -152,7 +150,7 @@ export default {
       ],
     }
   },
-  components: {VuxTreeSelect},
+  components: {DemoBlock, VuxTreeSelect},
   created() {
     this.citys = this.generateTree();
     console.log(this.citys)
