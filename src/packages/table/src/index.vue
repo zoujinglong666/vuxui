@@ -11,7 +11,7 @@
           <div v-if="item.hasOwnProperty('type')&&item.type=='checkbox'">
             <input v-model="isCheckAll" type="checkbox" @click="handleCheckAll"/>
           </div>
-          <div v-else style="display: flex;align-items: center;justify-content: center">
+          <div v-else style="display: flex;align-items: center;justify-content: center;color: #333">
             {{ item.label }}
             <div v-if="item.hasOwnProperty('sort')"
                  :class="[item.sortType==='asc'?'asc':'desc']"
@@ -65,9 +65,14 @@
   </div>
 </template>
 <script>
-import {floatAdd, floatDiv} from "src/utils/util"
-
+function myAdd(num1, num2) {
+  const num1Digits = (num1.toString().split('.')[1] || '').length;
+  const num2Digits = (num2.toString().split('.')[1] || '').length;
+  const baseNum = Math.pow(10, Math.max(num1Digits, num2Digits));
+  return (num1 * baseNum + num2 * baseNum) / baseNum;
+}
 export default {
+  name: "vuxTable",
   props: {
     editable: {
       type: Boolean,
@@ -91,7 +96,7 @@ export default {
     //表头颜色
     headColor: {
       type: String,
-      default: "#909399"
+      default: "#f1f1f1"
     },
     //表格背景颜色
     bgColor: {
@@ -270,18 +275,18 @@ export default {
     totalNum(item) {
       let total = 0
       this.tableData.forEach(el => {
-        total = floatAdd(total, Number(el[item.prop]))
+        total = myAdd(total, Number(el[item.prop]))
       })
       switch (item.totalType) {
         case "AVG":
-          return floatDiv(total, this.tableData.length)
+          return total / this.tableData.length
         case "SUM":
           return total
         default:
           return total
       }
     },
-    isNumber(val) {
+    isNumber(value) {
       return typeof value === 'number' && isFinite(value);
 
     }

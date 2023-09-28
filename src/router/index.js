@@ -31,6 +31,7 @@ import myAvatar from '../views/Avatar.vue'
 import mySteps from '../views/Step.vue'
 import myStepper from '../views/Stepper.vue'
 import myNoticebar from '../views/NoticeBar.vue'
+import myTable from '../views/Table.vue'
 
 Vue.use(VueRouter)
 export const routes = [{
@@ -196,6 +197,15 @@ export const routes = [{
         }
 
     },
+    {
+        path: "/table",
+        component: myTable
+        ,
+        meta: {
+            title: "表格"
+        }
+
+    },
 
 
     // {
@@ -203,7 +213,7 @@ export const routes = [{
     // },
 ]
 
-
+console.log(routes.length);
 const router = new VueRouter({
     // mode:'history',//这种模式路径没有#号，看上去好看一点
     mode: 'hash', // 这种模式路径#号,

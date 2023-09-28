@@ -73,17 +73,19 @@ export default {
         style.setAttribute("type", "text/css"); // 指定类型属性
         document.head.appendChild(style); // 给head标签加入此样式标签
         let sheet = style.sheet; // 给样式标签内加入一条css规则
+        let deviceWidth = window.innerWidth; // 获取设备宽度
+        let unit = deviceWidth > 600 ? 'px' : 'vw'; // 根据设备宽度选择单位，此处600为示例值，可根据实际情况调整
         sheet.insertRule(
             `
-            @keyframes scrollText {
-              from {
-                left: 100%;
-              }
-              to {
-                left: -${width}px;
-              }
-            }
-          `
+        @keyframes scrollText {
+          from {
+            left: 100%;
+          }
+          to {
+            left: -${width / deviceWidth * 100}vw; // 使用视口宽度作为单位
+          }
+        }
+      `
         );
       })
 

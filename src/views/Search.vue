@@ -15,7 +15,6 @@ export default {
   },
   methods: {
     search(val) {
-      console.log(val);
       this.$msg({
         type: "success",
         message: "搜索结果:" + val
