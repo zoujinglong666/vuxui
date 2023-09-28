@@ -43,7 +43,7 @@
             </span>
           </span>
           <slot v-else :name="context.prop" v-bind="item">
-            <div :style="context.width?'width:'+context.width+'px':''" class="uni-ellipsis"
+            <div :style="context.width?'width:'+context.width+'px':''" class="vux-ellipsis"
                  @click="handleItemClick(item,index)">{{
                 item[context.prop]
               }}
@@ -394,5 +394,12 @@ export default {
     right: -10px;
     bottom: -10px;
   }
+}
+
+.vux-ellipsis {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 14px;
 }
 </style>
