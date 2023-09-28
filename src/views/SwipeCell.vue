@@ -12,7 +12,7 @@
         <vux-button square style="height: 100%" type="danger"> 删除</vux-button>
       </template>
     </vux-swipe-cell>
-    <DemoBlock title="基础用法"></DemoBlock>
+    <DemoBlock title="自定义内容"></DemoBlock>
     <vux-swipe-cell>
       <template #left>
         <vux-button square style="height: 100%" type="primary">选择</vux-button>

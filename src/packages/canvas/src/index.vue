@@ -6,21 +6,15 @@
             :height="canvasHeight" :style="{backgroundColor:bgColor}"
             :width="canvasWidth"
     ></canvas>
-    <div v-if="btnType==='icon'">
-      <div style="display: flex;justify-content: space-around;padding: 0 20px">
-        <vux-button :type="isEraser?'success':'default'" circle size="small" @click="eraserCanvas">橡</vux-button>
-        <vux-button circle size="small" @click="revokeCanvas">撤</vux-button>
-        <vux-button circle size="small" @click="antiCancellationCanvas">反</vux-button>
-        <vux-button circle icon="iconfont icon-delete" size="small" type="danger" @click="clearCanvas"></vux-button>
-        <vux-button circle size="small" type="primary" @click="exportCanvas">确</vux-button>
-      </div>
-    </div>
-    <div v-if="btnType==='text'">
-      <vux-space style="margin-top: 12px">
-        <vux-button round size="small" type="danger" @click="clearCanvas">重签</vux-button>
-        <vux-button round size="small" type="primary" @click="exportCanvas">确认</vux-button>
-      </vux-space>
-    </div>
+
+    <img v-if="imgSrc" :src="imgSrc" alt="canvas">
+    <vux-space style="margin-top: 12px" wrap>
+      <vux-button size="small" type="danger" @click="clearCanvas">重签</vux-button>
+      <vux-button size="small" type="primary" @click="exportCanvas">确认</vux-button>
+      <vux-button :type="isEraser?'success':'default'" size="small" @click="eraserCanvas">橡皮檫</vux-button>
+      <vux-button size="small" @click="revokeCanvas">撤回</vux-button>
+      <vux-button size="small" @click="antiCancellationCanvas">反撤回</vux-button>
+    </vux-space>
 
   </div>
 
@@ -63,10 +57,7 @@ export default {
       type: Number,
       default: 3
     },
-    btnType: {
-      type: String,
-      default: 'text'
-    }
+
   },
   data() {
     return {
@@ -88,7 +79,9 @@ export default {
     //撤销
     revokeCanvas() {
       if (this.step === -1) {
-        this.$msg.warning("没事先画上两笔")
+        this.$msg({
+          message: '没事先画上两笔', type: 'error'
+        })
         return
       }
       //  记录每一步的轨迹
@@ -101,12 +94,11 @@ export default {
         canvasPic.onload = () => {
           cxt.drawImage(canvasPic, 0, 0);
         }
-
-
       } else {
-        this.$msg.warning("已经是最后一步了")
-        return
-
+        console.log(this.step)
+        this.$msg({
+          message: '已经是最后一步了', type: 'error'
+        })
       }
 
 
@@ -174,10 +166,7 @@ export default {
     handleMouseDown(e) {
       const canvas = this.$refs.canvas;
       const cxt = canvas.getContext("2d");
-      console.log(e)
       this.isPenClick = true;
-      // this.$emit('')
-
       if (e.clientX !== undefined) {
         this.startPoint = {
           x: e.offsetX,
@@ -325,7 +314,8 @@ export default {
 <style lang="less" scoped>
 
 #canvas {
-  border: 1px solid #eee;
+  border: 1px dotted #eee;
   border-radius: 8px;
+  margin-top: 8px;
 }
 </style>

@@ -9,7 +9,7 @@
       <!--      一行多列模式-->
       <div v-if="cols">
         <div class="vux-down-menu-container"
-           >
+        >
           <div v-for="(item,index) in options" :key="index"
                :class="[disabledByStyle(item),activeColorSelect(item)?'check-mark':'']"
                :style="{flexBasis:options.length>cols?(100/cols)-2+'%':(100/options.length)-2+'%'}"
@@ -22,10 +22,11 @@
       <!--      普通模式-->
       <div v-for="(item,key) in options" v-else :key="key" class="vux-down-menu-item"
            @click="handleClickItem(item)">
-        <div style="display: flex;justify-content: space-between;">
+        <div style="display: flex;justify-content: space-between;align-items: center;">
           <div :style="activeColorStyle(item)">{{ item.text }}</div>
-          <div v-if="activeColorSelect(item)"><i :style="activeColorStyle(item)" class="iconfont icon-check"
-                                                 style="font-weight: bold;">√</i></div>
+          <div v-if="activeColorSelect(item)">
+            <Checkmark :style="activeColorStyle(item)"></Checkmark>
+          </div>
         </div>
       </div>
 
@@ -43,8 +44,13 @@
 </template>
 
 <script>
+import Checkmark from '@/components/Checkmark.vue'
+
 export default {
   name: "vuxDropdownItem",
+  components: {
+    Checkmark
+  },
   data() {
     return {
       isOpen: false,

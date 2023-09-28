@@ -18,6 +18,7 @@ export default {
       value3: 1,
       value4: 1,
       value5: 1,
+      value6: 1.1,
     }
   }
 }
@@ -39,6 +40,9 @@ export default {
     </vux-cell>
     <vux-cell title="禁用输入框">
       <vux-stepper v-model="value4" disable-input></vux-stepper>
+    </vux-cell>
+    <vux-cell title="可输入小数">
+      <vux-stepper v-model="value6" :decimal-length="1" :step="0.2" autoFixed></vux-stepper>
     </vux-cell>
   </div>
 </template>

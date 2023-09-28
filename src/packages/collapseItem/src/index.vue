@@ -9,8 +9,8 @@
       <div style="display: flex;align-items: center;">
         <span><slot name="describe"></slot></span>
         <span v-if="showOperation||showOperationItem">{{ isOpen ? stowText : openText }}</span>
-        <span :class="isOpen?'down':'up'" class="icon"
-        >^</span>
+        <span :class="isOpen?'up':'down'" class="icon"
+        ><ArrowDown></ArrowDown></span>
       </div>
 
     </div>
@@ -24,10 +24,13 @@
 
 <script>
 import transitionHeight from "../../transitionHeight/src";
+import ArrowRight from "@/components/ArrowRight.vue";
+import ArrowDown from "@/components/ArrowDown.vue";
 
 export default {
   name: "vuxCollapseItem",
-  components: {transitionHeight},
+
+  components: {ArrowRight, transitionHeight, ArrowDown},
   props: {
     title: {
       type: [String, Number],

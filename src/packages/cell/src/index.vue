@@ -1,5 +1,5 @@
 <template>
-  <div class="vux__cell" @click="handleClick">
+  <div :class="[border?'border':'noBorder']" class="vux__cell" @click="handleClick">
     <div>
       <span class="vux__cell__title">{{ title }}</span>
       <div class="vux__cell__label">{{ label }}</div>
@@ -9,13 +9,18 @@
         {{ value }}
       </span>
     </slot>
-    <span v-if="isLink" class="vux__cell__isLink">></span>
+    <span v-if="isLink" class="vux__cell__isLink">
+      <ArrowRight></ArrowRight>
+    </span>
   </div>
 </template>
 
 <script>
+import ArrowRight from "@/components/ArrowRight.vue";
+
 export default {
   name: "vuxCell",
+  components: {ArrowRight},
   props: {
     type: {
       type: String,
@@ -34,7 +39,10 @@ export default {
     size: String,
     url: String,
     to: [String, Object],
-    border: Boolean,
+    border: {
+      type: Boolean,
+      default: true
+    },
     clickable: Boolean,
     required: Boolean,
     center: Boolean,
@@ -101,5 +109,19 @@ export default {
   //width: 100%;
   transform: scaleY(.5);
   box-sizing: border-box;
+
+  //&.border {
+  //  border-bottom: 1px solid #e9e9e9;
+  //
+  //}
+  //
+  //&.noBorder {
+  //  border: none;
+  //  border: 0;
+  //  border-bottom: 0px solid #e9e9e9;
+  //
+  //
+  //}
+
 }
 </style>

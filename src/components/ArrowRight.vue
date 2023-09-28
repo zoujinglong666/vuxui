@@ -1,12 +1,5 @@
 <template>
-  <svg viewBox="0 0 1024 1024">
-    <path
-        d="M601.1 556.5L333.8 289.3c-24.5-24.5-24.5-64.6 0-89.1s64.6-24.5 89.1 0l267.3 267.3c24.5 24.5 24.5 64.6 0 89.1-24.5 24.4-64.6 24.4-89.1-.1z"
-        fill="#B6C3D2"
-    />
-    <path
-        d="M690.2 556.5L422.9 823.8c-24.5 24.5-64.6 24.5-89.1 0s-24.5-64.6 0-89.1l267.3-267.3c24.5-24.5 64.6-24.5 89.1 0 24.5 24.6 24.5 64.6 0 89.1z"
-        fill="#B6C3D2"
-    />
-  </svg>
+   <svg fill="none" height="18" viewBox="0 0 48 48" width="18" xmlns="http://www.w3.org/2000/svg">
+     <path d="M19 12L31 24L19 36" stroke="#666" stroke-linecap="round" stroke-linejoin="round" stroke-width="4"/>
+   </svg>
 </template>

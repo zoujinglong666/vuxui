@@ -4,10 +4,10 @@
          @click="handleClickTitle(item,key)">
       <span :class="[disableStyle(item,key)]" :style="{color:activeColorStyle(item,key)}"
             class="ellipsis"
-            style="font-weight: 500">{{ item.renderTitle() }}</span>
+            style="font-weight: 500">{{ item.renderTitle && item.renderTitle() }}</span>
       <span :class="[disableStyle(item,key),activeColorSelect(item,key)?'down':'up']"
             :style="{color:activeColorStyle(item,key)}"
-            class="icon" size="16" type="ios-arrow-up">^</span>
+      ></span>
     </div>
     <slot></slot>
   </div>

@@ -101,7 +101,6 @@ export default {
     //保留一位小数
     decimalLength: {
       type: [Number, String],
-      default: 1
     }
 
   },
@@ -169,7 +168,7 @@ export default {
     },
     changeValueBtn(value) {
       if (String(this.step).indexOf('.') !== -1 && !isNaN(this.step)) {
-        value = Number(value.toFixed(this.decimalLength))
+        value = Number(value.toFixed(this.decimalLength * 10))
         this.handleEmitChange(value)
       } else {
         this.handleEmitChange(value)
@@ -195,7 +194,10 @@ export default {
       this.handleEmitChange(this.format(+value))
     },
     format(value) {
-      const {min, max, allowEmpty, integer} = this;
+
+
+      const {min, max, allowEmpty, integer, decimalLength} = this;
+
       const numValue = Number(value);
       if (allowEmpty && value === '') {
         return '';

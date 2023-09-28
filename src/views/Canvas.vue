@@ -12,7 +12,6 @@ export default {
 <template>
   <demo-page>
     <vux-canvas></vux-canvas>
-
   </demo-page>
 </template>
 

@@ -30,6 +30,7 @@ export default {
       })
     },
     handleErrorMsg() {
+
       this.$msg({
         message: '危险消息', type: 'error'
       })
