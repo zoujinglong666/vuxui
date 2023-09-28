@@ -4,29 +4,27 @@
          @click="handleClickTitle(item,key)">
       <span :class="[disableStyle(item,key)]" :style="{color:activeColorStyle(item,key)}"
             class="ellipsis"
-            style="font-weight: 500">{{ item.renderTitle && item.renderTitle() }}</span>
+            style="font-weight: 500">{{ item.renderTitle() }}</span>
       <span :class="[disableStyle(item,key),activeColorSelect(item,key)?'down':'up']"
             :style="{color:activeColorStyle(item,key)}"
-      ></span>
+            class="icon" size="16" type="ios-arrow-up">^</span>
     </div>
     <slot></slot>
   </div>
 </template>
 <script>
 import {useRect} from "../utils";
+import ArrowRight from "@/components/ArrowRight.vue";
 
 export default {
   name: "VuxDropdownMenu",
+  components: {ArrowRight},
   data() {
     return {
       titleList: [],
       offset: 0
     }
   },
-//   参数	说明	类型	默认值
-//   active-color	菜单标题和选项的选中态颜色	string	#ee0a24
-//   direction	菜单展开方向，可选值为up	string	down
-
   props: {
     activeColor: {
       type: String,
@@ -60,12 +58,15 @@ export default {
   },
   methods: {
     activeColorStyle(item, index) {
+      console.log(item, index)
       return this.activeColorSelect(item, index) ? this.activeColor : ''
     },
     activeColorSelect(item) {
+
       if (item.isOpen) {
-        return item.text === item.title;
+        return item.text === item.title || item.title
       }
+
 
     },
     disableStyle(item) {

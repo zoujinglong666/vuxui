@@ -25,7 +25,7 @@
         <div style="display: flex;justify-content: space-between;align-items: center;">
           <div :style="activeColorStyle(item)">{{ item.text }}</div>
           <div v-if="activeColorSelect(item)">
-            <Checkmark :style="activeColorStyle(item)"></Checkmark>
+            <Checkmark :color="activeColorSelect(item) ? activeColor : ''"></Checkmark>
           </div>
         </div>
       </div>
@@ -45,10 +45,12 @@
 
 <script>
 import Checkmark from '@/components/Checkmark.vue'
+import VuxDrawer from "@/packages/drawer/src/index.vue";
 
 export default {
   name: "vuxDropdownItem",
   components: {
+    VuxDrawer,
     Checkmark
   },
   data() {

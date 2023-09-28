@@ -13,7 +13,7 @@
     <demo-block title="自定义内容"></demo-block>
     <vux-dropdown-menu activeColor="red">
       <vux-dropdown-item v-model="value1" :options="option1"></vux-dropdown-item>
-      <vux-dropdown-item title="slot">
+      <vux-dropdown-item title="自定义内容">
         自定义内容
         自定义内容
         自定义内容
@@ -39,7 +39,6 @@
         自定义内容
         自定义内容
       </vux-dropdown-item>
-
     </vux-dropdown-menu>
     <demo-block title="向上展开"></demo-block>
     <vux-dropdown-menu direction="up">

@@ -1,7 +1,7 @@
 <template>
   <div class="search-container">
     <div :class="{'icon-placeholder-left':isFocus||noEmpty}" class="search-input gary">
-      <img alt="搜索" class="search-icon" src="../../../assets/search.svg"/>
+      <img class="search-icon" src="@/assets/search.svg"/>
       <input v-model="searchVal"
              placeholder="搜索"
              type="text"
@@ -9,7 +9,7 @@
              @focus="handleFocus"
              @keyup.enter="handleSearchEnter"
       />
-      <img v-show="noEmpty" alt="取消" class="reset-icon" src="../../../assets/cancel.svg"
+      <img v-show="noEmpty" class="reset-icon" src="@/assets/cancel.svg"
            @mousedown="handleResetSearch"/>
     </div>
     <!--    v-show="noEmpty&&isFocus"v-show="noEmpty&&isFocus"-->
@@ -27,23 +27,36 @@ export default {
   data() {
     return {
       isFocus: false,
-      searchVal: '',
     }
+  },
+  props: {
+    value: {
+      type: [String, Number],
+      default: ""
+    },
+  },
+  model: {
+    prop: 'value',
+    event: 'input'
   },
   computed: {
     noEmpty() {
       return this.searchVal.length > 0
     },
-    val() {
-      return this.searchVal
+    searchVal: {
+      get() {
+        return this.value
+      },
+      set(val) {
+        this.$emit('input', val)
+        this.$emit('change', val)
+      }
     }
   },
   watch: {
-    val(n, v) {
-      if (n !== v) {
-        this.emitOnChange(n, v)
-      }
-    }
+    // value(val) {
+    //   this.searchVal = val;
+    // }
   },
   methods: {
     //聚焦
@@ -73,6 +86,7 @@ export default {
       this.emitOnSearch();
     },
     emitOnSearch() {
+      console.log(this.searchVal)
       this.$emit('on-search', this.searchVal)
     },
     emitOnpressEnter() {
@@ -91,14 +105,9 @@ export default {
 @color-input: #262d3d;
 @color-btn-default: #78849e;
 @color-btn-primary: #4a70ff;
-body {
-  font-family: PingFangSC, sans-serif;
-  font-size: 14px;
-
-}
 
 .search-container {
-  background-color: #71BD90;
+  background-color: #fff;
   padding: 10px;
   display: flex;
   align-items: center;
@@ -113,7 +122,6 @@ body {
       margin: 0 8px;
       width: 32px;
       line-height: 22px;
-      //color: @color-btn-primary;
     }
 
   }
@@ -157,7 +165,6 @@ body {
       input {
         margin-left: 19px !important;
         //caret-color: @color-btn-primary !important;
-
         &::placeholder {
           text-align: left !important;
         }
@@ -188,6 +195,7 @@ body {
       border: 0;
       outline: none;
       flex: 1;
+      padding-left: 8px;
 
       &::placeholder {
         font-size: 14px;
