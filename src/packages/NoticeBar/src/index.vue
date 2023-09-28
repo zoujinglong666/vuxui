@@ -6,8 +6,8 @@
       </span>
       <div :class="[wrapable?'wrapable':'']" :style="{
         animationDuration: speed + 'ms',
-      }"
-           class="vux-notice-content">
+      }" class="vux-notice-content"
+      >
         <slot>{{ content }}</slot>
       </div>
     </div>
@@ -49,10 +49,13 @@ export default {
     },
     speed: {
       type: Number,
-      default: 12000
+      default: 15000
     }
 
 
+  },
+  mounted() {
+    this.setKeyframes();
   },
   methods: {
     handleClose(e) {
@@ -61,19 +64,17 @@ export default {
     handleClick(e) {
       this.$emit('click')
     },
-    mounted() {
-      this.setKeyframes();
-    },
+
     setKeyframes() {
-      let scrollContentWidth = document.querySelector(".vux-notice-content");
-      console.log(scrollContentWidth, 'scrollContentWidth')
-      let width = scrollContentWidth.offsetWidth; // 获取内容区宽度
-      let style = document.createElement("style"); // 创建样式标签
-      style.setAttribute("type", "text/css"); // 指定类型属性
-      document.head.appendChild(style); // 给head标签加入此样式标签
-      let sheet = style.sheet; // 给样式标签内加入一条css规则
-      sheet.insertRule(
-          `
+      this.$nextTick(() => {
+        let scrollContentWidth = document.querySelector(".vux-notice-content");
+        let width = scrollContentWidth.offsetWidth; // 获取内容区宽度
+        let style = document.createElement("style"); // 创建样式标签
+        style.setAttribute("type", "text/css"); // 指定类型属性
+        document.head.appendChild(style); // 给head标签加入此样式标签
+        let sheet = style.sheet; // 给样式标签内加入一条css规则
+        sheet.insertRule(
+            `
             @keyframes scrollText {
               from {
                 left: 100%;
@@ -83,8 +84,11 @@ export default {
               }
             }
           `
-      );
+        );
+      })
+
     },
+
   }
 }
 </script>
@@ -131,6 +135,7 @@ export default {
   }
 
   .vux-notice-content {
+    position: absolute;
     font-size: 14px;
     margin-right: 16px;
     left: 100%;

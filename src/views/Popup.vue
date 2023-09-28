@@ -20,7 +20,11 @@
         右侧弹出
       </vux-button>
     </vux-space>
-
+    <vux-space>
+      <vux-button size="small" @click="top">
+        圆角弹窗
+      </vux-button>
+    </vux-space>
 
     <vux-popup :popup-style="{width:'100%',height:'30%'}" :show.sync="topShow" closeable position="top">
     </vux-popup>

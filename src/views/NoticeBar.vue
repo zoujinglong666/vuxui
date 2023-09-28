@@ -17,7 +17,6 @@ export default {
     <vux-notice-bar content="不敢打开信封啊。因为，打开了就结束了啊。 --旋风管家" type="success"></vux-notice-bar>
     <vux-notice-bar content="不敢打开信封啊。因为，打开了就结束了啊。 --旋风管家" type="warning"></vux-notice-bar>
     <vux-notice-bar content="不敢打开信封啊。因为，打开了就结束了啊。 --旋风管家"></vux-notice-bar>
-    <vux-notice-bar content="不敢打开信封啊。因为，打开了就结束了啊。 --旋风管家"></vux-notice-bar>
   </div>
 </template>
 
