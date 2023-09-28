@@ -32,6 +32,7 @@ import mySteps from '../views/Step.vue'
 import myStepper from '../views/Stepper.vue'
 import myNoticebar from '../views/NoticeBar.vue'
 import myTable from '../views/Table.vue'
+import mySpace from '../views/Space.vue'
 
 Vue.use(VueRouter)
 export const routes = [{
@@ -203,6 +204,15 @@ export const routes = [{
         ,
         meta: {
             title: "表格"
+        }
+
+    },
+    {
+        path: "/space",
+        component: mySpace
+        ,
+        meta: {
+            title: "间距"
         }
 
     },

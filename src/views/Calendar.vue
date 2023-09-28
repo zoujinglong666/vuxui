@@ -12,9 +12,14 @@
     <vux-cell title="显示农历" @click="lunar=true">
       {{ fromDate }}-{{ toDate }}
     </vux-cell>
+    <demo-block title="显示农历"></demo-block>
+    <vux-cell title="显示节假日" @click="holidays=true">
+      {{ fromDate }}-{{ toDate }}
+    </vux-cell>
     <vux-calendar v-model="single" :value="singleDate" @confirm="singleConfirm"></vux-calendar>
     <vux-calendar v-model="range" :value="[fromDate,toDate]" type="range" @confirm="rangeConfirm"></vux-calendar>
     <vux-calendar v-model="lunar" :value="singleDate" show-lunar @confirm="singleConfirm"></vux-calendar>
+    <vux-calendar v-model="holidays" :value="singleDate" show-holidays @confirm="singleConfirm"></vux-calendar>
 
   </div>
 </template>
@@ -34,6 +39,7 @@ export default {
       single: false,
       range: false,
       lunar: false,
+      holidays: false,
       singleDate: '',
       fromDate: '',
       toDate: ''

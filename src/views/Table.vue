@@ -1,5 +1,7 @@
 <template>
   <div>
+    <DemoBlock title="基本用法"></DemoBlock>
+
     <vux-table :columns="columns" :data="tableData"></vux-table>
   </div>
 
@@ -7,10 +9,11 @@
 
 <script>
 import VuxTable from "@/packages/table/src/index.vue";
+import DemoBlock from "@/components/DemoBlock.vue";
 
 export default {
   name: "Table",
-  components: {VuxTable},
+  components: {DemoBlock, VuxTable},
   data() {
     return {
       tableData: [{

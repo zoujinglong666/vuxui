@@ -2,21 +2,21 @@
   <DemoPage>
     <DemoBlock title="基本用法"></DemoBlock>
     <vux-radio-group v-model="value">
-      <vux-radio name="1">1</vux-radio>
-      <vux-radio name="2">2</vux-radio>
-      <vux-radio name="3">3</vux-radio>
+      <vux-radio name="上海">上海</vux-radio>
+      <vux-radio name="深圳">深圳</vux-radio>
+      <vux-radio name="北京">北京</vux-radio>
     </vux-radio-group>
     <DemoBlock title="水平排列"></DemoBlock>
     <vux-radio-group v-model="value" direction="horizontal">
-      <vux-radio name="1">1</vux-radio>
-      <vux-radio name="2">2</vux-radio>
-      <vux-radio name="3">3</vux-radio>
+      <vux-radio name="上海">上海</vux-radio>
+      <vux-radio name="深圳">深圳</vux-radio>
+      <vux-radio name="北京">北京</vux-radio>
     </vux-radio-group>
     <DemoBlock title="不同形状"></DemoBlock>
     <vux-radio-group v-model="value">
-      <vux-radio name="1" shape="square">1</vux-radio>
-      <vux-radio name="2" shape="square">2</vux-radio>
-      <vux-radio name="3" shape="square">3</vux-radio>
+      <vux-radio name="上海" shape="square">上海</vux-radio>
+      <vux-radio name="深圳" shape="square">深圳</vux-radio>
+      <vux-radio name="北京" shape="square">北京</vux-radio>
     </vux-radio-group>
   </DemoPage>
 
@@ -33,7 +33,7 @@ export default {
   components: {DemoBlock, DemoPage, VuxRadio, VuxRadioGroup},
   data() {
     return {
-      value: '1'
+      value: '上海'
     }
   }
 
