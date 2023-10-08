@@ -155,7 +155,7 @@ export default {
   .vux__step__line {
     height: 0.5px;
     z-index: 0;
-    border-top: 2px solid #1989fa;
+    border-top: 1px solid #1989fa;
     position: absolute;
     //right: -50%;
     left: 50%;
@@ -166,7 +166,7 @@ export default {
     //process
 
     &.is-waiting, &.is-process {
-      border-top: 2px solid #EBEDF0;
+      border-top: 1px solid #EBEDF0;
     }
 
 

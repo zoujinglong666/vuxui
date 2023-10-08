@@ -24,7 +24,6 @@
             src="https://fastly.jsdelivr.net/npm/@vant/assets/apple-1.jpeg"
         />
         <img
-
             v-if="activeIndex === 1"
             src="https://fastly.jsdelivr.net/npm/@vant/assets/apple-2.jpeg"
         />

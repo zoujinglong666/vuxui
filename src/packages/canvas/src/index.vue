@@ -12,8 +12,8 @@
       <vux-button size="small" type="danger" @click="clearCanvas">重签</vux-button>
       <vux-button size="small" type="primary" @click="exportCanvas">确认</vux-button>
       <vux-button :type="isEraser?'success':'default'" size="small" @click="eraserCanvas">橡皮檫</vux-button>
-      <vux-button size="small" @click="revokeCanvas">撤回</vux-button>
-      <vux-button size="small" @click="antiCancellationCanvas">反撤回</vux-button>
+      <!--      <vux-button size="small" @click="revokeCanvas">撤回</vux-button>-->
+      <!--      <vux-button size="small" @click="antiCancellationCanvas">反撤回</vux-button>-->
     </vux-space>
 
   </div>

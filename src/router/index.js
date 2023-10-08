@@ -33,6 +33,7 @@ import myStepper from '../views/Stepper.vue'
 import myNoticebar from '../views/NoticeBar.vue'
 import myTable from '../views/Table.vue'
 import mySpace from '../views/Space.vue'
+import myTree from '../views/Tree.vue'
 
 Vue.use(VueRouter)
 export const routes = [{
@@ -213,6 +214,15 @@ export const routes = [{
         ,
         meta: {
             title: "间距"
+        }
+
+    },
+    {
+        path: "/tree",
+        component: myTree
+        ,
+        meta: {
+            title: "无限级树形选择器"
         }
 
     },
