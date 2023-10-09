@@ -5,8 +5,7 @@
       <template #left>
         <vux-button square style="height: 100%" type="primary">选择</vux-button>
       </template>
-      <img height="44px" src="https://fastly.jsdelivr.net/npm/@vant/assets/apple-2.jpeg"
-           alt=""/>
+      <vux-cell :border="false" title="单元格" value="内容"/>
       <template #right>
         <vux-button square style="height: 100%" type="primary">选择</vux-button>
         <vux-button square style="height: 100%" type="danger"> 删除</vux-button>
@@ -17,7 +16,8 @@
       <template #left>
         <vux-button square style="height: 100%" type="primary">选择</vux-button>
       </template>
-      <vux-cell :border="false" title="单元格" value="内容"/>
+      <img alt="" height="44px"
+           src="https://fastly.jsdelivr.net/npm/@vant/assets/apple-2.jpeg"/>
       <template #right>
         <vux-button square style="height: 100%" type="primary">选择</vux-button>
         <vux-button square style="height: 100%" type="danger"> 删除</vux-button>

@@ -25,11 +25,12 @@ export default {
     },
     size: {
       type: [String, Number],
-      default: 12
+      default: 24
 
     },
     gutter: {
-      type: [String, Number]
+      type: [String, Number],
+      default: 8
     },
     color: {
       type: String, default: "#f7ba2a"
@@ -73,7 +74,7 @@ export default {
         return this.value
       },
       set(val) {
-        this.$emit("update:value", val)
+        this.$emit("input", val)
       }
     },
     rateStyle() {
@@ -112,9 +113,9 @@ export default {
         return
       }
       if (item === this.valueCom) {
-        this.$emit("update:value", item--)
+        this.$emit("input", item--)
       }
-      this.$emit("update:value", item)
+      this.$emit("input", item)
       this.$emit("change", item)
 
     }

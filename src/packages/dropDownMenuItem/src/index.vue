@@ -23,7 +23,7 @@
       <div v-for="(item,key) in options" v-else :key="key" class="vux-down-menu-item"
            @click="handleClickItem(item)">
         <div style="display: flex;justify-content: space-between;align-items: center;">
-          <div :style="activeColorStyle(item)">{{ item.text }}</div>
+          <div :style="activeColorStyle(item)" style="font-size: 14px">{{ item.text }}</div>
           <div v-if="activeColorSelect(item)">
             <Checkmark :color="activeColorSelect(item) ? activeColor : ''"></Checkmark>
           </div>

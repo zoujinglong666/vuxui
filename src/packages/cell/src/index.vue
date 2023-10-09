@@ -4,14 +4,17 @@
       <span class="vux__cell__title">{{ title }}</span>
       <div class="vux__cell__label">{{ label }}</div>
     </div>
-    <slot>
+    <div>
+      <slot>
       <span class="vux__cell__value">
         {{ value }}
       </span>
-    </slot>
-    <span v-if="isLink" class="vux__cell__isLink">
+      </slot>
+      <span v-if="isLink" class="vux__cell__isLink">
       <ArrowRight></ArrowRight>
     </span>
+    </div>
+
   </div>
 </template>
 

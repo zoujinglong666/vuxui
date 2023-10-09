@@ -1,9 +1,9 @@
 <template>
   <div ref="textOverflow" :style="boxStyle" class="vux-ellipsis-content">
-    <span ref="overEllipsis">{{ realText }}</span>
+    <span ref="overEllipsis" style="font-size: 14px">{{ realText }}</span>
     <template v-if="showOperation">
       <span v-if="isCutText" ref="slotRef" :class="[expanded?'':'float-right']" style="display: inline-block">
-        <vux-button link size="mini" type="primary" @click="toggle()">
+        <vux-button link size="small" type="primary" @click="toggle()">
           {{ expanded ? stowText : openText }}
         </vux-button>
     </span>
@@ -13,16 +13,19 @@
 </template>
 
 <script>
+import VuxButton from "@/packages/button/src/index.vue";
+
 export default {
   name: "vux-ellipsis",
+  components: {VuxButton},
   props: {
-    text: {
+    content: {
       type: String,
       default: "",
     },
     rows: {
       type: Number,
-      default: 3,
+      default: 1,
     },
     width: {
       type: Number,
@@ -47,7 +50,7 @@ export default {
   },
   data() {
     return {
-      offset: this.text.length,
+      offset: this.content.length,
       expanded: false,
       slotBoxWidth: 0,
       textBoxWidth: this.width,
@@ -63,10 +66,10 @@ export default {
       }
     },
     realText() {
-      const isCutOut = this.offset !== this.text.length;
-      let realText = this.text;
+      const isCutOut = this.offset !== this.content.length;
+      let realText = this.content;
       if (isCutOut && !this.expanded) {
-        realText = this.text.slice(0, this.offset) + "...";
+        realText = this.content.slice(0, this.offset) + "...";
       }
       return realText;
     },
@@ -122,7 +125,7 @@ export default {
           this.slotBoxWidth = this.$refs.slotRef.clientWidth;
         }
         this.textBoxWidth = this.$refs.textOverflow.clientWidth;
-        this.calculateOffset(0, this.text.length);
+        this.calculateOffset(0, this.content.length);
       })
     }
   },

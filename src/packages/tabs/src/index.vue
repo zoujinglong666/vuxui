@@ -117,7 +117,7 @@ export default {
       return function (item, index) {
         return index === this.currentIndex ? {
           color: this.titleActiveColor,
-          fontWeight: '500',
+          fontWeight: '600',
           fontSize: `${this.titleActiveSize}px`
         } : {
           color: this.titleInactiveColor

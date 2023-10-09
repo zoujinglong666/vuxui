@@ -42,6 +42,7 @@ export default {
 .vux-fab {
   position: fixed;
 
+
   &.left {
     bottom: 48px;
     left: 12px;
@@ -71,11 +72,12 @@ export default {
     //text-align: center;
     border-radius: 50%;
     background: #1989fa;
-    width: 48px;
-    height: 48px;
-    line-height: 48px;
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
     font-size: 16px;
     color: #ffffff;
+    box-shadow: 0 6px 16px 0 rgba(0, 0, 0, 0.08), 0 3px 6px -4px rgba(0, 0, 0, 0.12), 0 9px 28px 8px rgba(0, 0, 0, 0.05);
 
     i {
       font-size: 32px;

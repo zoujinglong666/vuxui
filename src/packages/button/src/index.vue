@@ -247,6 +247,7 @@ export default {
   border-radius: 4px;
   margin: 0;
   padding: 0;
+  font-size: 14px;
 
   &.primary {
     color: #fff;

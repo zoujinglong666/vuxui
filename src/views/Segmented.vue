@@ -1,5 +1,5 @@
 <template>
-  <vux-segmented v-model="value" :options="['1','2','3']" block></vux-segmented>
+  <vux-segmented v-model="value" :options="['上海','北京','深圳']" block></vux-segmented>
 </template>
 <script>
 import VuxSegmented from "@/packages/segmented/src/index.vue";
@@ -9,7 +9,7 @@ export default {
   components: {VuxSegmented},
   data() {
     return {
-      value: '1'
+      value: '深圳'
     }
   }
 

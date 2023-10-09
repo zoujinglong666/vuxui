@@ -127,6 +127,7 @@ export default {
     padding-left: 24px;
     text-align: center;
     color: #909399;
+    font-size: 13px;
 
     &.mini {
       padding-left: 20px;

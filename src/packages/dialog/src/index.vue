@@ -1,8 +1,7 @@
 <template>
-  <!--  重构dialog-->
   <div :class="caleClass" class="vux-dialog" @click="handleClickByMark($event)">
     <div v-show="curOpen" :style="{ borderRadius:radiusStyle}" class="vux-dialog-container" @click="handleScroll">
-      <div :style="{background:titleColor}" class="vux-dialog-title">
+      <div v-if="showTitleBar" :style="{background:titleColor}" class="vux-dialog-title">
         <span>{{ title }}</span>
         <span v-if="closable" class="vux-close-icon" @click="handleClose"></span>
       </div>
@@ -32,9 +31,12 @@
   </div>
 </template>
 <script>
+import VuxButton from "@/packages/button/src/index.vue";
+
 const types = ["default", "primary", "success", "warning", "danger"];
 export default {
   name: "VuxDialog",
+  components: {VuxButton},
   data() {
     return {
       curOpen: this.open,
@@ -59,7 +61,6 @@ export default {
 
     titleColor: {
       type: String,
-      default: '#1989fa'
     },
     showTitle: {
       type: Boolean,
@@ -100,6 +101,12 @@ export default {
       type: Boolean,
       default: true
     },
+    showTitleBar: {
+      type: Boolean,
+      default: true
+    },
+
+
     singleButton: {
       type: Boolean,
       default: false
@@ -124,7 +131,6 @@ export default {
 
   },
   computed: {
-
     caleClass() {
       return [
         this.curOpen && this.showMark ? 'vux-dialog-mark' : '',
@@ -188,7 +194,7 @@ export default {
   transform: translate(-50%, -50%);
   z-index: 9999;
   background-color: #ffffff;
-  border-radius: 4px;
+  border-radius: 8px;
   overflow: hidden;
   transition: all 0.5s ease-in-out;
   -webkit-animation: vux-dialog-open 0.5s ease-out;
@@ -204,14 +210,14 @@ export default {
   align-items: center;
   padding: 0 10px;
   box-sizing: border-box;
-  color: #fff;
+  color: #999;
   font-size: 16px;
 
   .vux-close-icon {
     display: flex;
     align-items: center;
     position: relative;
-    color: #fff;
+    color: #999;
     width: 20px;
     height: 20px;
 

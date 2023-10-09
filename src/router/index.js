@@ -30,10 +30,15 @@ import myCanvas from '../views/Canvas.vue'
 import myAvatar from '../views/Avatar.vue'
 import mySteps from '../views/Step.vue'
 import myStepper from '../views/Stepper.vue'
-import myNoticebar from '../views/NoticeBar.vue'
 import myTable from '../views/Table.vue'
 import mySpace from '../views/Space.vue'
 import myTree from '../views/Tree.vue'
+import myBadge from '../views/Badge.vue'
+import myRate from '../views/Rate.vue'
+import myActionSheet from '../views/ActionSheet.vue'
+import myEllipsis from '../views/Ellipsis.vue'
+import myFab from '../views/fab.vue'
+import myDialog from '../views/Dialog.vue'
 
 Vue.use(VueRouter)
 export const routes = [{
@@ -80,7 +85,7 @@ export const routes = [{
     }
 }, {
     path: '/treeSelect', component: myTreeSelect, meta: {
-        title: "树形选择"
+        title: "分类选择"
     }
 }, {
     path: "/radio", component: myRadio, meta: {
@@ -190,15 +195,15 @@ export const routes = [{
         }
 
     },
-    {
-        path: "/noticebar",
-        component: myNoticebar
-        ,
-        meta: {
-            title: "通知滚动"
-        }
-
-    },
+    // {
+    //     path: "/noticebar",
+    //     component: myNoticebar
+    //     ,
+    //     meta: {
+    //         title: "通知滚动"
+    //     }
+    //
+    // },
     {
         path: "/table",
         component: myTable
@@ -222,7 +227,57 @@ export const routes = [{
         component: myTree
         ,
         meta: {
-            title: "无限级树形选择器"
+            title: "树形选择"
+        }
+
+    },
+    {
+        path: "/badge",
+        component: myBadge
+        ,
+        meta: {
+            title: "标记"
+        }
+
+    },
+    {
+        path: "/rate",
+        component: myRate
+        ,
+        meta: {
+            title: "评分"
+        }
+
+    }, {
+        path: "/actionsheet",
+        component: myActionSheet
+        ,
+        meta: {
+            title: "动作面板"
+        }
+
+    }, {
+        path: "/ellipsis",
+        component: myEllipsis
+        ,
+        meta: {
+            title: "文本省略"
+        }
+
+    }, {
+        path: "/fab",
+        component: myFab
+        ,
+        meta: {
+            title: "悬浮"
+        }
+
+    }, {
+        path: "/dialog",
+        component: myDialog
+        ,
+        meta: {
+            title: "弹出框"
         }
 
     },
