@@ -12,8 +12,7 @@
       <slot v-if="checked"
             :style="iconSizeStyle" name="icon">
        <span class="vux-checker-icon">
-          <span v-if="checked" :style="iconSizeStyle" class="checked"
-          ></span>
+          <i :style="iconSizeStyle" class=" checked iconfont icon-select-bold"></i>
         </span>
       </slot>
     </div>
@@ -125,6 +124,7 @@ export default {
     iconSizeStyle() {
       return {
         fontSize: this.iconSize + 'px',
+        color: "#fff"
       }
     }
 
@@ -185,7 +185,7 @@ export default {
       height: 12px;
       position: absolute;
       left: 50%;
-      top: 50%;
+      top: 55%;
       transform: translate(-50%, -50%);
 
       span {
@@ -227,11 +227,5 @@ export default {
   border-radius: 50%;
 }
 
-.checked::after {
-  content: '✓';
-  color: #fff;
-  font-size: 14px;
-  font-weight: 500;
-}
 
 </style>

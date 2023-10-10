@@ -1,0 +1,149 @@
+@font-face {
+  font-family: "iconfont"; /* Project id  */
+  src: url('iconfont.ttf?t=1696947678747') format('truetype');
+}
+
+.iconfont {
+  font-family: "iconfont" !important;
+  font-size: 16px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-add:before {
+  content: "\e664";
+}
+
+.icon-add-circle:before {
+  content: "\e665";
+}
+
+.icon-arrow-down:before {
+  content: "\e666";
+}
+
+.icon-arrow-right:before {
+  content: "\e667";
+}
+
+.icon-bottom:before {
+  content: "\e668";
+}
+
+.icon-back:before {
+  content: "\e669";
+}
+
+.icon-arrow-double-left:before {
+  content: "\e66a";
+}
+
+.icon-arrow-double-right:before {
+  content: "\e66b";
+}
+
+.icon-close:before {
+  content: "\e66c";
+}
+
+.icon-comment:before {
+  content: "\e66d";
+}
+
+.icon-elipsis:before {
+  content: "\e66e";
+}
+
+.icon-map:before {
+  content: "\e677";
+}
+
+.icon-menu:before {
+  content: "\e678";
+}
+
+.icon-loading:before {
+  content: "\e676";
+}
+
+.icon-minus:before {
+  content: "\e67a";
+}
+
+.icon-refresh:before {
+  content: "\e67b";
+}
+
+.icon-search:before {
+  content: "\e67d";
+}
+
+.icon-scanning:before {
+  content: "\e67e";
+}
+
+.icon-select:before {
+  content: "\e67f";
+}
+
+.icon-success:before {
+  content: "\e680";
+}
+
+.icon-setting:before {
+  content: "\e681";
+}
+
+.icon-upload:before {
+  content: "\e682";
+}
+
+.icon-add-bold:before {
+  content: "\e685";
+}
+
+.icon-arrow-left-bold:before {
+  content: "\e686";
+}
+
+.icon-arrow-up-bold:before {
+  content: "\e687";
+}
+
+.icon-close-bold:before {
+  content: "\e688";
+}
+
+.icon-arrow-down-bold:before {
+  content: "\e689";
+}
+
+.icon-minus-bold:before {
+  content: "\e68a";
+}
+
+.icon-arrow-right-bold:before {
+  content: "\e68b";
+}
+
+.icon-select-bold:before {
+  content: "\e68c";
+}
+
+.icon-arrow-up-filling:before {
+  content: "\e68d";
+}
+
+.icon-arrow-down-filling:before {
+  content: "\e68e";
+}
+
+.icon-arrow-left-filling:before {
+  content: "\e68f";
+}
+
+.icon-arrow-right-filling:before {
+  content: "\e690";
+}
+

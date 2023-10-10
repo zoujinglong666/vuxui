@@ -17,7 +17,6 @@ export default {
     add() {
       if (this.value >= 100) {
         return
-
       }
       this.value += 10;
     },

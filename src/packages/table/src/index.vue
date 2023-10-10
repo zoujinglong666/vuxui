@@ -24,7 +24,7 @@
       <tbody>
       <tr v-for="(item, index) in tableData" :key="index" :style="{textAlign: textAlignment}" class="list-tr">
         <td v-for="(tp) in typesColumns" :key="tp.type" class="td">
-          <span v-if="tp.type=='index'">{{ index + 1 }}</span>
+          <span v-if="tp.type==='index'">{{ index + 1 }}</span>
           <div v-if="tp.type==='radio'">
             <input v-model="item.isCheck" type="checkbox"
                    @click="handleRadio(item)"></input>
@@ -54,7 +54,7 @@
       <tr v-if="tableData.length>0&&totalFooter">
         <td v-for="(tdItem,index) in columns" :key="tdItem.label" style="height: 40px;text-align: center;">
           <span v-if="index===0" style="font-weight: bold;white-space: nowrap">合计</span>
-          <span v-if="tdItem.hasOwnProperty('total')" style="color: red;font-weight: bold">{{ totalNum(tdItem) }}</span>
+          <span v-if="tdItem.hasOwnProperty('total')" style="font-weight: bold">{{ totalNum(tdItem) }}</span>
         </td>
       </tr>
       </tbody>
@@ -65,14 +65,18 @@
   </div>
 </template>
 <script>
+import VuxButton from "@/packages/button/src/index.vue";
+
 function myAdd(num1, num2) {
   const num1Digits = (num1.toString().split('.')[1] || '').length;
   const num2Digits = (num2.toString().split('.')[1] || '').length;
   const baseNum = Math.pow(10, Math.max(num1Digits, num2Digits));
   return (num1 * baseNum + num2 * baseNum) / baseNum;
 }
+
 export default {
   name: "vuxTable",
+  components: {VuxButton},
   props: {
     editable: {
       type: Boolean,

@@ -1,13 +1,15 @@
 <template>
-  <vux-fab v-show="show" @click.native="handleClick"></vux-fab>
-
+    <vux-fab v-show="show" @click.native="handleClick"></vux-fab>
 
 </template>
 
 <script>
 
+import VuxFab from "@/packages/fab/src/index.vue";
+
 export default {
   name: "vuxBackTop",
+  components: {VuxFab},
 
   props: {
     zIndex: {
@@ -31,11 +33,12 @@ export default {
   watch: {},
   mounted() {
     this.$nextTick(() => {
-      const target = document.querySelector(this.target)
-      if (target) {
-        this.scrollEl = target;
-        this.scrollEl.addEventListener('scroll', this.showBackTop, false)
+      const target = document.querySelector(this.target);
+      if (!target) {
+        return
       }
+      this.scrollEl = target;
+      this.scrollEl.addEventListener('scroll', this.showBackTop, false)
     })
   },
   beforeDestroy() {
@@ -47,7 +50,11 @@ export default {
       this.show = this.scrollEl.scrollTop > this.offset;
     },
     handleClick() {
-      this.scrollEl.scrollTop = 0
+      this.scrollEl.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+
     }
   }
 }

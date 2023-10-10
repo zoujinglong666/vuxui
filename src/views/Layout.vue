@@ -1,6 +1,5 @@
 <template>
   <div>
-
   <vux-cell
       v-for="item in components"
       :key="item.path"

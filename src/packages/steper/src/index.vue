@@ -4,7 +4,7 @@
       <button v-show="showMinus" :disabled="disabledMinusBtn" :style="[disabledMinusBtn,buttonStyle]"
               class="vux_stepper_btn minus"
               @click="handleMinus">
-        -
+        <i class="iconfont icon-minus"></i>
       </button>
       <!--      inputmode="decimal "-->       <!--带小数点的键盘-->
       <input
@@ -22,7 +22,7 @@
       <button v-show="showPlus" :disabled="disabledPlusBtn" :style="[disabledPlusBtn,buttonStyle]"
               class="vux_stepper_btn plus"
               @click="handlePlus">
-        +
+        <i class="iconfont icon-add"></i>
       </button>
     </div>
   </div>

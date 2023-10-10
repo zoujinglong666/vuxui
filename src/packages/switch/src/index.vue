@@ -1,18 +1,18 @@
 <template>
-      <span :class="switchStyle" :style="{backgroundColor:checked?activeColor:inactiveColor}"
-            class="vux_switch-content"
-            @click="onClick">
+  <div :class="[switchStyle,disabled?'disabled':'',]" :style="{backgroundColor:checked?activeColor:inactiveColor}"
+       class="vux_switch"
+       @click="onClick">
       <span v-show="activeText||inactiveText" :class="switchStyle" class="vux_switch-text">{{
           checked ? maxlength(activeText, 6) : maxlength(inactiveText, 6)
         }}</span>
-      <span
-          :class="switchStyle"
-          class="vux_switch-ball">
+    <span
+        :class="switchStyle"
+        class="vux_switch-ball">
       <span v-if="loading">
       <i :class="{'loading':loading,'checked':checked}" :style="{borderColor:checked?activeColor:inactiveColor}"></i>
     </span>
     </span>
-    </span>
+  </div>
 </template>
 <script>
 export default {
@@ -35,7 +35,7 @@ export default {
     },
     activeColor: {
       type: String,
-      default: '#07c160'
+      default: '#1989fa'
     },
     inactiveColor: {
       type: String,
@@ -96,13 +96,15 @@ export default {
         this.$emit('input', newValue);
         this.$emit('change', newValue);
       }
+
+
     }
   }
 }
 </script>
 
 <style lang="less" scoped>
-.vux_switch-content {
+.vux_switch {
   display: inline-flex;
   align-items: center;
   position: relative;
@@ -114,7 +116,6 @@ export default {
   padding: 0 4px;
   border: 0;
   outline: 0;
-
   &.mini {
     padding: 0 2px;
     min-width: 36px;
@@ -137,11 +138,9 @@ export default {
       left: 0;
       transition: all 0.3s cubic-bezier(0.25, 0.01, 0.25, 1);
       transform: translateX(-24px);
-
       &.mini {
         transform: translateX(-18px);
       }
-
       color: #fff;
     }
   }
@@ -155,7 +154,6 @@ export default {
     width: 8px;
     height: 8px;
     border: 1px solid #C0C4CC;
-
     &.checked {
       border: 1px solid #1989fa;
     }

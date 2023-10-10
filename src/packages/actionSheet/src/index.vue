@@ -65,8 +65,8 @@ export default {
 
 .vux-action-sheet {
   &.item {
-    height: 40px;
-    line-height: 40px;
+    height: 48px;
+    line-height: 48px;
     text-align: center;
   }
 

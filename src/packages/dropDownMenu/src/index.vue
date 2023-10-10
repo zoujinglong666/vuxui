@@ -5,9 +5,11 @@
       <span :class="[disableStyle(item,key)]" :style="{color:activeColorStyle(item,key)}"
             class="ellipsis"
             style="font-weight: 500">{{ item.renderTitle() }}</span>
-      <span :class="[disableStyle(item,key),activeColorSelect(item,key)?'down':'up']"
+      <span :class="[disableStyle(item,key),activeColorSelect(item,key)?'up':'down']"
             :style="{color:activeColorStyle(item,key)}"
-            class="icon" size="16" type="ios-arrow-up">^</span>
+            class="icon">
+        <i :style="{color: iconActiveColorStyle(item,key)}" class="iconfont icon-arrow-down"></i>
+      </span>
     </div>
     <slot></slot>
   </div>
@@ -57,8 +59,10 @@ export default {
 
   },
   methods: {
+    iconActiveColorStyle(item, index) {
+      return this.activeColorSelect(item, index) ? this.activeColor : '#333'
+    },
     activeColorStyle(item, index) {
-      console.log(item, index)
       return this.activeColorSelect(item, index) ? this.activeColor : ''
     },
     activeColorSelect(item) {

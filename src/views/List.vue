@@ -1,12 +1,10 @@
 <template>
 
   <vux-list :list="list">
-
     <template #default="item">
       <div style="border: 1px solid #eeeeee">
         <p>{{ item.id }}</p>
         <p>{{ item.content }}</p>
-
       </div>
     </template>
   </vux-list>
