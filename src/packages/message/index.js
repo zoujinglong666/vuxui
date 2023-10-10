@@ -5,7 +5,7 @@ let MessageConstructor = Vue.extend(messageComponent); // 引入一个message构
 let instance = null // 定义组件实例
 let count = 0 // 定义统计次数，便于知道创建多少个实例
 
-const MyMessage = function (options) {
+const Message = function (options) {
     if (options.duration & typeof options.duration !== 'number') { // 对于duration数字类型的校验
         console.error('Error! duration Must be a numeric type ') // 用户乱传递非数字类型参数，就抛错不执行后续代码
         return
@@ -33,4 +33,4 @@ function cutCount() { // 当message消失一个
     }
 }
 
-export default MyMessage // 暴露出去
+export default Message // 暴露出去

@@ -21,9 +21,11 @@ export default {
   methods: {
     handleClick(item) {
       this.$emit("select", item)
+      this.showCom = false;
     },
     handleCancel() {
       this.$emit("cancel")
+      this.showCom = false;
     }
   },
   props: {
@@ -35,6 +37,9 @@ export default {
       default: () => []
     },
     title: {
+      type: [String, Number]
+    },
+    cancelText: {
       type: [String, Number]
     }
 
@@ -49,9 +54,9 @@ export default {
         {{ item.name }}
       </div>
     </div>
-    <div class="vux-action-sheet gap"></div>
-    <div class="vux-action-sheet item" style="margin-top: 8px" @click="handleCancel">
-      取消
+    <div v-if="cancelText" class="vux-action-sheet gap"></div>
+    <div v-if="cancelText" class="vux-action-sheet item" @click="handleCancel">
+      {{ cancelText }}
     </div>
   </vux-popup>
 </template>

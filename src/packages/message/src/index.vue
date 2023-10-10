@@ -99,7 +99,7 @@ export default {
   left: 50%;
   transform: translateX(-50%); // 控制居中
   box-sizing: border-box;
-  border-radius: 4px; // 加圆角好看一些
+  border-radius: 8px; // 加圆角好看一些
   background-color: #edf2fc;
   // 过渡效果
   transition: opacity 0.3s, transform 0.3s, top 0.3s;
@@ -114,21 +114,25 @@ export default {
 
 .success {
   border: 1px solid #aee884;
+  color: #48bc19;
   background-color: #f5ffea;
 }
 
 .info {
   border: 1px solid #86cfff;
+  color: #166cff;
   background-color: #e2f6ff;
 }
 
 .warning {
   border: 1px solid #ffe38c;
+  color: #f9a314;
   background-color: #fffae2;
 }
 
 .error {
   background-color: #fff0ee;
+  color: #ff4446;
   border: 1px solid #ffccc7;
 }
 

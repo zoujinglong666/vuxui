@@ -2,12 +2,18 @@
 
   <demo-page>
     <DemoBlock title="基本用法"></DemoBlock>
-    <vux-space size="12" wrap>
+    <vux-space wrap>
       <vux-button type="success" @click="handleSuccessMsg">
-        成功消息
+        success消息
       </vux-button>
       <vux-button type="danger" @click="handleErrorMsg">
-        危险消息
+        error消息
+      </vux-button>
+      <vux-button type="warning" @click="handleWarnMsg">
+        warning消息
+      </vux-button>
+      <vux-button type="primary" @click="handleInfoMsg">
+        info消息
       </vux-button>
     </vux-space>
   </demo-page>
@@ -19,21 +25,25 @@ import VuxButton from "@/packages/button/src/index.vue";
 import VuxSpace from "@/packages/space/src/index.vue";
 import DemoPage from "@/components/DemoPage.vue";
 import DemoBlock from "@/components/DemoBlock.vue";
+import msg from "@/utils/msg";
 
 export default {
   name: "Message",
   components: {DemoBlock, DemoPage, VuxSpace, VuxButton},
   methods: {
     handleSuccessMsg() {
-      this.$msg({
-        message: '成功消息', type: 'success'
-      })
+      msg.success("success")
+
     },
     handleErrorMsg() {
-
-      this.$msg({
-        message: '危险消息', type: 'error'
-      })
+      msg.error("error")
+    },
+    handleInfoMsg() {
+      msg.info("info")
+    }
+    ,
+    handleWarnMsg() {
+      msg.warning("warning")
     }
   }
 }

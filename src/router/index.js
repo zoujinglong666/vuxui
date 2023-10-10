@@ -39,6 +39,7 @@ import myActionSheet from '../views/ActionSheet.vue'
 import myEllipsis from '../views/Ellipsis.vue'
 import myFab from '../views/fab.vue'
 import myDialog from '../views/Dialog.vue'
+import myDrag from '../views/Drag.vue'
 
 Vue.use(VueRouter)
 export const routes = [{
@@ -126,7 +127,7 @@ export const routes = [{
         title: "遮罩层"
     }
 }, {
-    path: "/message", component: myMessage, meta: {
+    path: "/msg", component: myMessage, meta: {
         title: "消息"
     }
 }, {
@@ -278,6 +279,14 @@ export const routes = [{
         ,
         meta: {
             title: "弹出框"
+        }
+
+    }, {
+        path: "/drag",
+        component: myDrag
+        ,
+        meta: {
+            title: "拖拽"
         }
 
     },

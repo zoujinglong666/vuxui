@@ -180,21 +180,22 @@ export default {
 .vux_switch-ball {
   transition: all 0.3s cubic-bezier(0.25, 0.01, 0.25, 1);
   position: absolute;
-  left: 1px;
-  width: 24px;
-  height: 24px;
-  border-radius: 24px;
+  left: 2px;
+  width: 22px;
+  height: 22px;
+  border-radius: 22px;
   background-color: #fff;
 
   &.mini {
-    width: 18px;
-    height: 18px;
-    border-radius: 18px;
+    width: 16px;
+    height: 16px;
+    border-radius: 16px;
   }
 
   &.checked {
-    left: calc(100% - 1px);
     transform: translateX(-100%);
+    left: calc(100% - 2px);
+
   }
 }
 

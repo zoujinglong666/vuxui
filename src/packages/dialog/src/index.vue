@@ -281,5 +281,15 @@ export default {
   }
 }
 
+@-webkit-keyframes vux-dialog-open {
+  from {
+    transform: translate3d(-50%, -50%, 0) scale(0.7);
+    opacity: 0;
+  }
+  to {
+    transform: translate3d(-50%, -50%, 0) scale(1);
+    opacity: 1;
+  }
+}
 
 </style>
