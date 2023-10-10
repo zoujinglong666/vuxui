@@ -3,7 +3,7 @@
     <span ref="overEllipsis" style="font-size: 14px">{{ realText }}</span>
     <template v-if="showOperation">
       <span v-if="isCutText" ref="slotRef" :class="[expanded?'':'float-right']" style="display: inline-block">
-        <vux-button link size="small" type="primary" @click="toggle()">
+        <vux-button link size="mini" type="primary" @click="toggle()">
           {{ expanded ? stowText : openText }}
         </vux-button>
     </span>

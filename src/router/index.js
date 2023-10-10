@@ -33,13 +33,11 @@ import myStepper from '../views/Stepper.vue'
 import myTable from '../views/Table.vue'
 import mySpace from '../views/Space.vue'
 import myTree from '../views/Tree.vue'
-import myBadge from '../views/Badge.vue'
 import myRate from '../views/Rate.vue'
 import myActionSheet from '../views/ActionSheet.vue'
 import myEllipsis from '../views/Ellipsis.vue'
 import myFab from '../views/fab.vue'
 import myDialog from '../views/Dialog.vue'
-import myDrag from '../views/Drag.vue'
 
 Vue.use(VueRouter)
 export const routes = [{
@@ -232,15 +230,15 @@ export const routes = [{
         }
 
     },
-    {
-        path: "/badge",
-        component: myBadge
-        ,
-        meta: {
-            title: "标记"
-        }
-
-    },
+    // {
+    //     path: "/badge",
+    //     component: myBadge
+    //     ,
+    //     meta: {
+    //         title: "标记"
+    //     }
+    //
+    // },
     {
         path: "/rate",
         component: myRate
@@ -281,15 +279,7 @@ export const routes = [{
             title: "弹出框"
         }
 
-    }, {
-        path: "/drag",
-        component: myDrag
-        ,
-        meta: {
-            title: "拖拽"
-        }
-
-    },
+    }
 
 
     // {
