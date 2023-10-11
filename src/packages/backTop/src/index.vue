@@ -50,10 +50,12 @@ export default {
       this.show = this.scrollEl.scrollTop > this.offset;
     },
     handleClick() {
-      this.scrollEl.scrollTo({
-        top: 0,
-        behavior: 'smooth'
-      });
+      this.$nextTick(() => {
+        this.scrollEl.scrollTo({
+          top: 0,
+          behavior: 'smooth'
+        });
+      })
 
     }
   }

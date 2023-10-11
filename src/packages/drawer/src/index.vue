@@ -5,7 +5,6 @@
       <div style="display: flex;
   align-items: center;
   position: relative;
-
   font-weight: 500;
   font-size: 16px;
  ">
@@ -13,9 +12,8 @@
     max-width: 60%;">{{ title }}</p>
         <span v-if="closeable" class="close-icon"
               @click="handleClose"
-        ><i class="iconfont icon-close"></i>X</span>
+        ><i class="iconfont icon-close"></i></span>
       </div>
-
       <slot>
       </slot>
     </div>
@@ -119,7 +117,6 @@ export default {
 
   methods: {
     handleClose() {
-
       //事件点击无效又可能是层级导致的
       this.curOpen = false;
     },
@@ -141,22 +138,6 @@ export default {
 };
 </script>
 <style lang="less" scoped>
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-/* 防止出现滚动 穿透*/
-//.prevent-touch-move {
-//  position: fixed;
-//  overflow: hidden;
-//  width: 100%;
-//  height: 100%;
-//  top: 0;
-//  left: 0;
-//}
-
 .drawer-mask {
   //overflow: hidden;
   z-index: 9998 !important;
@@ -167,15 +148,11 @@ export default {
   bottom: 0;
   background-color: rgba(0, 0, 0, 0.5);
   transition: opacity 300ms, height 2ms;
-
-
   .drawer-content {
     position: absolute;
     height: 80%;
     background-color: #fff;
     transition: transform 300ms;
-
-
     .close-icon {
       z-index: 9;
       right: 0;
@@ -315,7 +292,6 @@ export default {
         transform: translateX(0);
       }
     }
-
     &.is-close {
       .drawer-content {
         transform: translateX(100%);

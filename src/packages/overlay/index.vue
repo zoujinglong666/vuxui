@@ -1,6 +1,6 @@
 <template>
 
-  <transition :name="overlayClass"
+  <transition appear name="vux-fade"
   >
     <div v-show="showCom" class="vux_overlay" @click="close">
       <slot></slot>
@@ -65,18 +65,6 @@ export default {
   width: 100%;
   height: 100%;
   background: rgba(0, 0, 0, 0.7);
-
-  &-enter-active,
-  &-leave-active {
-    transition: opacity 0.3s ease;
-  }
-
-  &-enter-from,
-  &-leave-to {
-    opacity: 0;
-  }
-
-
 }
 
 </style>

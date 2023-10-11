@@ -165,7 +165,7 @@ export default {
     cursor: not-allowed !important;
   }
 
-  .vux-checker-inner {
+  &-inner {
     display: flex;
     align-items: center;
     justify-content: center;

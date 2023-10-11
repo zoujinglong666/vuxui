@@ -1,5 +1,5 @@
 <template>
-  <div class="data" style="height: 667px;overflow: auto">
+  <div class="data" style="height: 667px;">
     <div v-for="item  in 10">
       <div class="item">{{ item }}</div>
     </div>

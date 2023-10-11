@@ -16,6 +16,9 @@
       <vux-button size="small" @click="right">
         右侧弹出
       </vux-button>
+      <vux-button size="small" @click="centerShow=true">
+        中间弹出
+      </vux-button>
     </vux-space>
     <DemoBlock title="基本用法">
 
@@ -32,6 +35,7 @@
     <vux-popup :popup-style="{width:'80%'}" :show.sync="rightShow" position="right"></vux-popup>
     <vux-popup :popup-style="{height:'30%'}" :show.sync="bottomShow" position="bottom"></vux-popup>
     <vux-popup :popup-style="{height:'30%'}" :show.sync="bottomShow1" position="bottom" round></vux-popup>
+    <vux-popup :popup-style="{height:'30%',width:'30%'}" :show.sync="centerShow" position="center" round></vux-popup>
   </DemoPage>
 </template>
 
@@ -54,6 +58,7 @@ export default {
       rightShow: false,
       bottomShow: false,
       bottomShow1: false,
+      centerShow: false,
     }
   },
 

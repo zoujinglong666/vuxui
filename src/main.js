@@ -3,8 +3,8 @@ import App from './App.vue'
 import "./packages/index"
 import './directives/index'
 import router from './router'
-import '@/assets/css/global.less'
 import '../src/assets/icon/iconfont.css'
+import '../src/style/base.less'
 
 Vue.config.productionTip = false
 new Vue({

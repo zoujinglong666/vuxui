@@ -72,7 +72,7 @@ export default {
 
   &.gap {
     height: 8px;
-    background: #f7f8fa;
+    background: var(--vux-gray-1);
   }
 }
 

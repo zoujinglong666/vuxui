@@ -1,0 +1,42 @@
+body {
+  //background-color: #F7F8FA;
+  font-size: 14px;
+  line-height: 1.5;
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+  font-family: PingFangSC-Regular, sans-serif;
+
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+p {
+  margin: 10px;
+  padding: 0;
+}
+
+html, body {
+  height: 100%;
+  width: 100%;
+  overflow-x: hidden;
+}
+
+img, picture, video, canvas, svg {
+  display: block;
+  max-width: 100%;
+}
+
+#root, #__next {
+  isolation: isolate;
+}
+
+.cleaFix::before,
+.cleaFix::after {
+  content: '';
+  clear: both;
+  display: table;
+}

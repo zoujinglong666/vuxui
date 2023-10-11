@@ -26,7 +26,6 @@ export default {
     },
     handleCancel() {
       this.show = false;
-
     }
   }
 }

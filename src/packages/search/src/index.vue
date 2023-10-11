@@ -1,7 +1,7 @@
 <template>
   <div class="search-container">
     <div :class="{'icon-placeholder-left':isFocus||noEmpty}" class="search-input gary">
-      <img class="search-icon" src="@/assets/search.svg"/>
+      <i class="iconfont icon-search "></i>
       <input v-model="searchVal"
              placeholder="搜索"
              type="text"
@@ -9,10 +9,10 @@
              @focus="handleFocus"
              @keyup.enter="handleSearchEnter"
       />
-      <img v-show="noEmpty" class="reset-icon" src="@/assets/cancel.svg"
-           @mousedown="handleResetSearch"/>
+      <span v-show="noEmpty" @mousedown="handleResetSearch">
+      <i v-show="noEmpty" class="iconfont icon-close "></i>
+      </span>
     </div>
-    <!--    v-show="noEmpty&&isFocus"v-show="noEmpty&&isFocus"-->
     <div class="search-btn-group">
       <!--           尽量不要使用button标签 -->
       <span class="search-btn" @mousedown="handleSearch">搜索</span>
@@ -54,14 +54,10 @@ export default {
     }
   },
   watch: {
-    // value(val) {
-    //   this.searchVal = val;
-    // }
   },
   methods: {
     //聚焦
     handleFocus() {
-
       this.isFocus = true;
     },
     //失焦
@@ -103,8 +99,6 @@ export default {
 @color-input-search-bg-light: #ffffff;
 @color-input-placeholder: #c5ccdb;
 @color-input: #262d3d;
-@color-btn-default: #78849e;
-@color-btn-primary: #4a70ff;
 
 .search-container {
   background-color: #fff;
@@ -164,7 +158,6 @@ export default {
 
       input {
         margin-left: 19px !important;
-        //caret-color: @color-btn-primary !important;
         &::placeholder {
           text-align: left !important;
         }

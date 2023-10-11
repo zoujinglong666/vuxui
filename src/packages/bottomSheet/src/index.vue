@@ -149,9 +149,7 @@ export default {
 
       return {
         min: this.anchors[0] || 10,
-        max:
-            this.anchors[this.anchors.length - 1] ||
-            Math.round(this.screenHeight * 0.9),
+        max: this.anchors[this.anchors.length - 1] || Math.round(this.screenHeight * 0.9),
       }
 
     },
@@ -284,7 +282,7 @@ export default {
   flex-direction: column;
 
 
-  .vux_bottom-sheet-content {
+  &-content {
     flex: 1;
     overflow-y: scroll;
     overflow-x: hidden;

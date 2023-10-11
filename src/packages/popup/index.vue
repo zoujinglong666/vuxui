@@ -163,15 +163,7 @@ export default {
   -webkit-overflow-scrolling: touch;
   z-index: 2001;
 
-  &.center {
-    top: 50%;
-    left: 50%;
-    transform: translate3d(-50%, -50%, 0);
 
-    &.round {
-      border-radius: 10px;
-    }
-  }
 
   &.bottom {
     bottom: 0;
@@ -217,11 +209,26 @@ export default {
     }
   }
 
+  &.center {
+    top: 50%;
+    left: 0;
+    right: 0;
+    width: fit-content;
+    min-width: calc(100% - (16px * 2));
+    margin: 0 auto;
+    transform: translateY(-50%);
+
+    &.round {
+      border-radius: 10px;
+    }
+  }
+
 
   &-slide-top-enter-active,
   &-slide-left-enter-active,
   &-slide-right-enter-active,
-  &-slide-bottom-enter-active, &-slide-center-enter-active {
+  &-slide-bottom-enter-active,
+  &-slide-center-enter-active {
     transition-timing-function: ease-in-out;
   }
 

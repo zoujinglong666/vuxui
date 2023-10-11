@@ -181,7 +181,7 @@ export default {
   display: inline-block;
   font-size: 0;
 
-  .vux-circle-text {
+  &-text {
     position: absolute;
     left: 50%;
     top: 50%;

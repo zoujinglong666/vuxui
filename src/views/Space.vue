@@ -14,7 +14,7 @@ export default {
 <template>
   <demo-page>
     <DemoBlock title="基本用法"></DemoBlock>
-    <vux-space size="12">
+    <vux-space>
       <vux-button type="primary">按钮</vux-button>
       <vux-button type="primary">按钮</vux-button>
       <vux-button type="primary">按钮</vux-button>

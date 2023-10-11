@@ -17,7 +17,7 @@ export default {
   position: relative;
 
   div {
-    border: 2px solid #FFFFFF;
+    border: 1px solid var(--vux-white);
     margin-left: calc(-0.5em);
     box-shadow: unset;
     border-radius: 50%;

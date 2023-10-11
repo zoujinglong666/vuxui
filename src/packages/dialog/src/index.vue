@@ -1,54 +1,45 @@
 <template>
-  <div :class="caleClass" class="vux-dialog" @click="handleClickByMark($event)">
-    <div v-show="curOpen" :style="{ borderRadius:radiusStyle}" class="vux-dialog-container" @click="handleScroll">
-      <div v-if="showTitleBar" :style="{background:titleColor}" class="vux-dialog-title">
-        <span>{{ title }}</span>
-        <span v-if="closable" class="vux-close-icon" @click="handleClose"></span>
-      </div>
-      <div class="vux-dialog-content">
-        <slot>
+  <div>
+    <vux-overlay :show="show" @click.native="handleClickByMark($event)"></vux-overlay>
+    <transition name="vux-dialog">
+      <div v-show="showCom" class="vux-dialog" @click="handleScroll">
+        <div v-if="showTitleBar" class="vux-dialog-title">
+          <span>{{ title }}</span>
+          <span v-if="closable" @click="handleClose">
+            <i class=" iconfont icon-close"></i>
+          </span>
+        </div>
+        <div class="vux-dialog-content">
+          <slot>
 
-        </slot>
-      </div>
-      <div :class="[singleButton?'singleButton':'',
-          doubleButton?'doubleButton':'',]" class="vux-dialog-footer">
-        <slot name='btn'>
-          <template v-if="doubleButton">
-            <vux-button :type="theme" block plain style="margin-right: 5px"
-                        @click="handleClose">{{ cancelText }}
-            </vux-button>
-            <vux-button :type="theme" block style="margin-left:5px" @click="handleConfirm">{{ confirmText }}
-            </vux-button>
-          </template>
-          <template v-if="singleButton">
-            <vux-button :type="theme" block round @click="handleConfirm">{{ confirmText }}
-            </vux-button>
-          </template>
-        </slot>
+          </slot>
+        </div>
+        <div class="vux-dialog-footer">
+          <slot name='footer'>
 
+          </slot>
+        </div>
       </div>
-    </div>
+    </transition>
   </div>
 </template>
 <script>
 import VuxButton from "@/packages/button/src/index.vue";
+import VuxOverlay from "@/packages/overlay/index.vue";
 
-const types = ["default", "primary", "success", "warning", "danger"];
 export default {
   name: "VuxDialog",
-  components: {VuxButton},
+  components: {VuxOverlay, VuxButton},
   data() {
-    return {
-      curOpen: this.open,
-    }
+    return {}
   },
   model: {
-    prop: 'open',
+    prop: 'show',
     event: 'input'
   },
 
   props: {
-    open: {
+    show: {
       type: Boolean,
     },
     type: {
@@ -56,12 +47,8 @@ export default {
     },
     title: {
       type: String,
-      default: ''
     },
 
-    titleColor: {
-      type: String,
-    },
     showTitle: {
       type: Boolean,
       default: true
@@ -74,13 +61,8 @@ export default {
       type: Boolean,
       default: true
     },
-    //圆角
     radius: {
       type: String,
-    },
-    lockScroll: {
-      type: Boolean,
-      default: true,
     },
     cancelText: {
       type: String,
@@ -90,13 +72,7 @@ export default {
       type: String,
       default: '确定'
     },
-    theme: {
-      type: String,
-      default: 'primary',
-      validator(val) {
-        return types.includes(val);
-      },
-    },
+
     showMark: {
       type: Boolean,
       default: true
@@ -121,24 +97,20 @@ export default {
     }
 
   },
-  watch: {
-    open(val) {
-      this.curOpen = val;
-    },
-    curOpen(val) {
-      this.$emit('input', val)
-    },
-
-  },
+  watch: {},
   computed: {
-    caleClass() {
-      return [
-        this.curOpen && this.showMark ? 'vux-dialog-mark' : '',
-      ]
-    },
     radiusStyle() {
       if (this.radius) {
         return this.radius + 'px'
+      }
+
+    },
+    showCom: {
+      get() {
+        return this.show
+      },
+      set(val) {
+        this.$emit('input', val)
       }
     },
   },
@@ -154,10 +126,7 @@ export default {
       if (!this.showMark) {
         return;
       }
-      if (e.target !== this.$el) {
-        return;
-      }
-      this.curOpen = false;
+      this.showCom = false;
 
     },
     handleClose() {
@@ -172,124 +141,89 @@ export default {
 
 <style lang="less" scoped>
 
-.vux-dialog-mark {
-  overflow: hidden;
-  z-index: 999;
+.vux-dialog {
   position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: rgba(0, 0, 0, 0.6);
-  transition: all 0.3s ease-out;
-}
-
-.vux-dialog-container {
+  max-height: 100%;
+  overflow-y: auto;
+  box-sizing: border-box;
   width: 90%;
   display: flex;
   flex-direction: column;
-  position: absolute;
   top: 45%;
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: 9999;
   background-color: #ffffff;
   border-radius: 8px;
-  overflow: hidden;
-  transition: all 0.5s ease-in-out;
-  -webkit-animation: vux-dialog-open 0.5s ease-out;
-  animation: vux-dialog-open 0.5s ease-out;
 
-}
-
-.vux-dialog-title {
-  width: 100%;
-  height: 40px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0 10px;
-  box-sizing: border-box;
-  color: #999;
-  font-size: 16px;
-
-  .vux-close-icon {
+  &-title {
+    width: 100%;
+    height: 40px;
     display: flex;
+    justify-content: space-between;
     align-items: center;
-    position: relative;
+    padding: 0 10px;
+    box-sizing: border-box;
     color: #999;
-    width: 20px;
-    height: 20px;
-
-    &:before,
-    &:after {
-      content: '';
-      position: absolute;
-      left: 0;
-      width: 20px;
-      height: 1px;
-      background-color: currentColor;
-      transform: rotate(-45deg);
-    }
-
-    &:after {
-      transform: rotate(45deg);
-    }
+    font-size: 16px;
   }
 
-}
-
-.vux-dialog-content {
-  width: 100%;
-  flex: 1;
-  max-height: 70vh;
-  //会出现双滚动条
-  //overflow: scroll;
-  overflow-y: auto;
-
-}
-
-.vux-dialog-footer {
-  width: 100%;
-  overflow: hidden;
-  box-sizing: border-box;
-  display: flex;
-  user-select: none;
-  padding: 0 10px !important;
-
-  &.doubleButton, &.singleButton {
-    padding: 10px !important;
+  &-content {
+    width: 100%;
+    flex: 1;
+    max-height: 70vh;
+    overflow-y: auto;
   }
+
+  &-footer {
+    width: 100%;
+    overflow: hidden;
+    box-sizing: border-box;
+    display: flex;
+    user-select: none;
+    padding: 0 10px;
+  }
+
+
 }
 
 @media screen and (min-width: 1024px) {
-
   .vux-dialog-container {
     width: 40%;
   }
-
 }
 
-@-webkit-keyframes vux-dialog-open {
-  from {
-    transform: translate3d(-50%, -50%, 0) scale(0.7);
+
+.vux-dialog-enter-active {
+  animation: vux-dialog-in .4s;
+}
+
+.vux-dialog-leave-active {
+  animation: vux-dialog-out .4s;
+}
+
+@keyframes vux-dialog-in {
+  0% {
+    transform: translate3d(-50%, -50%, 0) scale(1.167);;
     opacity: 0;
   }
-  to {
+  100% {
     transform: translate3d(-50%, -50%, 0) scale(1);
     opacity: 1;
   }
 }
 
-@-webkit-keyframes vux-dialog-open {
-  from {
-    transform: translate3d(-50%, -50%, 0) scale(0.7);
-    opacity: 0;
-  }
-  to {
+@keyframes vux-dialog-out {
+  0% {
     transform: translate3d(-50%, -50%, 0) scale(1);
     opacity: 1;
   }
+  100% {
+    transform: translate3d(-50%, -50%, 0) scale(0.833);
+    opacity: 0;
+  }
 }
+
+
 
 </style>

@@ -7,9 +7,10 @@ import DemoBlock from "@/components/DemoBlock.vue";
 import VuxActionSheet from "@/packages/actionSheet/src/index.vue";
 import VuxCell from "@/packages/cell/src/index.vue";
 import VuxDialog from "@/packages/dialog/src/index.vue";
+import VuxButton from "@/packages/button/src/index.vue";
 
 export default {
-  components: {VuxDialog, VuxCell, VuxActionSheet, DemoBlock, VuxAvatar, DemoPage},
+  components: {VuxButton, VuxDialog, VuxCell, VuxActionSheet, DemoBlock, VuxAvatar, DemoPage},
   data() {
     return {
       show: false,
@@ -27,6 +28,7 @@ export default {
       <div style="padding:16px 16px">
         生命远不止连轴转和忙到极限，人类的体验远比这辽阔、丰富得多。
       </div>
+      <vux-button block @click="show=false">确认</vux-button>
     </vux-dialog>
   </div>
 </template>

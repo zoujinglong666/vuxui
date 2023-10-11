@@ -42,13 +42,6 @@ export default {
 
     }
   },
-//   items	分类显示所需的数据	TreeSelectItem[]	[]
-//   height	高度，默认单位为px	number | string	300
-// main-active-index	左侧选中项的索引	number | string	0
-// active-id	右侧选中项的 id，支持传入数组	number | string |
-// (number | string)[]	0
-// max	右侧项最大选中个数	number | string	Infinity
-// selected-icon	自定义右侧栏选中状态的图标	string	success
   model: {
     prop: "mainActiveIndex"
   },
@@ -60,7 +53,6 @@ export default {
       set(val) {
         //使用 父组件加入.sync
         this.$emit('update:active-id', val)
-        //
       },
 
     },
@@ -108,10 +100,11 @@ export default {
       this.$emit('click-item', childrenItem)
 
       if (Array.isArray(this.activeId)) {
-        if (!this.newActiveId.includes(childrenItem.id)) {
-          this.newActiveId.push(childrenItem.id)
+        const childrenItemId = childrenItem.id;
+        if (!this.newActiveId.includes(childrenItemId)) {
+          this.newActiveId.push(childrenItemId)
         } else {
-          this.newActiveId = this.newActiveId.filter(it => it !== childrenItem.id);
+          this.newActiveId = this.newActiveId.filter(it => it !== childrenItemId);
         }
       }
       this.activeIdItem = childrenItem;
@@ -182,8 +175,6 @@ export default {
     .vux-tree-select-left-item {
       position: relative;
       padding: 14px 12px;
-
-
     }
 
     .vux-selected-left-item {
