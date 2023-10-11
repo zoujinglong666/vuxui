@@ -34,7 +34,7 @@
 
 <script>
 function deleteLastChar(s) {
-  if (s.length === 0) {
+  if (!s) {
     return
   }
   return s.slice(0, -1);
@@ -63,10 +63,14 @@ export default {
       this.keyboard = '';
     },
     onInput(text) {
+      console.log(text, 'text')
       this.value += text;
     },
     doDel() {
-      this.value = deleteLastChar(this.value)
+      if (this.value.length) {
+        this.value = deleteLastChar(this.value)
+
+      }
     }
   },
 

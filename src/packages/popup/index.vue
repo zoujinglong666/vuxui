@@ -162,9 +162,6 @@ export default {
   transition: transform 0.3s linear;
   -webkit-overflow-scrolling: touch;
   z-index: 2001;
-
-
-
   &.bottom {
     bottom: 0;
     left: 0;

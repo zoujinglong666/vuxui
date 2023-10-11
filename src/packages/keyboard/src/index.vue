@@ -251,18 +251,10 @@ export default {
     color: #fff;
 
     &.spt-key-active {
-      background-color: #096dd9;
+      background-color: var(--vux-primary-color);
     }
   }
 }
 
-.spt-slide-bottom {
-  &-enter-active {
-    animation: spt-slide-bottom-enter 0.3s both ease;
-  }
 
-  &-leave-active {
-    animation: spt-slide-bottom-leave 0.3s both ease;
-  }
-}
 </style>
