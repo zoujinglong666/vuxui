@@ -28,7 +28,7 @@ export default {
       <div style="padding:16px 16px">
         生命远不止连轴转和忙到极限，人类的体验远比这辽阔、丰富得多。
       </div>
-      <vux-button block @click="show=false">确认</vux-button>
+      <vux-button block square @click="show=false">确认</vux-button>
     </vux-dialog>
   </div>
 </template>

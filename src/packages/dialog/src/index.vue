@@ -1,7 +1,7 @@
 <template>
   <div>
     <vux-overlay :show="show" @click.native="handleClickByMark($event)"></vux-overlay>
-    <transition name="vux-dialog">
+    <transition name="vux__dialog">
       <div v-show="showCom" class="vux-dialog" @click="handleScroll">
         <div v-if="showTitleBar" class="vux-dialog-title">
           <span>{{ title }}</span>
@@ -194,11 +194,11 @@ export default {
 }
 
 
-.vux-dialog-enter-active {
+.vux__dialog-enter-active {
   animation: vux-dialog-in .4s;
 }
 
-.vux-dialog-leave-active {
+.vux__dialog-leave-active {
   animation: vux-dialog-out .4s;
 }
 
