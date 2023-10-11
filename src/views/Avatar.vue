@@ -4,9 +4,10 @@
 import DemoPage from "@/components/DemoPage.vue";
 import VuxAvatar from "@/packages/avatar/src/index.vue";
 import DemoBlock from "@/components/DemoBlock.vue";
+import VuxAvatarGroup from "@/packages/avatarGroup/src/index.vue";
 
 export default {
-  components: {DemoBlock, VuxAvatar, DemoPage}
+  components: {VuxAvatarGroup, DemoBlock, VuxAvatar, DemoPage}
 }
 </script>
 
@@ -18,6 +19,14 @@ export default {
     <vux-avatar text="vux" type="text"></vux-avatar>
     <DemoBlock title="方形"></DemoBlock>
     <vux-avatar shape="square" text="vux" type="text"></vux-avatar>
+    <DemoBlock title="头像组"></DemoBlock>
+    <vux-avatar-group>
+      <vux-avatar src="https://fastly.jsdelivr.net/npm/@vant/assets/cat.jpeg"></vux-avatar>
+      <vux-avatar src="https://fastly.jsdelivr.net/npm/@vant/assets/cat.jpeg"></vux-avatar>
+      <vux-avatar src="https://fastly.jsdelivr.net/npm/@vant/assets/cat.jpeg"></vux-avatar>
+      <vux-avatar src="https://fastly.jsdelivr.net/npm/@vant/assets/cat.jpeg"></vux-avatar>
+      <vux-avatar src="https://fastly.jsdelivr.net/npm/@vant/assets/cat.jpeg"></vux-avatar>
+    </vux-avatar-group>
   </demo-page>
 </template>
 

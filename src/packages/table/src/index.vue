@@ -8,15 +8,14 @@
       <tr :style="{backgroundColor:headColor}" class="tr">
         <th v-for="(item, index) in allColumns" :key="index"
             :style="{textAlign: textAlignment}" class="th">
-          <div v-if="item.hasOwnProperty('type')&&item.type=='checkbox'">
+          <div v-if="item.hasOwnProperty('type')&&item.type==='checkbox'">
             <input v-model="isCheckAll" type="checkbox" @click="handleCheckAll"/>
           </div>
-          <div v-else style="display: flex;align-items: center;justify-content: center;color: #333">
-            {{ item.label }}
-            <div v-if="item.hasOwnProperty('sort')"
-                 :class="[item.sortType==='asc'?'asc':'desc']"
-                 class="sort-icon"
-                 style="display:inline-block;margin-left: 6px" @click="handleSort(item)"></div>
+          <div v-else style="color: #333;display: flex;align-items: center">
+            <div>
+              {{ item.label }}
+              <sort-icon v-if="item.hasOwnProperty('sort')" @click.native="handleSort(item)"></sort-icon>
+            </div>
           </div>
         </th>
       </tr>
@@ -66,17 +65,13 @@
 </template>
 <script>
 import VuxButton from "@/packages/button/src/index.vue";
+import {bigNumAdd} from "@/utils";
+import SortIcon from "@/components/SortIcon.vue";
 
-function myAdd(num1, num2) {
-  const num1Digits = (num1.toString().split('.')[1] || '').length;
-  const num2Digits = (num2.toString().split('.')[1] || '').length;
-  const baseNum = Math.pow(10, Math.max(num1Digits, num2Digits));
-  return (num1 * baseNum + num2 * baseNum) / baseNum;
-}
 
 export default {
   name: "vuxTable",
-  components: {VuxButton},
+  components: {SortIcon, VuxButton},
   props: {
     editable: {
       type: Boolean,
@@ -279,7 +274,7 @@ export default {
     totalNum(item) {
       let total = 0
       this.tableData.forEach(el => {
-        total = myAdd(total, Number(el[item.prop]))
+        total = bigNumAdd(total, Number(el[item.prop]))
       })
       switch (item.totalType) {
         case "AVG":
@@ -390,14 +385,7 @@ export default {
     }
   }
 
-  .sort-icon::after {
-    content: "";
-    position: absolute;
-    top: -10px;
-    left: -10px;
-    right: -10px;
-    bottom: -10px;
-  }
+
 }
 
 .vux-ellipsis {

@@ -1,8 +1,7 @@
 <template>
-
   <transition appear name="vux-fade"
   >
-    <div v-show="showCom" class="vux_overlay" @click="close">
+    <div v-show="showCom&&overlay" class="vux_overlay" @click="close">
       <slot></slot>
     </div>
   </transition>
@@ -12,13 +11,7 @@
 <script>
 export default {
   name: "vuxOverlay",
-
-//   show	是否展示遮罩层	boolean	false
-//   z-index	z-index 层级	number | string	1
-//   duration	动画时长，单位秒，设置为 0 可以禁用动画	number | string	0.3
-// lock-scroll	是否锁定背景滚动，锁定时蒙层里的内容也将无法滚动	boolean	true
   props: {
-
     show: {
       type: Boolean,
 
@@ -28,6 +21,10 @@ export default {
     duration: {
       type: Number,
       default: 0.3
+    },
+    overlay: {
+      type: Boolean,
+      default: true
     },
 
   },

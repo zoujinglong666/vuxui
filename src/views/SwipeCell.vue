@@ -23,6 +23,21 @@
         <vux-button square style="height: 100%" type="danger" @click="doDel"> 删除</vux-button>
       </template>
     </vux-swipe-cell>
+    <DemoBlock title="Boss直聘风格"></DemoBlock>
+    <vux-swipe-cell>
+      <vux-cell :border="false" title="Boss直聘风格" value="内容"/>
+      <template #right>
+        <vux-space size="12" style="padding: 0 8px">
+          <vux-button circle @click="doSelect">
+            <i class="iconfont icon-comment"></i>
+          </vux-button>
+          <vux-button circle type="danger" @click="doDel">
+            <i class="iconfont icon-back"></i>
+          </vux-button>
+        </vux-space>
+
+      </template>
+    </vux-swipe-cell>
   </div>
 
 </template>
@@ -35,10 +50,11 @@ import DemoPage from "@/components/DemoPage.vue";
 import DemoBlock from "@/components/DemoBlock.vue";
 import VuxCell from "@/packages/cell/src/index.vue";
 import msg from "@/utils/msg";
+import VuxSpace from "@/packages/space/src/index.vue";
 
 export default {
   name: "SwipeCell",
-  components: {VuxCell, DemoBlock, DemoPage, VuxDivider, VuxSwipeCell, VuxFab, VuxButton},
+  components: {VuxSpace, VuxCell, DemoBlock, DemoPage, VuxDivider, VuxSwipeCell, VuxFab, VuxButton},
   methods: {
 
     doSelect() {

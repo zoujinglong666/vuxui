@@ -38,6 +38,7 @@ import myActionSheet from '../views/ActionSheet.vue'
 import myEllipsis from '../views/Ellipsis.vue'
 import myFab from '../views/fab.vue'
 import myDialog from '../views/Dialog.vue'
+import myKeyBoard from '../views/KeyBoard.vue'
 
 Vue.use(VueRouter)
 export const routes = [{
@@ -279,7 +280,15 @@ export const routes = [{
             title: "弹出框"
         }
 
-    }
+    }, {
+        path: "/keyboard",
+        component: myKeyBoard
+        ,
+        meta: {
+            title: "数字键盘"
+        }
+
+    },
 
 
     // {

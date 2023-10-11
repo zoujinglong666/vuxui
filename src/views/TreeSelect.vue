@@ -127,7 +127,6 @@ export default {
       activeIndex1: 0,
       activeId: [],
       items: [{text: '分组 1'}, {text: '分组 2'}],
-      citys: [],
       options: [
         {
           text: '浙江',
@@ -151,8 +150,6 @@ export default {
   },
   components: {DemoBlock, VuxTreeSelect},
   created() {
-    this.citys = this.generateTree();
-    console.log(this.citys)
   },
   methods: {
     generateTree() {

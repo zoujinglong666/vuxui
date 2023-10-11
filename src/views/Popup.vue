@@ -35,7 +35,8 @@
     <vux-popup :popup-style="{width:'80%'}" :show.sync="rightShow" position="right"></vux-popup>
     <vux-popup :popup-style="{height:'30%'}" :show.sync="bottomShow" position="bottom"></vux-popup>
     <vux-popup :popup-style="{height:'30%'}" :show.sync="bottomShow1" position="bottom" round></vux-popup>
-    <vux-popup :popup-style="{height:'30%',width:'30%'}" :show.sync="centerShow" position="center" round></vux-popup>
+    <vux-popup :popup-style="{height:'120px',width:'120px'}" :show.sync="centerShow" position="center"
+               round></vux-popup>
   </DemoPage>
 </template>
 

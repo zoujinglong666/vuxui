@@ -1,6 +1,6 @@
 <template>
   <div>
-    <vux-overlay :show="showCom" @click.native="handleClose"></vux-overlay>
+    <vux-overlay :overlay="overlay" :show="showCom" @click.native="handleClose"></vux-overlay>
     <transition :name="transitionName">
       <div v-if="showCom" ref="popupRef" :class="[position,round?'round':'']" :style="[popupStyle]"
            class="vux_popup">

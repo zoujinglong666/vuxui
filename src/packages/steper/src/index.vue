@@ -28,7 +28,7 @@
   </div>
 </template>
 <script>
-
+import {bigNumAdd} from "@/utils";
 
 const addUnit = (val, unit = 'px') => {
   return Number(val) + unit
@@ -160,7 +160,8 @@ export default {
       if (this.currentValue >= this.max) {
         return
       }
-      const res = this.myAdd(+this.currentValue, +this.step);
+
+      const res = bigNumAdd(+this.currentValue, +this.step);
       let value = this.format(this.myAdd(+this.currentValue, +this.step));
       this.changeValueBtn(value)
       this.$emit('plus')
@@ -208,12 +209,7 @@ export default {
       return isNaN(numValue) || numValue < min ? min : numValue > max ? max : numValue;
     },
 
-    myAdd(num1, num2) {
-      const num1Digits = (num1.toString().split('.')[1] || '').length;
-      const num2Digits = (num2.toString().split('.')[1] || '').length;
-      const baseNum = Math.pow(10, Math.max(num1Digits, num2Digits));
-      return (num1 * baseNum + num2 * baseNum) / baseNum;
-    }
+
   }
 
 

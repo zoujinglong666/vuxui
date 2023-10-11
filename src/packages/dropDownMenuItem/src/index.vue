@@ -97,15 +97,20 @@ export default {
     directionStyle() {
       return this.direction === 'down' ? 'top' : 'bottom';
     },
+    offsetByPx() {
+      return this.$parent.offset + 'px'
+
+
+    },
     offsetStyle() {
 
       if (this.direction === 'down') {
         return {
-          top: this.$parent.offset + 'px',
+          top: this.offsetByPx,
         }
       } else {
         return {
-          bottom: this.$parent.offset + 'px',
+          bottom: this.offsetByPx,
         }
       }
 
