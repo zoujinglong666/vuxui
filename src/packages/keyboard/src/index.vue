@@ -1,5 +1,5 @@
 <template>
-  <vux-popup :overlay="false" :show.sync="show">
+  <vux-popup v-model="show" :overlay="false">
     <div
         v-show="show"
         :class="`vux-keyboard-${theme}`"

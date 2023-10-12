@@ -2,25 +2,16 @@
   <div :class="caleClass" @click="closeMaskHandle">
     <div v-show="curOpen" :class="[round?'round':'']" :style="{height:heightByStyle,width:widthStyle}"
          class="drawer-content">
-      <div style="display: flex;
-  align-items: center;
-  position: relative;
-  font-weight: 500;
-  font-size: 16px;
- ">
-        <p style="margin: 0 auto;
-    max-width: 60%;">{{ title }}</p>
-        <span v-if="closeable" class="close-icon"
-              @click="handleClose"
-        ><i class="iconfont icon-close"></i></span>
-      </div>
+
       <slot>
       </slot>
+
     </div>
   </div>
 </template>
 
 <script>
+
 export default {
   name: "VuxDrawer",
   data() {

@@ -29,13 +29,13 @@
       </vux-button>
     </vux-space>
 
-    <vux-popup :popup-style="{height:'30%'}" :show.sync="topShow" closeable position="top">
+    <vux-popup v-model="topShow" :popup-style="{height:'30%'}" closeable position="top">
     </vux-popup>
-    <vux-popup :popup-style="{width:'80%'}" :show.sync="leftShow" position="left"></vux-popup>
-    <vux-popup :popup-style="{width:'80%'}" :show.sync="rightShow" position="right"></vux-popup>
-    <vux-popup :popup-style="{height:'30%'}" :show.sync="bottomShow" position="bottom"></vux-popup>
-    <vux-popup :popup-style="{height:'30%'}" :show.sync="bottomShow1" position="bottom" round></vux-popup>
-    <vux-popup :popup-style="{height:'120px',width:'120px'}" :show.sync="centerShow" position="center"
+    <vux-popup v-model="leftShow" :popup-style="{width:'80%'}" position="left"></vux-popup>
+    <vux-popup v-model="rightShow" :popup-style="{width:'80%'}" position="right"></vux-popup>
+    <vux-popup v-model="bottomShow" :popup-style="{height:'30%'}" position="bottom"></vux-popup>
+    <vux-popup v-model="bottomShow1" :popup-style="{height:'30%'}" position="bottom" round></vux-popup>
+    <vux-popup v-model="centerShow" :popup-style="{height:'120px',width:'120px'}" position="center"
                round></vux-popup>
   </DemoPage>
 </template>

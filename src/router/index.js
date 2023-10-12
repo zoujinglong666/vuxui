@@ -40,6 +40,7 @@ import myFab from '../views/fab.vue'
 import myDialog from '../views/Dialog.vue'
 import myKeyBoard from '../views/KeyBoard.vue'
 import mySticky from '../views/Sticky.vue'
+import myLoading from '../views/Loading.vue'
 
 Vue.use(VueRouter)
 export const routes = [{
@@ -295,6 +296,15 @@ export const routes = [{
         ,
         meta: {
             title: "粘性布局"
+        }
+
+    },
+    {
+        path: "/loading",
+        component: myLoading
+        ,
+        meta: {
+            title: "加载"
         }
 
     },

@@ -48,7 +48,7 @@ export default {
 </script>
 
 <template>
-  <vux-popup :show.sync="showCom" position="bottom" round>
+  <vux-popup v-model="showCom" position="bottom" round>
     <div v-for="(item,index) in actions" class="vux-action-sheet">
       <div class="vux-action-sheet item" @click="handleClick(item)">
         {{ item.name }}

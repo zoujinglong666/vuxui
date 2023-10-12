@@ -1,5 +1,5 @@
 <template>
-  <vux-popup :popup-style="{height:'80%'}" :show.sync="curOpen" round>
+  <vux-popup v-model="curOpen" :popup-style="{height:'80%'}" round>
     <div class="vux-calendar">
       <div class="vux-calendar-container">
         <div>

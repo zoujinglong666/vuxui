@@ -1,6 +1,6 @@
 <template>
   <div>
-    <vux-popup :show.sync="visible" round>
+    <vux-popup v-model="visible" round>
       <div class="vux_data_picker">
         <div v-if="showToolbar" class="vux_data_picker--toolbar">
           <div>

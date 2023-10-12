@@ -10,7 +10,7 @@ export default {
   components: {VuxSearch},
   data() {
     return {
-      value: "1"
+      value: "再难也要坚持"
     }
   },
   methods: {

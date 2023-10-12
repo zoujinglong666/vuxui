@@ -1,43 +1,46 @@
 <template>
   <div v-if="isOpen" :style="[offsetStyle,heightStyle]"
-       style="position: absolute;width: 100%;transition: ease 0.5s">
+       style="position: absolute;width: 100%;">
     <vux-drawer
         v-model="isOpen" :close-on-click-overlay="closeOnClickOverlay"
         :placement="directionStyle"
         style="position: absolute;"
         @click.native="clickCloseMark">
       <!--      一行多列模式-->
-      <div v-if="cols">
-        <div class="vux-down-menu-container"
-        >
-          <div v-for="(item,index) in options" :key="index"
-               :class="[disabledByStyle(item),activeColorSelect(item)?'check-mark':'']"
-               :style="{flexBasis:options.length>cols?(100/cols)-2+'%':(100/options.length)-2+'%'}"
-               class="vux-down-menu-cols"
-               @click="handleClickItem(item)">
-            <div :style="activeColorStyle(item)" style="flex: none">{{ item.text }}</div>
+      <transition-height :show="isOpen">
+        <div v-if="cols">
+          <div class="vux-down-menu-container"
+          >
+            <div v-for="(item,index) in options" :key="index"
+                 :class="[disabledByStyle(item),activeColorSelect(item)?'check-mark':'']"
+                 :style="{flexBasis:options.length>cols?(100/cols)-2+'%':(100/options.length)-2+'%'}"
+                 class="vux-down-menu-cols"
+                 @click="handleClickItem(item)">
+              <div :style="activeColorStyle(item)" style="flex: none">{{ item.text }}</div>
+            </div>
           </div>
         </div>
-      </div>
-      <!--      普通模式-->
-      <div v-for="(item,key) in options" v-else :key="key" class="vux-down-menu-item"
-           @click="handleClickItem(item)">
-        <div style="display: flex;justify-content: space-between;align-items: center;">
-          <div :style="activeColorStyle(item)" style="font-size: 14px">{{ item.text }}</div>
-          <div v-if="activeColorSelect(item)">
-            <Checkmark :color="activeColorSelect(item) ? activeColor : ''"></Checkmark>
+        <!--      普通模式-->
+        <div v-for="(item,key) in options" v-else :key="key" class="vux-down-menu-item"
+             @click="handleClickItem(item)">
+          <div style="display: flex;justify-content: space-between;align-items: center;">
+            <div :style="activeColorStyle(item)" style="font-size: 14px">{{ item.text }}</div>
+            <div v-if="activeColorSelect(item)">
+              <Checkmark :color="activeColorSelect(item) ? activeColor : ''"></Checkmark>
+            </div>
           </div>
         </div>
-      </div>
 
-      <slot></slot>
-      <div class="vux-down-menu-footer">
-        <template>
-          <slot name="footer">
+        <slot></slot>
+        <div class="vux-down-menu-footer">
+          <template>
+            <slot name="footer">
 
-          </slot>
-        </template>
-      </div>
+            </slot>
+          </template>
+        </div>
+      </transition-height>
+
     </vux-drawer>
 
   </div>
@@ -46,10 +49,12 @@
 <script>
 import Checkmark from '@/components/Checkmark.vue'
 import VuxDrawer from "@/packages/drawer/src/index.vue";
+import TransitionHeight from "@/packages/transitionHeight/src/index.vue";
 
 export default {
   name: "vuxDropdownItem",
   components: {
+    TransitionHeight,
     VuxDrawer,
     Checkmark
   },

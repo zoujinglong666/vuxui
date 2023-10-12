@@ -25,6 +25,9 @@ import VuxOverlay from "@/packages/overlay/index.vue";
 export default {
   name: "vuxPopup",
   components: {VuxOverlay},
+  model: {
+    prop: "show"
+  },
   props: {
     show: {
       type: Boolean
@@ -87,7 +90,7 @@ export default {
         return this.show
       },
       set(val) {
-        this.$emit('update:show', val)
+        this.$emit('input', val)
       }
 
     },

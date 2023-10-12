@@ -1,7 +1,9 @@
 <template>
   <div class="search-container">
     <div :class="{'icon-placeholder-left':isFocus||noEmpty}" class="search-input gary">
-      <i class="iconfont icon-search "></i>
+      <transition name="vux-fade">
+        <i class="iconfont icon-search "></i>
+      </transition>
       <input v-model="searchVal"
              placeholder="搜索"
              type="text"
@@ -188,7 +190,7 @@ export default {
       border: 0;
       outline: none;
       flex: 1;
-      padding-left: 8px;
+      padding-left: 2px;
 
       &::placeholder {
         font-size: 14px;

@@ -28,8 +28,7 @@
           class="vux-data-button ripple"
           @click="handleBtnClick($event)"
   >
-
-    <i v-if="loading" :class="[loading?`vux-loading`:'']"></i>
+    <vux-loading v-if="loading" :size="16" color="#fff"></vux-loading>
     <slot name="left"></slot>
     <slot></slot>
     <slot name="right"></slot>
@@ -38,6 +37,8 @@
 
 <script>
 //基本用法
+import VuxLoading from "@/packages/loading/src/index.vue";
+
 const types = ["default", "primary", "success", "warning", "danger"];
 const sizes = ["large", "small", "mini", "normal"];
 const shapes = ["plain", "round", "square"];
@@ -46,6 +47,7 @@ const borders = ["noBorder", "hairline",];
 
 export default {
   name: "vuxButton",
+  components: {VuxLoading},
 
   props: {
     //常用渐变
@@ -478,28 +480,28 @@ export default {
   }
 
 
-  .vux-loading {
-    width: 14px;
-    height: 14px;
-    border: 2px solid #fff;
-    border-radius: 50%;
-    display: inline-block;
-    vertical-align: middle;
-    margin-right: 4px;
-    clip-path: polygon(0% 0%, 100% 0%, 100% 30%, 0% 30%);
-    animation: loading 1s linear infinite;
-  }
-
-
-  @keyframes loading {
-    from {
-      transform: rotatez(0deg);
-    }
-
-    to {
-      transform: rotatez(360deg);
-    }
-  }
+  //.vux-loading {
+  //  width: 14px;
+  //  height: 14px;
+  //  border: 2px solid #fff;
+  //  border-radius: 50%;
+  //  display: inline-block;
+  //  vertical-align: middle;
+  //  margin-right: 4px;
+  //  clip-path: polygon(0% 0%, 100% 0%, 100% 30%, 0% 30%);
+  //  animation: loading 1s linear infinite;
+  //}
+  //
+  //
+  //@keyframes loading {
+  //  from {
+  //    transform: rotatez(0deg);
+  //  }
+  //
+  //  to {
+  //    transform: rotatez(360deg);
+  //  }
+  //}
 
   .ripple {
     position: relative;

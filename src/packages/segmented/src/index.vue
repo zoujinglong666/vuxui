@@ -44,8 +44,6 @@ export default {
     block: {
       type: Boolean
     },
-
-
     options: {
       type: Array,
       default: () => []
