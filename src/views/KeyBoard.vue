@@ -1,11 +1,9 @@
 <template>
 
   <div>
-    <vux-space wrap>
-      <vux-button @click="keyboard = 'null'">默认数字键盘</vux-button>
-      <vux-button @click="keyboard = 'title'">带标题数字键盘</vux-button>
-      <vux-button @click="keyboard = 'default'">主题default数字键盘</vux-button>
-    </vux-space>
+    <vux-cell is-link title="默认数字键盘" @click="keyboard = 'null'"></vux-cell>
+    <vux-cell is-link title="带标题数字键盘" @click="keyboard = 'title'"></vux-cell>
+    <vux-cell is-link title="主题default数字键盘" @click="keyboard = 'default'"></vux-cell>
     {{ this.value }}
     <vux-key-board :show="keyboard === 'null'" @blur="hideKeyBoard" @delete="doDel" @input="onInput"></vux-key-board>
     <vux-key-board
@@ -33,6 +31,11 @@
 </template>
 
 <script>
+import VuxCell from "@/packages/cell/src/index.vue";
+import VuxKeyBoard from "@/packages/keyboard/src/index.vue";
+import VuxSpace from "@/packages/space/src/index.vue";
+import VuxButton from "@/packages/button/src/index.vue";
+
 function deleteLastChar(s) {
   if (!s) {
     return
@@ -40,13 +43,9 @@ function deleteLastChar(s) {
   return s.slice(0, -1);
 }
 
-import VuxKeyBoard from "@/packages/keyboard/src/index.vue";
-import VuxSpace from "@/packages/space/src/index.vue";
-import VuxButton from "@/packages/button/src/index.vue";
-
 export default {
   name: "Key",
-  components: {VuxButton, VuxSpace, VuxKeyBoard},
+  components: {VuxCell, VuxButton, VuxSpace, VuxKeyBoard},
 
   mounted() {
 

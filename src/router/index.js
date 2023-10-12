@@ -39,6 +39,7 @@ import myEllipsis from '../views/Ellipsis.vue'
 import myFab from '../views/fab.vue'
 import myDialog from '../views/Dialog.vue'
 import myKeyBoard from '../views/KeyBoard.vue'
+import mySticky from '../views/Sticky.vue'
 
 Vue.use(VueRouter)
 export const routes = [{
@@ -286,6 +287,14 @@ export const routes = [{
         ,
         meta: {
             title: "数字键盘"
+        }
+
+    }, {
+        path: "/sticky",
+        component: mySticky
+        ,
+        meta: {
+            title: "粘性布局"
         }
 
     },

@@ -1,7 +1,7 @@
 <template>
   <i
       :class="className"
-      class="vux-key vux-hairline"
+      class="vux-key vux_hairline"
       @mousemove="onBlur"
       @mouseup="onBlur"
       @touchcancel="onBlur"
@@ -50,24 +50,6 @@ export default {
 </script>
 
 <style lang="less">
-.vux-hairline {
-  position: relative;
-
-  &::after {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 200%;
-    height: 200%;
-    transform: scale(0.5);
-    -webkit-transform-origin: 0 0;
-    transform-origin: 0 0;
-    pointer-events: none;
-    box-sizing: border-box;
-    border: 0 solid #e5e5e5;
-  }
-}
 
 .vux-key {
   display: inline-block;
@@ -114,5 +96,25 @@ export default {
     }
   }
 }
+
+.vux_hairline {
+  position: relative;
+
+  &::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 200%;
+    height: 200%;
+    -webkit-transform: scale(0.5);
+    transform: scale(0.5);
+    -webkit-transform-origin: 0 0;
+    transform-origin: 0 0;
+    pointer-events: none;
+    box-sizing: border-box;
+  }
+}
+
 </style>
 

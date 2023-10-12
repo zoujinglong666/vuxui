@@ -9,9 +9,9 @@
         <th v-for="(item, index) in allColumns" :key="index"
             :style="{textAlign: textAlignment}" class="th">
           <div v-if="item.hasOwnProperty('type')&&item.type==='checkbox'">
-            <input v-model="isCheckAll" type="checkbox" @click="handleCheckAll"/>
+            <vux-checkbox v-model="isCheckAll" type="checkbox" @click="handleCheckAll"/>
           </div>
-          <div v-else style="color: #333;display: flex;align-items: center">
+          <div v-else style="color: #333;display: flex;align-items: center;justify-content: center;">
             <div>
               {{ item.label }}
               <sort-icon v-if="item.hasOwnProperty('sort')" @click.native="handleSort(item)"></sort-icon>
@@ -25,8 +25,8 @@
         <td v-for="(tp) in typesColumns" :key="tp.type" class="td">
           <span v-if="tp.type==='index'">{{ index + 1 }}</span>
           <div v-if="tp.type==='radio'">
-            <input v-model="item.isCheck" type="checkbox"
-                   @click="handleRadio(item)"></input>
+            <vux-checkbox v-model="item.isCheck" type="checkbox"
+                          @click="handleRadio(item)"></vux-checkbox>
           </div>
         </td>
         <td v-for="(context, i) in renderColumns" :key="i">
@@ -67,11 +67,12 @@
 import VuxButton from "@/packages/button/src/index.vue";
 import {bigNumAdd} from "@/utils";
 import SortIcon from "@/components/SortIcon.vue";
+import VuxCheckbox from "@/packages/checkBox/src/index.vue";
 
 
 export default {
   name: "vuxTable",
-  components: {SortIcon, VuxButton},
+  components: {VuxCheckbox, SortIcon, VuxButton},
   props: {
     editable: {
       type: Boolean,
