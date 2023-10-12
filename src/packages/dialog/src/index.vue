@@ -165,7 +165,7 @@ export default {
     padding: 0 10px;
     box-sizing: border-box;
     color: #999;
-    font-size: 16px;
+    font-size: 14px;
   }
 
   &-content {

@@ -48,6 +48,7 @@ export default {
   },
   props: {
     show: Boolean,
+    card: Boolean,
     title: String,
     closeButtonText: String,
     okText: {
@@ -104,6 +105,13 @@ export default {
       // 根据主题变化
       switch (this.theme) {
         case 'default':
+          keys.push(
+              {text: this.extraKey, type: ['gray']},
+              {text: 0},
+              {text: 'hide', type: ['gray', 'hide']},
+          );
+          break;
+        case 'card':
           keys.push(
               {text: this.extraKey, type: ['gray']},
               {text: 0},

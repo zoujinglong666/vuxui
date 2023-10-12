@@ -4,6 +4,7 @@
     <vux-cell is-link title="默认数字键盘" @click="keyboard = 'null'"></vux-cell>
     <vux-cell is-link title="带标题数字键盘" @click="keyboard = 'title'"></vux-cell>
     <vux-cell is-link title="主题default数字键盘" @click="keyboard = 'default'"></vux-cell>
+    <vux-cell is-link title="身份证键盘" @click="keyboard = 'card'"></vux-cell>
     {{ this.value }}
     <vux-key-board :show="keyboard === 'null'" @blur="hideKeyBoard" @delete="doDel" @input="onInput"></vux-key-board>
     <vux-key-board
@@ -25,7 +26,17 @@
         @delete="doDel"
         @input="onInput"
     ></vux-key-board>
-
+    <vux-key-board
+        :close-vux-button-text="'确定'"
+        :show="keyboard === 'card'"
+        extraKey="x"
+        show-title-close
+        theme="card"
+        title="身份证键盘"
+        @blur="hideKeyBoard"
+        @delete="doDel"
+        @input="onInput"
+    ></vux-key-board>
   </div>
 
 </template>

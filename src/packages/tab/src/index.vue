@@ -74,14 +74,10 @@ export default {
       ++this.currentIndex;
     },
     rightSlide() {
-      if (!this.swipeable) {
+      if (!this.swipeable || this.currentIndex === 0) {
         return;
       }
-      if (this.currentIndex === 0) {
-        return
-      }
       --this.currentIndex;
-
 
     }
   }
