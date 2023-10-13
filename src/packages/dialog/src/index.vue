@@ -103,7 +103,6 @@ export default {
       if (this.radius) {
         return this.radius + 'px'
       }
-
     },
     showCom: {
       get() {
@@ -195,16 +194,16 @@ export default {
 
 
 .vux__dialog-enter-active {
-  animation: vux-dialog-in .4s;
+  animation: vux-dialog-in var(--vux-duration-base);
 }
 
 .vux__dialog-leave-active {
-  animation: vux-dialog-out .4s;
+  animation: vux-dialog-out var(--vux-duration-base);
 }
 
 @keyframes vux-dialog-in {
   0% {
-    transform: translate3d(-50%, -50%, 0) scale(1.167);;
+    transform: translate3d(-50%, -50%, 0) scale(1.16);;
     opacity: 0;
   }
   100% {
@@ -216,10 +215,12 @@ export default {
 @keyframes vux-dialog-out {
   0% {
     transform: translate3d(-50%, -50%, 0) scale(1);
+    transition: ease-in-out;
     opacity: 1;
   }
   100% {
-    transform: translate3d(-50%, -50%, 0) scale(0.833);
+    transform: translate3d(-50%, -50%, 0) scale(0.85);
+    transition: ease-in-out;
     opacity: 0;
   }
 }

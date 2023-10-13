@@ -28,14 +28,13 @@
       <vux-cell :border="false" title="Boss直聘风格" value="内容"/>
       <template #right>
         <vux-space size="12" style="padding: 0 8px">
-          <vux-button circle @click="doSelect">
+          <vux-button circle height="36" width="36" @click="doSelect">
             <i class="iconfont icon-comment"></i>
           </vux-button>
-          <vux-button circle type="danger" @click="doDel">
+          <vux-button circle height="36" type="danger" width="36" @click="doDel">
             <i class="iconfont icon-back"></i>
           </vux-button>
         </vux-space>
-
       </template>
     </vux-swipe-cell>
   </div>

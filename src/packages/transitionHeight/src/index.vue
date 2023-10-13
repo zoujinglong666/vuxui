@@ -2,6 +2,7 @@
   <div ref="transitionWrap" class="transitionWrap">
     <slot></slot>
   </div>
+
 </template>
 
 <script>
@@ -23,10 +24,6 @@ export default {
     initHeight() {
       this.$nextTick(() => {
         this.height = this.$refs.transitionWrap.offsetHeight;
-
-        console.log(
-            this.height, 'this.height'
-        )
         this.$refs.transitionWrap.style.height = this.show
             ? `${this.height}px`
             : 0;
@@ -43,7 +40,7 @@ export default {
 
 <style scoped>
 .transitionWrap {
-  transition: height 0.25s ease-in-out;
+  transition: height var(--vux-duration-base) ease-in-out;
   overflow: hidden;
 }
 </style>

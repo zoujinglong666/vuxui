@@ -5,7 +5,6 @@
            :style="[activeTitleStyle(item,index),disabledStyle(item,index)]" class="vux_tab-title item"
            @click="handleTitleItemClick(item,index)">
         <span>{{ item.title }}</span>
-        <badge v-if="item.dot" :text="item.dot"></badge>
       </div>
       <div :style="lineStyle" class="vux_tab-title line"></div>
     </div>
@@ -36,9 +35,9 @@ export default {
       type: String,
       default: '#1989fa'
     },
-    background: {
+    backgroundColor: {
       type: String,
-      default: 'white'
+      default: '#1989fa'
     },
     duration: {
       type: [Number, String], default: 0.5
@@ -233,7 +232,7 @@ export default {
 
   &.line {
     position: absolute;
-    background-color: #187ef9;
+    background-color: #1989fa;
     //opacity: 0.1;
     bottom: 0px;
     left: 0;

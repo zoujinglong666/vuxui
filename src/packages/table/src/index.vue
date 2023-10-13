@@ -252,24 +252,13 @@ export default {
 
     },
     handleSort(item) {
-      //从小到大
-      if (item.sortType === "asc") {
-        this.tableData = this.tableData.sort((a, b) => {
-          if (this.isNumber(a[item.prop])) {
-            return a[item.prop] - b[item.prop]
-          }
-          return a[item.prop].localeCompare(b[item.prop])
-        })
-        item.sortType = "desc"
-      } else {
-        this.tableData = this.tableData.sort((a, b) => {
-          if (this.isNumber(a[item.prop])) {
-            return b[item.prop] - a[item.prop]
-          }
-          return b[item.prop].localeCompare(a[item.prop])
-        })
-        item.sortType = "asc"
-      }
+      let sortAsc = item.sortType === "asc";
+      this.tableData = this.tableData.sort((a, b) => {
+        const valueA = this.isNumber(a[item.prop]) ? a[item.prop] : a[item.prop].localeCompare(b[item.prop]);
+        const valueB = this.isNumber(b[item.prop]) ? b[item.prop] : b[item.prop].localeCompare(a[item.prop]);
+        return sortAsc ? valueA - valueB : valueB - valueA;
+      });
+      item.sortType = sortAsc ? "desc" : "asc";
     },
     //求和
     totalNum(item) {

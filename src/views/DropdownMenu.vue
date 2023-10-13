@@ -48,7 +48,7 @@
     </vux-dropdown-menu>
     <demo-block title="禁用菜单"></demo-block>
     <vux-dropdown-menu>
-      <vux-dropdown-item v-model="value1" :options="option1" disabled></vux-dropdown-item>
+      <vux-dropdown-item v-model="value1" :options="option1"></vux-dropdown-item>
       <vux-dropdown-item v-model="value2" :options="option2" disabled></vux-dropdown-item>
 
     </vux-dropdown-menu>
@@ -57,7 +57,6 @@
     <vux-dropdown-menu>
       <vux-dropdown-item v-model="value1" :cols="3" :options="option1"></vux-dropdown-item>
       <vux-dropdown-item v-model="value2" :cols="3" :options="option2"></vux-dropdown-item>
-
     </vux-dropdown-menu>
   </div>
 

@@ -1,6 +1,7 @@
 <template>
 
   <div>
+    <DemoBlock title="基本用法"></DemoBlock>
     <vux-tabs v-model="activeIndex">
       <vux-tab v-for="item in tabData" :key="item" :title="item">
         <div style="display: flex;align-items: center;justify-content: center;height: 200px">
@@ -16,10 +17,11 @@
 
 import VuxTab from "@/packages/tab/src/index.vue";
 import VuxTabs from "@/packages/tabs/src/index.vue";
+import DemoBlock from "@/components/DemoBlock.vue";
 
 export default {
   name: "Tab",
-  components: {VuxTabs, VuxTab},
+  components: {DemoBlock, VuxTabs, VuxTab},
   data() {
     return {
       activeIndex: 0,
@@ -42,18 +44,4 @@ export default {
 </script>
 
 <style lang="less" scoped>
-.list {
-  position: relative;
-  height: 100%;
-
-  .button {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    z-index: 999;
-    box-sizing: border-box;
-    width: 100%;
-  }
-}
-
 </style>

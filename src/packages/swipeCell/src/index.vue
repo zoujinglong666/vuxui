@@ -193,12 +193,16 @@ export default {
   }
 
   &_right {
+    display: flex;
+    align-items: center;
     right: 0;
     transform: translate3d(101%, 0, 0);
 
   }
 
   &_left {
+    display: flex;
+    align-items: center;
     left: 0;
     transform: translate3d(-101%, 0, 0);
   }

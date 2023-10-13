@@ -26,7 +26,7 @@ export default {
 <template>
   <div>
     <vux-cell is-link title="基本用法" @click="show=true"></vux-cell>
-    <vux-cell is-link title="基本用法" @click="show1=true"></vux-cell>
+    <vux-cell is-link title="展示取消按钮" @click="show1=true"></vux-cell>
     <vux-dialog v-model="show" singleButton title="标题" @confirm="show=false">
       <div style="padding:16px 16px">
         生命远不止连轴转和忙到极限，人类的体验远比这辽阔、丰富得多。
@@ -37,9 +37,10 @@ export default {
       <div style="padding:16px 16px">
         生命远不止连轴转和忙到极限，人类的体验远比这辽阔、丰富得多。
       </div>
-      <vux-space class="vux-hairline">
-        <vux-button block link square @click="show1=false">取消</vux-button>
-        <vux-button block link square type="primary" @click="show1=false">确认</vux-button>
+      <vux-space class="vux-hairline"
+                 style="padding: 8px">
+        <vux-button block round @click="show1=false">取消</vux-button>
+        <vux-button block round type="primary" @click="show1=false">确认</vux-button>
       </vux-space>
     </vux-dialog>
   </div>

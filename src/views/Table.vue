@@ -5,7 +5,6 @@
     <DemoBlock title="显示总结栏"></DemoBlock>
     <vux-table :columns="columns" :data="tableData" total-footer></vux-table>
   </div>
-
 </template>
 
 <script>
