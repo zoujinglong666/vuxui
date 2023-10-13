@@ -1,5 +1,7 @@
 <template>
-    <vux-fab v-show="show" @click.native="handleClick"></vux-fab>
+  <vux-fab v-show="show" @click.native="handleClick">
+    <i class="iconfont icon-arrow-up-bold"></i>
+  </vux-fab>
 
 </template>
 

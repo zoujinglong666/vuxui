@@ -36,8 +36,9 @@ export default {
       <vux-button @click="right">右</vux-button>
     </vux-space>
 
-    <vux-fab :position="position"></vux-fab>
-
+    <vux-fab :position="position">
+      <i class="iconfont icon-add-bold"></i>
+    </vux-fab>
   </demo-page>
 
 

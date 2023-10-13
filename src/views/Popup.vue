@@ -20,7 +20,7 @@
         中间弹出
       </vux-button>
     </vux-space>
-    <DemoBlock title="基本用法">
+    <DemoBlock title="圆角弹窗">
 
     </DemoBlock>
     <vux-space>
@@ -28,7 +28,6 @@
         圆角弹窗
       </vux-button>
     </vux-space>
-
     <vux-popup v-model="topShow" :popup-style="{height:'30%'}" closeable position="top">
     </vux-popup>
     <vux-popup v-model="leftShow" :popup-style="{width:'80%'}" position="left"></vux-popup>
