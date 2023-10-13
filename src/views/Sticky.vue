@@ -16,7 +16,7 @@
       </vux-sticky>
     </div>
     <div>
-      <div v-for="item in 50" style="height: 40px">
+      <div v-for="item in 10" style="height: 40px">
       </div>
     </div>
   </div>

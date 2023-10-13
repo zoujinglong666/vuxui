@@ -1,16 +1,12 @@
 <template>
-  <div class="vux__navbar">
+  <div class="vux__navbar vux-hairline--bottom">
     <div class="vux__navbar__left" @click="goBack">
-      <span>
-        <ArrowLeft></ArrowLeft>
-</span>
+      <span><ArrowLeft></ArrowLeft></span>
     </div>
-    <div class="vux__navbar__title"><span>
-      {{ title }}
-    </span></div>
-
+    <div class="vux__navbar__title">
+      <span>{{ title }}</span>
+    </div>
     <div class="vux__navbar__right">
-
       <template>
         <slot name="right">
         </slot>
@@ -61,7 +57,6 @@ export default {
   font-size: 16px;
   padding: 0 16px;
   background-color: #FFFFFF;
-  border-bottom: 1px solid #eeeeee;
 
   .vux__navbar__left {
     position: absolute;

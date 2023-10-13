@@ -25,7 +25,6 @@
         primary类型
       </vux-badge>
     </div>
-
   </DemoPage>
 </template>
 

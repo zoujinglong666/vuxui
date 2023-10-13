@@ -3,7 +3,6 @@
     <li v-for="(item, index) in data" :key="item[props.key]">
       <i v-show="item[props.children]" :class="['triangle', carets[tapScopes[index]]]" @click="changeStatus(index)"/>
       <p :class="['treeNode', { 'treeNode--select': item.onSelect }]" @click="changeStatus(index)">
-
         <vux-checkbox v-if="isSelect"
                       v-model="item.checked" shape="square" size="12" @click="checked(item)"></vux-checkbox>
         <span class="title" @click="tap(item, index)">{{ item[props.label] }}</span>

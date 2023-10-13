@@ -1,22 +1,17 @@
 <template>
 
-  <demo-page>
+  <div>
     <DemoBlock title="基本用法"></DemoBlock>
-    <vux-space wrap>
-      <vux-button type="success" @click="handleSuccessMsg">
-        success消息
-      </vux-button>
-      <vux-button type="danger" @click="handleErrorMsg">
-        error消息
-      </vux-button>
-      <vux-button type="warning" @click="handleWarnMsg">
-        warning消息
-      </vux-button>
-      <vux-button type="primary" @click="handleInfoMsg">
-        info消息
-      </vux-button>
-    </vux-space>
-  </demo-page>
+    <vux-cell title="success消息" type="success" @click="handleSuccessMsg">
+    </vux-cell>
+    <vux-cell title="error消息" type="danger" @click="handleErrorMsg">
+      error消息
+    </vux-cell>
+    <vux-cell title="warning消息" type="warning" @click="handleWarnMsg">
+    </vux-cell>
+    <vux-cell title="info信息" type="primary" @click="handleInfoMsg">
+    </vux-cell>
+  </div>
 
 
 </template>
@@ -26,10 +21,11 @@ import VuxSpace from "@/packages/space/src/index.vue";
 import DemoPage from "@/components/DemoPage.vue";
 import DemoBlock from "@/components/DemoBlock.vue";
 import msg from "@/utils/msg";
+import VuxCell from "@/packages/cell/src/index.vue";
 
 export default {
   name: "Message",
-  components: {DemoBlock, DemoPage, VuxSpace, VuxButton},
+  components: {VuxCell, DemoBlock, DemoPage, VuxSpace, VuxButton},
   methods: {
     handleSuccessMsg() {
       msg.success("success")

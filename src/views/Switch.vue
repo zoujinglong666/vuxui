@@ -4,7 +4,7 @@
     <demo-block title="基本用法"></demo-block>
     <vux-switch v-model="value"></vux-switch>
     <demo-block title="自定义文字"></demo-block>
-    <vux-switch v-model="value1" activeText="开启" inactiveText="关闭"></vux-switch>
+    <vux-switch v-model="value1" activeText="开" inactiveText="关"></vux-switch>
     <demo-block title="自定义颜色"></demo-block>
     <vux-switch v-model="value2" active-color="red"></vux-switch>
     <demo-block title="loading状态"></demo-block>

@@ -22,11 +22,11 @@
         <img
             v-if="activeIndex === 0"
             src="https://fastly.jsdelivr.net/npm/@vant/assets/apple-1.jpeg"
-        />
+            alt=""/>
         <img
             v-if="activeIndex === 1"
             src="https://fastly.jsdelivr.net/npm/@vant/assets/apple-2.jpeg"
-        />
+            alt=""/>
       </template>
     </vux-tree-select>
 

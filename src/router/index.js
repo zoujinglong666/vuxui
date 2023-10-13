@@ -41,9 +41,15 @@ import myDialog from '../views/Dialog.vue'
 import myKeyBoard from '../views/KeyBoard.vue'
 import mySticky from '../views/Sticky.vue'
 import myLoading from '../views/Loading.vue'
+import Home from '../views/Home.vue'
 
 Vue.use(VueRouter)
 export const routes = [{
+    path: "/",
+    name: "home",
+    component: Home,
+    meta: {title: '首页', keepAlive: true}
+}, {
     path: '/tag', component: myTag, meta: {
         title: "标签"
     }
@@ -308,6 +314,15 @@ export const routes = [{
         }
 
     },
+    // {
+    //     path: "/passwordInput",
+    //     component: myPasswordInput
+    //     ,
+    //     meta: {
+    //         title: "密码输入框"
+    //     }
+    //
+    // },
 
 
     // {

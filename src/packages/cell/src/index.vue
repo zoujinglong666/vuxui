@@ -1,16 +1,16 @@
 <template>
-  <div :class="[border?'border':'noBorder']" class="vux__cell" @click="handleClick">
+  <div :class="[border?'border':'noBorder']" class="vux-cell" @click="handleClick">
     <div>
-      <span class="vux__cell__title">{{ title }}</span>
-      <div class="vux__cell__label">{{ label }}</div>
+      <span class="vux-cell__title">{{ title }}</span>
+      <div class="vux-cell__label">{{ label }}</div>
     </div>
     <div>
       <slot>
-      <span class="vux__cell__value">
+      <span class="vux-cell__value">
         {{ value }}
       </span>
       </slot>
-      <span v-if="isLink" class="vux__cell__isLink">
+      <span v-if="isLink" class="vux-cell__isLink">
       <ArrowRight></ArrowRight>
     </span>
     </div>
@@ -65,7 +65,7 @@ export default {
 </script>
 
 <style lang="less" scoped>
-.vux__cell {
+.vux-cell {
   background: #fff;
   position: relative;
   color: #303133;
@@ -78,30 +78,28 @@ export default {
   padding: 0 16px;
   box-sizing: border-box;
 
-  .vux__cell__title {
+  &__title {
     font-size: 13px;
     color: #333;
-
   }
 
-  .vux__cell__label {
+  &__label {
     font-size: 12px;
     color: #999999;
   }
 
-  .vux__cell__value {
+  &__value {
     color: #666;
     width: auto;
-
   }
 
-  .vux__cell__isLink {
+  &__isLink {
     color: #999999;
     font-weight: 500;
   }
 }
 
-.vux__cell:after {
+.vux-cell:after {
   position: absolute;
   content: " ";
   pointer-events: none;
@@ -111,8 +109,6 @@ export default {
   border-bottom: 1px solid #eee;
   transform: scaleY(.5);
   box-sizing: border-box;
-  border-radius: 1px;
-
 
 }
 </style>

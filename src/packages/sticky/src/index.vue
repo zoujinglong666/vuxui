@@ -88,7 +88,6 @@ export default {
     onScroll() {
       this.height = this.$el.offsetHeight;
       const {container, offsetTop} = this;
-      console.log(this.$el);
       const scrollTop = getScrollTop(this.$el);
       const topToPageTop = getElementTop(this.$el);
       const emitScrollEvent = () => {
@@ -101,10 +100,8 @@ export default {
       // The sticky component should be kept inside the container element
       if (container) {
         const bottomToPageTop = topToPageTop + container.offsetHeight;
-
         if (scrollTop + offsetTop + this.height > bottomToPageTop) {
           const distanceToBottom = this.height + scrollTop - bottomToPageTop;
-
           if (distanceToBottom < this.height) {
             this.fixed = true;
             this.transform = -(distanceToBottom + offsetTop);

@@ -1,14 +1,14 @@
 <template>
   <div>
-  <vux-cell
-      v-for="item in components"
-      :key="item.path"
-      :title="item.title"
-      :to="item.path"
-      block
-      is-link
-  >
-  </vux-cell>
+    <vux-cell
+        v-for="item in components"
+        :key="item.path"
+        :title="item.title"
+        :to="item.path"
+        block
+        is-link
+    >
+    </vux-cell>
   </div>
 </template>
 
@@ -34,11 +34,12 @@ export default {
   },
   methods: {
     toRouterData() {
-      this.components = routes.map(item => {
+      this.components = routes.filter(item => item.path !== '/').map(item => {
+        const path = item.path.substring(1)
         return {
           ...item,
-          path: item.path.substring(1),
-          title: item.path.substring(1) + item.meta.title
+          path: path,
+          title: path + item.meta.title
         }
       })
     }
@@ -50,6 +51,7 @@ export default {
 a {
   text-decoration: none;
 }
+
 .vux__layout {
   display: block;
   height: 40px;

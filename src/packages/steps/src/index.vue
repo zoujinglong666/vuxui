@@ -80,6 +80,7 @@ export default {
       this.$emit('change', index)
       //这种方法也可以
       // this.$nextTick(() => {
+
       //   this.$emit('update:active', index)
       // })
     }
