@@ -65,6 +65,24 @@ export default {
     border-width: 1px 1px 0 0;
   }
 
+  .vux_hairline {
+    position: relative;
+
+    &::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 200%;
+      height: 200%;
+      -webkit-transform: scale(0.5);
+      transform: scale(0.5);
+      -webkit-transform-origin: 0 0;
+      transform-origin: 0 0;
+      pointer-events: none;
+      box-sizing: border-box;
+    }
+  }
   &-big {
     width: 100%;
     height: 108px;
@@ -97,24 +115,7 @@ export default {
   }
 }
 
-.vux_hairline {
-  position: relative;
 
-  &::after {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 200%;
-    height: 200%;
-    -webkit-transform: scale(0.5);
-    transform: scale(0.5);
-    -webkit-transform-origin: 0 0;
-    transform-origin: 0 0;
-    pointer-events: none;
-    box-sizing: border-box;
-  }
-}
 
 </style>
 

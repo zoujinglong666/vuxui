@@ -26,6 +26,14 @@ export default {
     },
     handleCancel() {
       this.show = false;
+    },
+    handleShow() {
+      console.log("show")
+      this.show = true;
+    },
+    handleShow1() {
+      console.log("show1")
+      this.show1 = true;
     }
   }
 }
@@ -33,12 +41,14 @@ export default {
 
 <template>
   <div>
-    <vux-cell is-link title="基本用法" @click="show=true"></vux-cell>
-    <vux-cell is-link title="展示取消按钮" @click="show1=true"></vux-cell>
+    <vux-cell is-link title="基本用法" @click="handleShow"></vux-cell>
+    <vux-cell is-link title="展示取消按钮" @click="handleShow1"></vux-cell>
     <vux-action-sheet v-model="show" :actions="actions" @cancel="handleCancel"
-                      @select="handleSelect"></vux-action-sheet>
+                      @select="handleSelect">{{ show }}
+    </vux-action-sheet>
     <vux-action-sheet v-model="show1" :actions="actions" cancel-text="取消" @cancel="handleCancel"
-                      @select="handleSelect"></vux-action-sheet>
+                      @select="handleSelect">{{ show1 }}
+    </vux-action-sheet>
   </div>
 </template>
 

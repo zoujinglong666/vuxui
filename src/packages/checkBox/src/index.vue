@@ -47,7 +47,8 @@ export default {
       },
     },
     iconSize: {
-      type: [String, Number],
+      type: [Number, String],
+      default: 15
     },
     disabled: {
       type: Boolean
@@ -83,12 +84,12 @@ export default {
     },
     size: {
       type: [Number, String],
-      default: 19
+      default: 18
     },
+
     paddingLabel: {
       type: [Number, String],
       default: 6
-
     }
 
 
@@ -136,6 +137,7 @@ export default {
 
     },
     iconSizeStyle() {
+      console.log(this.iconSize)
       return {
         fontSize: this.iconSize + 'px',
         color: "#fff"
@@ -192,8 +194,6 @@ export default {
     line-height: 1;
     box-sizing: border-box;
     position: relative;
-    width: 19px;
-    height: 19px;
     text-align: center;
     background-color: #fff;
     border: 1px solid #c8c9cc;
@@ -205,19 +205,14 @@ export default {
       height: 12px;
       position: absolute;
       left: 50%;
-      top: 55%;
+      top: 50%;
       transform: translate(-50%, -50%);
-
-      span {
-        position: absolute;
-        left: 50%;
-        top: 50%;
-        transform: translate(-50%, -50%);
-        color: #fff !important;
-        font-size: 12px;
-      }
-
-
+      color: #fff;
+      font-size: 12px;
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 50%;
     }
 
 
@@ -238,19 +233,5 @@ export default {
 
 }
 
-.checked {
-  display: inline-flex;
-  justify-content: center;
-  align-items: center;
-  width: 12px;
-  height: 12px;
-  border-radius: 50%;
-}
-
-//.checked::after {
-//  content: '✓';
-//  color: #fff;
-//  font-weight: 500;
-//}
 
 </style>

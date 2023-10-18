@@ -53,7 +53,7 @@ export default {
           ],
         },
       ],
-      isSelect: false,
+      isSelect: true,
       defaultProps: {
         children: 'children',
         label: 'title',
@@ -62,7 +62,6 @@ export default {
     }
   },
   created() {
-    this.treeData = json.data.list
   },
   methods: {
     handle(node) {

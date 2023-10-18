@@ -95,7 +95,7 @@ export default {
 
     },
     transitionName() {
-      return `vux_popup-slide-${this.position}`
+      return this.position === 'center' ? 'vux-fade' : `vux_popup-slide-${this.position}`
     },
     heightByStyle() {
       if (['top', 'bottom'].includes(this.position)) {
@@ -162,9 +162,10 @@ export default {
   overflow-y: auto;
   box-sizing: border-box;
   background: #FFFFFF;
-  transition: transform 0.3s linear;
+  transition: var(--vux-duration-base);
   -webkit-overflow-scrolling: touch;
   z-index: 2001;
+
   &.bottom {
     bottom: 0;
     left: 0;
@@ -214,7 +215,7 @@ export default {
     left: 0;
     right: 0;
     width: fit-content;
-    min-width: calc(100% - (16px * 2));
+    //min-width: calc(100% - (16px * 2));
     margin: 0 auto;
     transform: translateY(-50%);
 
@@ -227,15 +228,14 @@ export default {
   &-slide-top-enter-active,
   &-slide-left-enter-active,
   &-slide-right-enter-active,
-  &-slide-bottom-enter-active,
-  &-slide-center-enter-active {
+  &-slide-bottom-enter-active {
     transition-timing-function: ease-in-out;
   }
 
   &-slide-top-leave-active,
   &-slide-left-leave-active,
   &-slide-right-leave-active,
-  &-slide-bottom-leave-active, &-slide-center-leave-active {
+  &-slide-bottom-leave-active {
     transition-timing-function: ease-in-out;
   }
 
@@ -257,11 +257,6 @@ export default {
   &-slide-left-enter,
   &-slide-left-leave-active {
     transform: translate3d(-100%, 0, 0);
-  }
-
-  &-slide-center-enter,
-  &-slide-center-leave-active {
-    transform: translate3d(-50%, -50%, 0);
   }
 
 

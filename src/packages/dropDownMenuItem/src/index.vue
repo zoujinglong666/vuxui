@@ -7,7 +7,6 @@
         style="position: absolute;"
         @click.native="clickCloseMark">
       <!--      一行多列模式-->
-      <transition-height :show="isOpen">
         <div v-if="cols">
           <div class="vux-down-menu-container"
           >
@@ -39,7 +38,6 @@
             </slot>
           </template>
         </div>
-      </transition-height>
 
     </vux-drawer>
 
@@ -293,5 +291,35 @@ export default {
   box-sizing: border-box;
   display: flex;
   user-select: none;
+}
+
+.expand {
+  transform-origin: top;
+  animation: expand 0.3s ease both;
+}
+
+.fold {
+  transform-origin: top;
+  animation: fold 0.3s ease both;
+}
+
+/* 展开 */
+@keyframes expand {
+  from {
+    transform: scaleY(0);
+  }
+  to {
+    transform: scaleY(1);
+  }
+}
+
+/* 折叠 */
+@keyframes fold {
+  from {
+    transform: scaleY(1);
+  }
+  to {
+    transform: scaleY(0);
+  }
 }
 </style>

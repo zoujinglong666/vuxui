@@ -6,15 +6,18 @@
         <circle cx="50" cy="50" fill="none" r="20"/>
       </svg>
     </span>
+    <span style="font-size: 12px;">
+{{ loadingText }}
+    </span>
   </div>
 </template>
-
 <script>
 
 export default {
   name: 'vux-loading',
   props: {
     size: [Number, String],
+    loadingText: [Number, String],
     type: {
       type: String,
       default: 'circular',

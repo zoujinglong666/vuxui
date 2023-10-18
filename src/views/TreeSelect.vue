@@ -29,8 +29,6 @@
             alt=""/>
       </template>
     </vux-tree-select>
-
-
   </div>
 
 </template>

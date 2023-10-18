@@ -35,11 +35,7 @@ export default {
 
   watch: {
     defaultExpandAll(val) {
-      if (val) {
-        this.expandAndCollapse(val)
-      } else {
-        this.expandAndCollapse(false)
-      }
+      this.expandAndCollapse(val)
     },
 
     // 监听props中value的变化，及时更新

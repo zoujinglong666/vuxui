@@ -60,7 +60,6 @@ export default {
 
     toggleAll(options) {
       let trueChildren = this.$children.filter(item => !item.disabled).map(item => item.name)
-
       if (typeof options === 'boolean' && options === true) {
         this.handleEmit(trueChildren)
       } else {

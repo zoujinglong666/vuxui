@@ -2,14 +2,13 @@
 
   <div>
     <DemoBlock title="基本用法"></DemoBlock>
-    <vux-cell title="success消息" type="success" @click="handleSuccessMsg">
+    <vux-cell is-link title="success消息" type="success" @click="handleSuccessMsg">
     </vux-cell>
-    <vux-cell title="error消息" type="danger" @click="handleErrorMsg">
-      error消息
+    <vux-cell is-link title="error消息" type="danger" @click="handleErrorMsg">
     </vux-cell>
-    <vux-cell title="warning消息" type="warning" @click="handleWarnMsg">
+    <vux-cell is-link title="warning消息" type="warning" @click="handleWarnMsg">
     </vux-cell>
-    <vux-cell title="info信息" type="primary" @click="handleInfoMsg">
+    <vux-cell is-link title="info信息" type="primary" @click="handleInfoMsg">
     </vux-cell>
   </div>
 

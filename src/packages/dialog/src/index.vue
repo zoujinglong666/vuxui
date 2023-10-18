@@ -203,11 +203,13 @@ export default {
 
 @keyframes vux-dialog-in {
   0% {
-    transform: translate3d(-50%, -50%, 0) scale(1.16);;
+    transform: translate3d(-50%, -50%, 0) scale(0.85);
+    transition: ease-in-out;
     opacity: 0;
   }
   100% {
     transform: translate3d(-50%, -50%, 0) scale(1);
+    transition: ease-in-out;
     opacity: 1;
   }
 }

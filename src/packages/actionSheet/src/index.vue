@@ -7,13 +7,16 @@ export default {
   data() {
     return {}
   },
+  model: {
+    prop: "show"
+  },
   computed: {
     showCom: {
       get() {
         return this.show
       },
       set(val) {
-        this.$emit('update:show', val)
+        this.$emit('input', val)
       }
     },
 
