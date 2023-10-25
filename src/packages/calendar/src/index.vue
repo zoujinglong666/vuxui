@@ -115,7 +115,7 @@
 
 import calendar from "./calendar.js";
 import {dateFormat, daysFromNow, getCountDayByDate, getRangeDates, makeUpForZero} from "./date-utils.js";
-import VuxPopup from "@/packages/popup/index.vue";
+import VuxPopup from "@/packages/popup/src/index.vue";
 import VuxTag from "@/packages/tag/src/index.vue";
 import VuxButton from "@/packages/button/src/index.vue";
 import VuxSpace from "@/packages/space/src/index.vue";

@@ -148,6 +148,8 @@ export default {
 
   },
   beforeDestroy() {
+
+
     window.removeEventListener('click', this.clickOutElementClose, true)
   }
 }
@@ -162,7 +164,8 @@ export default {
   overflow-y: auto;
   box-sizing: border-box;
   background: #FFFFFF;
-  transition: var(--vux-duration-base);
+  transition: var(--vux-duration-fast);
+
   -webkit-overflow-scrolling: touch;
   z-index: 2001;
 

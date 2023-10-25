@@ -198,12 +198,12 @@ export default {
 }
 
 .vux__dialog-leave-active {
-  animation: vux-dialog-out var(--vux-duration-base);
+  animation: vux-dialog-out var(--vux-duration-fastOne);
 }
 
 @keyframes vux-dialog-in {
   0% {
-    transform: translate3d(-50%, -50%, 0) scale(0.85);
+    transform: translate3d(-50%, -50%, 0) scale(0.5);
     transition: ease-in-out;
     opacity: 0;
   }
@@ -221,7 +221,7 @@ export default {
     opacity: 1;
   }
   100% {
-    transform: translate3d(-50%, -50%, 0) scale(0.85);
+    transform: translate3d(-50%, -50%, 0) scale(0.5);
     transition: ease-in-out;
     opacity: 0;
   }

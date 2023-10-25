@@ -42,7 +42,7 @@
 <script>
 import VuxDivider from "@/packages/divider/src/index.vue";
 import VuxSpace from "@/packages/space/src/index.vue";
-import VuxPopup from "@/packages/popup/index.vue";
+import VuxPopup from "@/packages/popup/src/index.vue";
 import VuxButton from "@/packages/button/src/index.vue";
 import DemoBlock from "@/components/DemoBlock.vue";
 import DemoPage from "@/components/DemoPage.vue";

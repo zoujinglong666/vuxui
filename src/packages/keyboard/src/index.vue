@@ -38,7 +38,7 @@
 
 <script>
 import Key from './key';
-import VuxPopup from "@/packages/popup/index.vue";
+import VuxPopup from "@/packages/popup/src/index.vue";
 
 export default {
   name: 'vux-key-board',

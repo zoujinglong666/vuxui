@@ -37,7 +37,7 @@
 import Column from './PickerColumn'
 import {isTwoArray} from "../utils";
 import {basePickerProp} from "../prop";
-import VuxPopup from "@/packages/popup/index.vue";
+import VuxPopup from "@/packages/popup/src/index.vue";
 import VuxButton from "@/packages/button/src/index.vue";
 
 export default {

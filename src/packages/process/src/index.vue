@@ -27,7 +27,6 @@
 const sizes = ["large", "small", "base"];
 export default {
   name: "vuxProgress",
-
   model: {
     prop: 'value'
   },
@@ -116,7 +115,7 @@ export default {
   width: 100%;
   display: flex;
   align-items: center;
-  margin: 40px 0;
+  margin: 20px 0;
 
 
   .vux-progress-base {

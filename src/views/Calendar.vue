@@ -25,7 +25,7 @@
 </template>
 
 <script>
-import VuxPopup from "@/packages/popup/index.vue";
+import VuxPopup from "@/packages/popup/src/index.vue";
 import VuxCalendar from "@/packages/calendar/src/index.vue";
 import VuxCell from "@/packages/cell/src/index.vue";
 import DemoPage from "@/components/DemoPage.vue";

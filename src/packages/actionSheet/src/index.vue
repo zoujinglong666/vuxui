@@ -1,5 +1,5 @@
 <script>
-import VuxPopup from "@/packages/popup/index.vue";
+import VuxPopup from "@/packages/popup/src/index.vue";
 
 export default {
   name: "VuxActionSheet",
@@ -32,7 +32,10 @@ export default {
     }
   },
   props: {
+
     show: {
+
+
       type: Boolean
     },
     actions: {
